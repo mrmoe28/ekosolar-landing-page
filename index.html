@@ -78,8 +78,9 @@
         .nav {
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: flex-start;
             padding: 15px 0;
+            gap: 60px;
         }
         
         .logo {
@@ -739,6 +740,11 @@
         
         /* ===== RESPONSIVE DESIGN ===== */
         @media (max-width: 768px) {
+            .nav {
+                justify-content: space-between;
+                gap: 20px;
+            }
+            
             .nav-menu {
                 position: fixed;
                 top: 70px;
