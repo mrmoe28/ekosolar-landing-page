@@ -165,9 +165,9 @@
         .nav {
             display: flex;
             align-items: center;
-            justify-content: flex-start;
+            justify-content: space-between;
             padding: 15px 0;
-            gap: 60px;
+            position: relative;
         }
         
         .logo {
@@ -196,6 +196,9 @@
             display: flex;
             list-style: none;
             gap: 30px;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
         }
         
         .nav-link {
@@ -229,6 +232,13 @@
             font-size: 24px;
             color: var(--foreground);
             cursor: pointer;
+        }
+        
+        .nav-right {
+            display: flex;
+            align-items: center;
+            min-width: 100px; /* Ensure space for mobile toggle */
+            justify-content: flex-end;
         }
         
         /* ===== HERO SECTION ===== */
@@ -1029,7 +1039,6 @@
         @media (max-width: 768px) {
             .nav {
                 justify-content: space-between;
-                gap: 20px;
             }
             
             .nav-menu {
@@ -1047,6 +1056,7 @@
                 gap: 40px;
                 transition: var(--transition-normal);
                 box-shadow: var(--shadow-lg);
+                transform: none; /* Reset the centering transform for mobile */
             }
             
             .nav-menu.active {
@@ -1055,6 +1065,10 @@
             
             .mobile-menu-toggle {
                 display: block;
+            }
+            
+            .nav-right {
+                min-width: auto;
             }
             
             .hero {
@@ -1114,6 +1128,171 @@
         
         @keyframes fadeIn {
             to { opacity: 1; }
+        }
+        
+        /* ===== GLOBAL ANIMATED GRID SYSTEM ===== */
+        
+        /* Global grid container */
+        .global-grid-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        /* Base grid layers */
+        .grid-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.0345; /* Increased by 15% from 0.03 */
+        }
+        
+        .grid-layer-1 {
+            background-image: 
+                linear-gradient(90deg, var(--border) 1px, transparent 1px),
+                linear-gradient(var(--border) 1px, transparent 1px);
+            background-size: 80px 80px;
+        }
+        
+        .grid-layer-2 {
+            background-image: 
+                linear-gradient(90deg, var(--primary) 1px, transparent 1px),
+                linear-gradient(var(--primary) 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.023; /* Increased by 15% from 0.02 */
+        }
+        
+        .grid-layer-3 {
+            background-image: 
+                linear-gradient(90deg, var(--chart-1) 0.5px, transparent 0.5px),
+                linear-gradient(var(--chart-1) 0.5px, transparent 0.5px);
+            background-size: 160px 160px;
+            opacity: 0.01725; /* Increased by 15% from 0.015 */
+        }
+        
+        /* Dynamic grid elements for Anime.js */
+        .animated-grid-line {
+            position: absolute;
+            background: var(--primary);
+            opacity: 0.115; /* Increased by 15% from 0.1 */
+        }
+        
+        .grid-line-horizontal {
+            height: 1px;
+            width: 100%;
+        }
+        
+        .grid-line-vertical {
+            width: 1px;
+            height: 100%;
+        }
+        
+        .grid-intersection {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 50%;
+            opacity: 0;
+        }
+        
+        /* Solar-themed grid elements */
+        .solar-grid-cell {
+            position: absolute;
+            border: 0.5px solid var(--solar-orange);
+            opacity: 0.0575; /* Increased by 15% from 0.05 */
+            transition: opacity 0.3s ease;
+        }
+        
+        .solar-grid-cell.active {
+            opacity: 0.23; /* Increased by 15% from 0.2 */
+            box-shadow: 0 0 10px rgba(234, 88, 12, 0.345); /* Increased by 15% from 0.3 */
+        }
+        
+        /* Circuit board style grid */
+        .circuit-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.0575; /* Increased by 15% from 0.05 */
+        }
+        
+        .circuit-path {
+            position: absolute;
+            background: linear-gradient(90deg, var(--chart-4), var(--primary));
+            height: 2px;
+            opacity: 0;
+        }
+        
+        .circuit-node {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: var(--chart-4);
+            border-radius: 50%;
+            opacity: 0;
+        }
+        
+        /* Mobile-specific grid adjustments */
+        @media (max-width: 768px) {
+            .grid-layer-1 {
+                background-size: 60px 60px;
+                opacity: 0.023; /* Increased by 15% from 0.02 */
+            }
+            
+            .grid-layer-2 {
+                background-size: 30px 30px;
+                opacity: 0.01725; /* Increased by 15% from 0.015 */
+            }
+            
+            .grid-layer-3 {
+                background-size: 120px 120px;
+                opacity: 0.0115; /* Increased by 15% from 0.01 */
+            }
+            
+            .animated-grid-line {
+                opacity: 0.0575; /* Increased by 15% from 0.05 */
+            }
+            
+            .grid-intersection {
+                width: 2px;
+                height: 2px;
+            }
+            
+            .circuit-path {
+                height: 1px;
+            }
+            
+            .circuit-node {
+                width: 4px;
+                height: 4px;
+            }
+        }
+        
+        /* Tablet adjustments */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .grid-layer-1 {
+                background-size: 70px 70px;
+                opacity: 0.02875; /* Increased by 15% from 0.025 */
+            }
+            
+            .grid-layer-2 {
+                background-size: 35px 35px;
+                opacity: 0.0207; /* Increased by 15% from 0.018 */
+            }
+            
+            .animated-grid-line {
+                opacity: 0.092; /* Increased by 15% from 0.08 */
+            }
         }
         
         /* ===== ACCESSIBILITY & PERFORMANCE ===== */
@@ -1177,10 +1356,23 @@
             100% { transform: rotate(360deg); }
         }
     </style>
+    <!-- Anime.js for advanced animations -->
+    <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.min.js"></script>
     <!-- EmailJS SDK -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body>
+    <!-- Global Animated Grid System -->
+    <div class="global-grid-container">
+        <div class="grid-layer grid-layer-1"></div>
+        <div class="grid-layer grid-layer-2"></div>
+        <div class="grid-layer grid-layer-3"></div>
+        <div id="dynamic-grid-lines"></div>
+        <div id="grid-intersections"></div>
+        <div id="solar-grid"></div>
+        <div id="circuit-grid" class="circuit-grid"></div>
+    </div>
+
     <!-- Header Navigation -->
     <header class="header">
         <nav class="nav container">
@@ -1197,7 +1389,9 @@
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
             
-            <button class="mobile-menu-toggle" id="mobileToggle">≡</button>
+            <div class="nav-right">
+                <button class="mobile-menu-toggle" id="mobileToggle">≡</button>
+            </div>
         </nav>
     </header>
 
@@ -1498,13 +1692,286 @@
     </footer>
 
     <script>
+        // ===== GLOBAL ANIMATED GRID SYSTEM =====
+        class GlobalGridSystem {
+            constructor() {
+                this.gridLayers = document.querySelectorAll('.grid-layer');
+                this.dynamicLinesContainer = document.getElementById('dynamic-grid-lines');
+                this.intersectionsContainer = document.getElementById('grid-intersections');
+                this.solarGridContainer = document.getElementById('solar-grid');
+                this.circuitGridContainer = document.getElementById('circuit-grid');
+                this.isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                
+                this.init();
+            }
+            
+            init() {
+                if (this.isReducedMotion) return;
+                
+                this.animateGridLayers();
+                this.createDynamicLines();
+                this.createGridIntersections();
+                this.createSolarGrid();
+                this.createCircuitGrid();
+                this.setupMouseInteraction();
+                this.setupResizeHandler();
+            }
+            
+            animateGridLayers() {
+                // Animate the base CSS grid layers with different speeds and directions
+                anime({
+                    targets: '.grid-layer-1',
+                    translateX: ['0px', '80px'],
+                    translateY: ['0px', '40px'],
+                    duration: 45000,
+                    easing: 'linear',
+                    loop: true
+                });
+                
+                anime({
+                    targets: '.grid-layer-2',
+                    translateX: ['0px', '-40px'],
+                    translateY: ['0px', '60px'],
+                    duration: 35000,
+                    easing: 'linear',
+                    loop: true
+                });
+                
+                anime({
+                    targets: '.grid-layer-3',
+                    translateX: ['0px', '160px'],
+                    translateY: ['0px', '-80px'],
+                    duration: 60000,
+                    easing: 'linear',
+                    loop: true
+                });
+            }
+            
+            createDynamicLines() {
+                // Responsive line count based on screen size
+                const isMobile = window.innerWidth <= 768;
+                const isTablet = window.innerWidth > 768 && window.innerWidth <= 1024;
+                const lineCount = isMobile ? 3 : isTablet ? 4 : 6;
+                
+                const viewportWidth = window.innerWidth;
+                const viewportHeight = window.innerHeight;
+                
+                // Create horizontal lines
+                for (let i = 0; i < lineCount; i++) {
+                    const line = document.createElement('div');
+                    line.className = 'animated-grid-line grid-line-horizontal';
+                    line.style.top = `${(viewportHeight / lineCount) * i}px`;
+                    line.style.transform = `translateX(-100%)`;
+                    this.dynamicLinesContainer.appendChild(line);
+                    
+                    // Animate with staggered delays
+                    anime({
+                        targets: line,
+                        translateX: ['-100%', '100%'],
+                        duration: 8000 + (i * 1000),
+                        easing: 'easeInOutSine',
+                        loop: true,
+                        delay: i * 500
+                    });
+                }
+                
+                // Create vertical lines
+                for (let i = 0; i < lineCount; i++) {
+                    const line = document.createElement('div');
+                    line.className = 'animated-grid-line grid-line-vertical';
+                    line.style.left = `${(viewportWidth / lineCount) * i}px`;
+                    line.style.transform = `translateY(-100%)`;
+                    this.dynamicLinesContainer.appendChild(line);
+                    
+                    // Animate with staggered delays
+                    anime({
+                        targets: line,
+                        translateY: ['-100%', '100%'],
+                        duration: 10000 + (i * 800),
+                        easing: 'easeInOutSine',
+                        loop: true,
+                        delay: i * 700
+                    });
+                }
+            }
+            
+            createGridIntersections() {
+                // Responsive intersection count
+                const isMobile = window.innerWidth <= 768;
+                const isTablet = window.innerWidth > 768 && window.innerWidth <= 1024;
+                const intersectionCount = isMobile ? 8 : isTablet ? 12 : 20;
+                
+                const viewportWidth = window.innerWidth;
+                const viewportHeight = window.innerHeight;
+                
+                for (let i = 0; i < intersectionCount; i++) {
+                    const intersection = document.createElement('div');
+                    intersection.className = 'grid-intersection';
+                    intersection.style.left = `${Math.random() * viewportWidth}px`;
+                    intersection.style.top = `${Math.random() * viewportHeight}px`;
+                    this.intersectionsContainer.appendChild(intersection);
+                    
+                    // Pulse animation
+                    anime({
+                        targets: intersection,
+                        opacity: [0, 0.345, 0], /* Increased by 15% from [0, 0.3, 0] */
+                        scale: [0.5, 1.2, 0.5],
+                        duration: 3000,
+                        easing: 'easeInOutSine',
+                        loop: true,
+                        delay: Math.random() * 2000
+                    });
+                }
+            }
+            
+            createSolarGrid() {
+                // Responsive cell size
+                const isMobile = window.innerWidth <= 768;
+                const isTablet = window.innerWidth > 768 && window.innerWidth <= 1024;
+                const cellSize = isMobile ? 80 : isTablet ? 100 : 120;
+                
+                const cols = Math.ceil(window.innerWidth / cellSize) + 1;
+                const rows = Math.ceil(window.innerHeight / cellSize) + 1;
+                
+                for (let row = 0; row < rows; row++) {
+                    for (let col = 0; col < cols; col++) {
+                        const cell = document.createElement('div');
+                        cell.className = 'solar-grid-cell';
+                        cell.style.left = `${col * cellSize}px`;
+                        cell.style.top = `${row * cellSize}px`;
+                        cell.style.width = `${cellSize - 2}px`;
+                        cell.style.height = `${cellSize - 2}px`;
+                        this.solarGridContainer.appendChild(cell);
+                        
+                        // Random activation animation
+                        anime({
+                            targets: cell,
+                            opacity: [0.0575, 0.1725, 0.0575], /* Increased by 15% from [0.05, 0.15, 0.05] */
+                            duration: 4000 + Math.random() * 3000,
+                            easing: 'easeInOutSine',
+                            loop: true,
+                            delay: Math.random() * 5000
+                        });
+                    }
+                }
+            }
+            
+            createCircuitGrid() {
+                // Responsive counts for mobile/tablet
+                const isMobile = window.innerWidth <= 768;
+                const isTablet = window.innerWidth > 768 && window.innerWidth <= 1024;
+                const pathCount = isMobile ? 4 : isTablet ? 6 : 8;
+                const nodeCount = isMobile ? 8 : isTablet ? 10 : 15;
+                
+                const viewportWidth = window.innerWidth;
+                const viewportHeight = window.innerHeight;
+                
+                // Create circuit paths
+                for (let i = 0; i < pathCount; i++) {
+                    const path = document.createElement('div');
+                    path.className = 'circuit-path';
+                    path.style.top = `${Math.random() * viewportHeight}px`;
+                    path.style.left = `0px`;
+                    path.style.width = `${viewportWidth * 0.3}px`;
+                    this.circuitGridContainer.appendChild(path);
+                    
+                    // Flowing animation
+                    anime({
+                        targets: path,
+                        opacity: [0, 0.345, 0], /* Increased by 15% from [0, 0.3, 0] */
+                        scaleX: [0, 1, 0],
+                        duration: 6000,
+                        easing: 'easeInOutSine',
+                        loop: true,
+                        delay: i * 800
+                    });
+                }
+                
+                // Create circuit nodes
+                for (let i = 0; i < nodeCount; i++) {
+                    const node = document.createElement('div');
+                    node.className = 'circuit-node';
+                    node.style.left = `${Math.random() * viewportWidth}px`;
+                    node.style.top = `${Math.random() * viewportHeight}px`;
+                    this.circuitGridContainer.appendChild(node);
+                    
+                    // Blinking animation
+                    anime({
+                        targets: node,
+                        opacity: [0, 0.69, 0], /* Increased by 15% from [0, 0.6, 0] */
+                        scale: [0.5, 1, 0.5],
+                        duration: 2000,
+                        easing: 'easeInOutSine',
+                        loop: true,
+                        delay: Math.random() * 3000
+                    });
+                }
+            }
+            
+            setupMouseInteraction() {
+                let mouseX = 0;
+                let mouseY = 0;
+                
+                // Only enable mouse interaction on non-touch devices
+                if (!window.matchMedia('(pointer: coarse)').matches) {
+                    document.addEventListener('mousemove', (e) => {
+                        mouseX = e.clientX / window.innerWidth;
+                        mouseY = e.clientY / window.innerHeight;
+                        
+                        // Subtle parallax effect on grid layers
+                        anime({
+                            targets: '.grid-layer-1',
+                            translateX: `${mouseX * 20}px`,
+                            translateY: `${mouseY * 15}px`,
+                            duration: 1000,
+                            easing: 'easeOutQuint'
+                        });
+                        
+                        anime({
+                            targets: '.grid-layer-2',
+                            translateX: `${mouseX * -15}px`,
+                            translateY: `${mouseY * 10}px`,
+                            duration: 800,
+                            easing: 'easeOutQuint'
+                        });
+                    });
+                }
+            }
+            
+            setupResizeHandler() {
+                let resizeTimeout;
+                window.addEventListener('resize', () => {
+                    clearTimeout(resizeTimeout);
+                    resizeTimeout = setTimeout(() => {
+                        // Clear existing elements
+                        this.dynamicLinesContainer.innerHTML = '';
+                        this.intersectionsContainer.innerHTML = '';
+                        this.solarGridContainer.innerHTML = '';
+                        this.circuitGridContainer.innerHTML = '';
+                        
+                        // Recreate with new dimensions
+                        if (!this.isReducedMotion) {
+                            this.createDynamicLines();
+                            this.createGridIntersections();
+                            this.createSolarGrid();
+                            this.createCircuitGrid();
+                        }
+                    }, 250);
+                });
+            }
+        }
+        
         // ===== GLOBAL VARIABLES =====
         let currentTestimonial = 0;
         const totalTestimonials = 3;
         let testimonialInterval;
+        let globalGridSystem;
         
         // ===== NAVIGATION FUNCTIONALITY =====
         document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Global Grid System
+            globalGridSystem = new GlobalGridSystem();
+            
             // Mobile menu toggle
             const mobileToggle = document.getElementById('mobileToggle');
             const navMenu = document.getElementById('navMenu');
