@@ -520,6 +520,197 @@
             font-weight: bold;
         }
         
+        /* ===== SYSTEM SERVICES SECTION ===== */
+        .system-services {
+            padding: var(--section-padding);
+            background: var(--background);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Enhanced grid pattern animation for system services */
+        .system-services::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(135deg, var(--chart-4) 1px, transparent 1px),
+                linear-gradient(-135deg, var(--chart-4) 1px, transparent 1px);
+            background-size: 60px 60px;
+            opacity: 0.02;
+            animation: systemGridMove 40s linear infinite;
+        }
+        
+        @keyframes systemGridMove {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            100% {
+                transform: translate(60px, 60px) rotate(2deg);
+            }
+        }
+        
+        .system-services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Advanced service cards with enhanced shadows */
+        .service-card-advanced {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--border-radius);
+            padding: 45px 35px;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-normal);
+            cursor: pointer;
+            overflow: hidden;
+            position: relative;
+            transform: translateY(0);
+        }
+        
+        .service-card-advanced::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, var(--solar-orange), var(--solar-yellow));
+            opacity: 0;
+            transition: opacity var(--transition-normal);
+            z-index: -1;
+        }
+        
+        .service-card-advanced:hover {
+            transform: translateY(-12px);
+            box-shadow: var(--shadow-2xl);
+            border-color: var(--solar-orange);
+        }
+        
+        .service-card-advanced:hover::before {
+            opacity: 0.03;
+        }
+        
+        .service-card-advanced:hover .advanced-service-icon {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 8px 25px rgba(234, 88, 12, 0.3);
+        }
+        
+        .service-card-advanced:hover .advanced-service-title {
+            color: var(--solar-orange);
+        }
+        
+        .service-card-advanced:hover .advanced-service-features {
+            max-height: 300px;
+            opacity: 1;
+        }
+        
+        /* Advanced service icons with enhanced effects */
+        .advanced-service-icon {
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(135deg, var(--chart-4), var(--primary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            font-size: 2.5rem;
+            color: white;
+            transition: all var(--transition-normal);
+            box-shadow: var(--shadow);
+        }
+        
+        .advanced-service-title {
+            font-size: 1.5rem;
+            font-weight: var(--font-weight-bold);
+            margin-bottom: 20px;
+            color: var(--card-foreground);
+            transition: color var(--transition-normal);
+        }
+        
+        .advanced-service-description {
+            color: var(--muted-foreground);
+            margin-bottom: 25px;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+        
+        /* Advanced service features with enhanced animations */
+        .advanced-service-features {
+            list-style: none;
+            text-align: left;
+            margin-top: 25px;
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all var(--transition-slow);
+        }
+        
+        .advanced-service-features li {
+            padding: 10px 0;
+            color: var(--muted-foreground);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transform: translateX(-20px);
+            opacity: 0;
+            transition: all var(--transition-normal);
+        }
+        
+        .service-card-advanced:hover .advanced-service-features li {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        
+        .service-card-advanced:hover .advanced-service-features li:nth-child(1) { transition-delay: 0.1s; }
+        .service-card-advanced:hover .advanced-service-features li:nth-child(2) { transition-delay: 0.15s; }
+        .service-card-advanced:hover .advanced-service-features li:nth-child(3) { transition-delay: 0.2s; }
+        .service-card-advanced:hover .advanced-service-features li:nth-child(4) { transition-delay: 0.25s; }
+        .service-card-advanced:hover .advanced-service-features li:nth-child(5) { transition-delay: 0.3s; }
+        .service-card-advanced:hover .advanced-service-features li:nth-child(6) { transition-delay: 0.35s; }
+        
+        .advanced-service-features li::before {
+            content: '⚡';
+            color: var(--solar-orange);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        /* Call-to-action button in advanced cards */
+        .advanced-card-cta {
+            margin-top: 25px;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, var(--solar-yellow), var(--solar-orange));
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-weight: var(--font-weight-semibold);
+            cursor: pointer;
+            transition: all var(--transition-normal);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .service-card-advanced:hover .advanced-card-cta {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.4s;
+        }
+        
+        .advanced-card-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(234, 88, 12, 0.4);
+        }
+        
         /* ===== SOLAR CALCULATOR ===== */
         .calculator {
             padding: var(--section-padding);
@@ -1295,6 +1486,119 @@
             }
         }
         
+        /* System Services Mobile Responsiveness */
+        @media (max-width: 480px) {
+            .system-services {
+                padding: 60px 15px;
+                margin: 0 5px;
+            }
+            
+            .system-services-grid {
+                gap: 20px;
+                padding: 0 5px;
+            }
+            
+            .service-card-advanced {
+                padding: 25px 15px;
+                margin: 0;
+                width: 100%;
+            }
+            
+            .service-title-advanced {
+                font-size: 1.2rem;
+            }
+            
+            .service-description-advanced {
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .system-services {
+                padding: 80px 20px;
+                margin: 0 10px;
+            }
+            
+            .system-services-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+                padding: 0 10px;
+            }
+            
+            .service-card-advanced {
+                padding: 30px 20px;
+                margin: 0 5px;
+                min-height: auto;
+                width: calc(100% - 10px);
+                box-sizing: border-box;
+            }
+            
+            .service-icon-advanced {
+                width: 50px;
+                height: 50px;
+                margin-bottom: 20px;
+            }
+            
+            .service-icon-advanced svg {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .service-title-advanced {
+                font-size: 1.3rem;
+                margin-bottom: 15px;
+            }
+            
+            .service-description-advanced {
+                font-size: 0.95rem;
+                line-height: 1.5;
+                margin-bottom: 20px;
+            }
+            
+            .service-features-advanced {
+                opacity: 1;
+                max-height: none;
+                margin-bottom: 25px;
+            }
+            
+            .service-features-advanced li {
+                opacity: 1;
+                transform: translateX(0);
+                font-size: 0.9rem;
+                padding: 8px 0;
+            }
+            
+            .service-cta-advanced {
+                opacity: 1;
+                transform: translateY(0);
+                padding: 12px 20px;
+                font-size: 0.95rem;
+            }
+            
+            .service-card-advanced:hover {
+                transform: translateY(-4px);
+            }
+            
+            /* Ensure container doesn't overflow */
+            .container {
+                max-width: 100%;
+                padding: 0 15px;
+                margin: 0 auto;
+                overflow: hidden;
+            }
+        }
+        
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .system-services-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 35px;
+            }
+            
+            .service-card-advanced {
+                padding: 40px 30px;
+            }
+        }
+        
         /* ===== ACCESSIBILITY & PERFORMANCE ===== */
         
         /* Respect user's motion preferences */
@@ -1384,6 +1688,7 @@
             <ul class="nav-menu" id="navMenu">
                 <li><a href="#home" class="nav-link active">Home</a></li>
                 <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#system-services" class="nav-link">System Services</a></li>
                 <li><a href="#calculator" class="nav-link">Calculator</a></li>
                 <li><a href="#testimonials" class="nav-link">Reviews</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
@@ -1468,6 +1773,94 @@
                         <li>Incentive and rebate guidance</li>
                         <li>Energy efficiency recommendations</li>
                     </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- System Services Section -->
+    <section id="system-services" class="system-services">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">System Services</h2>
+                <p class="section-subtitle">Comprehensive support for your solar energy system with expert troubleshooting, activation, and enhancement services.</p>
+            </div>
+            
+            <div class="system-services-grid">
+                <div class="service-card-advanced" data-service="troubleshooting">
+                    <div class="service-icon-advanced">
+                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title-advanced">System Troubleshooting</h3>
+                    <p class="service-description-advanced">Expert diagnosis and resolution of solar system issues with 24/7 support and rapid response times.</p>
+                    <ul class="service-features-advanced">
+                        <li>Remote system monitoring</li>
+                        <li>Performance analysis</li>
+                        <li>Hardware diagnostics</li>
+                        <li>Emergency repair service</li>
+                        <li>Warranty support</li>
+                    </ul>
+                    <div class="service-cta-advanced">
+                        <span class="cta-text">Get Support</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                            <polyline points="7,7 17,7 17,17"></polyline>
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="service-card-advanced" data-service="activation">
+                    <div class="service-icon-advanced">
+                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                            <line x1="3" y1="6" x2="21" y2="6"/>
+                            <path d="M16 10a4 4 0 0 1-8 0"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title-advanced">System Activation</h3>
+                    <p class="service-description-advanced">Professional activation and optimization of dormant or underperforming solar installations.</p>
+                    <ul class="service-features-advanced">
+                        <li>System inspection & testing</li>
+                        <li>Grid connection setup</li>
+                        <li>Inverter configuration</li>
+                        <li>Performance optimization</li>
+                        <li>Monitoring system setup</li>
+                    </ul>
+                    <div class="service-cta-advanced">
+                        <span class="cta-text">Activate System</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                            <polyline points="7,7 17,7 17,17"></polyline>
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="service-card-advanced" data-service="storage">
+                    <div class="service-icon-advanced">
+                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                            <line x1="8" y1="21" x2="16" y2="21"/>
+                            <line x1="12" y1="17" x2="12" y2="21"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title-advanced">Storage Addons</h3>
+                    <p class="service-description-advanced">Upgrade your existing solar system with advanced battery storage solutions for energy independence.</p>
+                    <ul class="service-features-advanced">
+                        <li>Battery system design</li>
+                        <li>Integration with existing solar</li>
+                        <li>Backup power solutions</li>
+                        <li>Smart energy management</li>
+                        <li>Grid-tie capabilities</li>
+                    </ul>
+                    <div class="service-cta-advanced">
+                        <span class="cta-text">Add Storage</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                            <polyline points="7,7 17,7 17,17"></polyline>
+                        </svg>
+                    </div>
                 </div>
             </div>
         </div>
@@ -2495,6 +2888,109 @@
             // Add form labels and descriptions
             const form = document.getElementById('contactForm');
             form.setAttribute('aria-label', 'Solar consultation request form');
+        });
+
+        // System Services Animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate system services cards on page load
+            const systemServiceCards = document.querySelectorAll('.service-card-advanced');
+            
+            if (systemServiceCards.length > 0 && typeof anime !== 'undefined') {
+                // Initial card animation
+                anime({
+                    targets: '.service-card-advanced',
+                    opacity: [0, 1],
+                    translateY: [60, 0],
+                    scale: [0.8, 1],
+                    delay: anime.stagger(200, {start: 400}),
+                    duration: 800,
+                    easing: 'easeOutExpo'
+                });
+
+                // Animate icons
+                anime({
+                    targets: '.service-icon-advanced svg',
+                    rotate: [0, 360],
+                    scale: [0.5, 1],
+                    delay: anime.stagger(200, {start: 600}),
+                    duration: 1000,
+                    easing: 'easeOutElastic(1, .8)'
+                });
+
+                // Stagger feature list animations
+                systemServiceCards.forEach((card, index) => {
+                    const features = card.querySelectorAll('.service-features-advanced li');
+                    
+                    anime({
+                        targets: features,
+                        opacity: [0, 1],
+                        translateX: [-30, 0],
+                        delay: anime.stagger(100, {start: 800 + (index * 200)}),
+                        duration: 600,
+                        easing: 'easeOutQuart'
+                    });
+                });
+
+                // Add hover animations
+                systemServiceCards.forEach(card => {
+                    card.addEventListener('mouseenter', function() {
+                        if (window.innerWidth > 768) {
+                            const icon = this.querySelector('.service-icon-advanced svg');
+                            const cta = this.querySelector('.service-cta-advanced');
+                            
+                            anime({
+                                targets: icon,
+                                rotate: '+=180',
+                                scale: [1, 1.1, 1],
+                                duration: 600,
+                                easing: 'easeOutElastic(1, .6)'
+                            });
+                            
+                            anime({
+                                targets: cta,
+                                scale: [1, 1.05],
+                                duration: 300,
+                                easing: 'easeOutQuart'
+                            });
+                        }
+                    });
+                    
+                    card.addEventListener('mouseleave', function() {
+                        if (window.innerWidth > 768) {
+                            const cta = this.querySelector('.service-cta-advanced');
+                            
+                            anime({
+                                targets: cta,
+                                scale: [1.05, 1],
+                                duration: 300,
+                                easing: 'easeOutQuart'
+                            });
+                        }
+                    });
+                });
+            }
+
+            // Intersection Observer for scroll-triggered animations
+            const systemServicesSection = document.querySelector('#system-services');
+            if (systemServicesSection && typeof anime !== 'undefined') {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            // Trigger additional animations when section comes into view
+                            anime({
+                                targets: '.service-card-advanced .service-cta-advanced',
+                                scale: [0.9, 1],
+                                opacity: [0.7, 1],
+                                delay: anime.stagger(150),
+                                duration: 600,
+                                easing: 'easeOutBounce'
+                            });
+                        }
+                    });
+                }, { threshold: 0.3 });
+                
+                observer.observe(systemServicesSection);
+            }
         });
     </script>
 </body>
