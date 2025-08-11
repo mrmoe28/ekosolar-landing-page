@@ -3,8 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EkoSolar - Solar Power, Simplified</title>
-    <meta name="description" content="Transform your home with clean solar energy. Professional installation, maintenance, and consultation services.">
+    <!-- Primary Meta Tags -->
+    <title>EkoSolar - Professional Solar Installation & Maintenance Services | Georgia</title>
+    <meta name="title" content="EkoSolar - Professional Solar Installation & Maintenance Services | Georgia">
+    <meta name="description" content="Transform your Georgia home with professional solar panel installation, maintenance, and repair services. Free consultation & 25-year warranty. Save up to 90% on energy bills.">
+    <meta name="keywords" content="solar installation Georgia, solar panels Georgia, residential solar installation, solar maintenance, solar repair, solar consultation, solar energy Georgia, solar companies near me">
+    
+    <!-- Geo-targeting -->
+    <meta name="geo.region" content="US-GA">
+    <meta name="geo.placename" content="Georgia">
+    <meta name="geo.position" content="33.040619;-83.643074">
+    <meta name="ICBM" content="33.040619, -83.643074">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ekosolar.com/">
+    <meta property="og:title" content="EkoSolar - Professional Solar Installation & Maintenance Services | Georgia">
+    <meta property="og:description" content="Transform your Georgia home with professional solar panel installation, maintenance, and repair services. Free consultation & 25-year warranty. Save up to 90% on energy bills.">
+    <meta property="og:image" content="https://ekosolar.com/images/ekosolar-solar-installation-georgia.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://ekosolar.com/">
+    <meta property="twitter:title" content="EkoSolar - Professional Solar Installation & Maintenance Services | Georgia">
+    <meta property="twitter:description" content="Transform your Georgia home with professional solar panel installation, maintenance, and repair services. Free consultation & 25-year warranty.">
+    <meta property="twitter:image" content="https://ekosolar.com/images/ekosolar-solar-installation-georgia.jpg">
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+    <meta name="author" content="EkoSolar">
+    <link rel="canonical" href="https://ekosolar.com/">
     
     <style>
         /* ===== CSS RESET AND BASE STYLES ===== */
@@ -526,6 +556,29 @@
             background: var(--background);
             position: relative;
             overflow: hidden;
+            /* Full-width border setup */
+            margin: 0 -50vw;
+            padding-left: 50vw;
+            padding-right: 50vw;
+            border-top: 3px solid transparent;
+            border-bottom: 3px solid transparent;
+            border-image: linear-gradient(90deg, var(--solar-orange), var(--solar-yellow), var(--solar-orange)) 1;
+            box-shadow: 
+                inset 0 3px 0 0 var(--solar-orange),
+                inset 0 -3px 0 0 var(--solar-orange);
+        }
+        
+        /* Orange gradient background integration at top */
+        .system-services::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 120px;
+            background: linear-gradient(135deg, var(--solar-yellow) 0%, var(--solar-orange) 100%);
+            opacity: 0.08;
+            z-index: 0;
         }
         
         /* Enhanced grid pattern animation for system services */
@@ -561,7 +614,7 @@
             z-index: 1;
         }
         
-        /* Advanced service cards with enhanced shadows */
+        /* Advanced service cards with enhanced shadows and animations */
         .service-card-advanced {
             background: var(--card);
             border: 1px solid var(--border);
@@ -569,13 +622,16 @@
             padding: 45px 35px;
             text-align: center;
             box-shadow: var(--shadow-md);
-            transition: all var(--transition-normal);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             cursor: pointer;
             overflow: hidden;
             position: relative;
-            transform: translateY(0);
+            transform: translateY(0) scale(1);
+            will-change: transform, box-shadow;
+            z-index: 1;
         }
         
+        /* Enhanced gradient overlay */
         .service-card-advanced::before {
             content: '';
             position: absolute;
@@ -585,27 +641,182 @@
             bottom: 0;
             background: linear-gradient(135deg, var(--solar-orange), var(--solar-yellow));
             opacity: 0;
-            transition: opacity var(--transition-normal);
+            transition: all 0.4s ease;
             z-index: -1;
         }
         
+        /* Animated border effect */
+        .service-card-advanced::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--solar-orange), var(--solar-yellow), var(--solar-orange));
+            border-radius: var(--border-radius);
+            opacity: 0;
+            z-index: -2;
+            transition: opacity 0.4s ease;
+        }
+        
+        /* Enhanced hover effects */
         .service-card-advanced:hover {
-            transform: translateY(-12px);
-            box-shadow: var(--shadow-2xl);
+            transform: translateY(-18px) scale(1.02);
+            box-shadow: 
+                0 25px 50px rgba(234, 88, 12, 0.15),
+                0 15px 35px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
             border-color: var(--solar-orange);
         }
         
         .service-card-advanced:hover::before {
-            opacity: 0.03;
+            opacity: 0.05;
         }
         
-        .service-card-advanced:hover .advanced-service-icon {
-            transform: scale(1.1) rotate(5deg);
+        .service-card-advanced:hover::after {
+            opacity: 1;
+        }
+        
+        .service-card-advanced:hover .service-icon-advanced {
+            transform: scale(1.15) rotate(8deg);
+        }
+        
+        .service-card-advanced:hover .service-icon-advanced svg {
+            filter: drop-shadow(0 8px 25px rgba(234, 88, 12, 0.3));
+        }
+        
+        /* Enhanced icon styling */
+        .service-icon-advanced {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--solar-orange), var(--solar-yellow));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            color: white;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 8px 25px rgba(234, 88, 12, 0.2);
+        }
+        
+        .service-icon-advanced svg {
+            transition: all 0.4s ease;
+        }
+        
+        /* Enhanced text styling and animations */
+        .service-title-advanced {
+            font-size: 1.5rem;
+            font-weight: var(--font-weight-bold);
+            color: var(--foreground);
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card-advanced:hover .service-title-advanced {
+            color: var(--solar-orange);
+            transform: translateY(-2px);
+        }
+        
+        .service-description-advanced {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--muted-foreground);
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+        }
+        
+        .service-card-advanced:hover .service-description-advanced {
+            color: var(--foreground);
+        }
+        
+        /* Enhanced feature list styling */
+        .service-features-advanced {
+            list-style: none;
+            padding: 0;
+            margin: 25px 0;
+            opacity: 0.9;
+            transition: all 0.3s ease;
+        }
+        
+        .service-features-advanced li {
+            padding: 8px 0;
+            position: relative;
+            padding-left: 25px;
+            font-size: 0.95rem;
+            color: var(--muted-foreground);
+            transition: all 0.3s ease;
+            transform: translateX(0);
+        }
+        
+        .service-features-advanced li::before {
+            content: '⚡';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            color: var(--solar-orange);
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        
+        .service-card-advanced:hover .service-features-advanced li {
+            color: var(--foreground);
+            transform: translateX(3px);
+        }
+        
+        .service-card-advanced:hover .service-features-advanced li::before {
+            transform: scale(1.2);
+        }
+        
+        /* Enhanced CTA button styling */
+        .service-cta-advanced {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, var(--solar-orange), var(--solar-yellow));
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: var(--font-weight-semibold);
+            font-size: 0.95rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 15px rgba(234, 88, 12, 0.2);
+            cursor: pointer;
+            border: none;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .service-cta-advanced::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s ease;
+        }
+        
+        .service-cta-advanced:hover::before {
+            left: 100%;
+        }
+        
+        .service-cta-advanced:hover {
+            transform: translateY(-2px) scale(1.05);
             box-shadow: 0 8px 25px rgba(234, 88, 12, 0.3);
         }
         
-        .service-card-advanced:hover .advanced-service-title {
-            color: var(--solar-orange);
+        .service-cta-advanced svg {
+            transition: transform 0.3s ease;
+        }
+        
+        .service-cta-advanced:hover svg {
+            transform: translate(2px, -2px);
         }
         
         .service-card-advanced:hover .advanced-service-features {
@@ -1486,92 +1697,131 @@
             }
         }
         
-        /* System Services Mobile Responsiveness */
+        /* Enhanced System Services Mobile Responsiveness */
         @media (max-width: 480px) {
             .system-services {
-                padding: 60px 15px;
-                margin: 0 5px;
+                padding: 60px 0;
+                margin: 0;
+                padding-left: 20px;
+                padding-right: 20px;
+                /* Adjust borders for mobile */
+                box-shadow: 
+                    inset 0 2px 0 0 var(--solar-orange),
+                    inset 0 -2px 0 0 var(--solar-orange);
+            }
+            
+            .system-services::after {
+                height: 80px;
+                opacity: 0.05;
             }
             
             .system-services-grid {
                 gap: 20px;
-                padding: 0 5px;
+                grid-template-columns: 1fr;
             }
             
             .service-card-advanced {
-                padding: 25px 15px;
+                padding: 30px 20px;
                 margin: 0;
                 width: 100%;
+                transform: translateY(0) scale(1);
+            }
+            
+            .service-card-advanced:hover {
+                transform: translateY(-8px) scale(1.01);
+                box-shadow: 
+                    0 15px 30px rgba(234, 88, 12, 0.1),
+                    0 8px 20px rgba(0, 0, 0, 0.08);
+            }
+            
+            .service-icon-advanced {
+                width: 60px;
+                height: 60px;
+                margin-bottom: 20px;
             }
             
             .service-title-advanced {
-                font-size: 1.2rem;
+                font-size: 1.3rem;
+                margin-bottom: 12px;
             }
             
             .service-description-advanced {
+                font-size: 0.95rem;
+                margin-bottom: 20px;
+            }
+            
+            .service-features-advanced li {
+                font-size: 0.9rem;
+                padding: 6px 0;
+            }
+            
+            .service-cta-advanced {
+                padding: 10px 20px;
                 font-size: 0.9rem;
             }
         }
         
         @media (max-width: 768px) {
             .system-services {
-                padding: 80px 20px;
-                margin: 0 10px;
+                padding: 70px 0;
+                margin: 0;
+                padding-left: 30px;
+                padding-right: 30px;
+                /* Adjust borders for tablet */
+                box-shadow: 
+                    inset 0 2px 0 0 var(--solar-orange),
+                    inset 0 -2px 0 0 var(--solar-orange);
+            }
+            
+            .system-services::after {
+                height: 100px;
+                opacity: 0.06;
             }
             
             .system-services-grid {
                 grid-template-columns: 1fr;
-                gap: 25px;
-                padding: 0 10px;
+                gap: 30px;
             }
             
             .service-card-advanced {
-                padding: 30px 20px;
-                margin: 0 5px;
-                min-height: auto;
-                width: calc(100% - 10px);
+                padding: 35px 25px;
+                margin: 0;
+                width: 100%;
                 box-sizing: border-box;
             }
             
+            .service-card-advanced:hover {
+                transform: translateY(-12px) scale(1.01);
+            }
+            
             .service-icon-advanced {
-                width: 50px;
-                height: 50px;
+                width: 70px;
+                height: 70px;
                 margin-bottom: 20px;
             }
             
-            .service-icon-advanced svg {
-                width: 40px;
-                height: 40px;
-            }
-            
             .service-title-advanced {
-                font-size: 1.3rem;
+                font-size: 1.4rem;
                 margin-bottom: 15px;
             }
             
             .service-description-advanced {
-                font-size: 0.95rem;
-                line-height: 1.5;
-                margin-bottom: 20px;
+                font-size: 1rem;
+                line-height: 1.6;
+                margin-bottom: 22px;
             }
             
             .service-features-advanced {
-                opacity: 1;
-                max-height: none;
                 margin-bottom: 25px;
             }
             
             .service-features-advanced li {
-                opacity: 1;
-                transform: translateX(0);
-                font-size: 0.9rem;
-                padding: 8px 0;
+                font-size: 0.95rem;
+                padding: 7px 0;
             }
             
             .service-cta-advanced {
-                opacity: 1;
-                transform: translateY(0);
-                padding: 12px 20px;
+                padding: 12px 22px;
                 font-size: 0.95rem;
             }
             
@@ -1660,6 +1910,109 @@
             100% { transform: rotate(360deg); }
         }
     </style>
+    
+    <!-- Structured Data (Schema.org) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "EkoSolar",
+      "image": "https://ekosolar.com/images/ekosolar-logo.jpg",
+      "description": "Professional solar panel installation, maintenance, and repair services in Georgia. Transform your home with clean renewable energy and save up to 90% on energy bills.",
+      "url": "https://ekosolar.com",
+      "telephone": "+1-555-ECO-SOLAR",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "123 Solar Street",
+        "addressLocality": "Atlanta",
+        "addressRegion": "GA",
+        "postalCode": "30309",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 33.040619,
+        "longitude": -83.643074
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday", 
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "08:00",
+        "closes": "18:00"
+      },
+      "sameAs": [
+        "https://facebook.com/ekosolar",
+        "https://linkedin.com/company/ekosolar"
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "reviewCount": "127"
+      },
+      "priceRange": "$$"
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Solar Panel Installation",
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "EkoSolar"
+      },
+      "areaServed": {
+        "@type": "State",
+        "name": "Georgia"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Solar Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Solar Panel Installation",
+              "description": "Professional residential and commercial solar panel installation services in Georgia with 25-year warranty"
+            }
+          },
+          {
+            "@type": "Offer", 
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Solar System Maintenance",
+              "description": "Comprehensive solar system maintenance, cleaning, and inspection services to maximize energy efficiency"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service", 
+              "name": "Solar System Troubleshooting & Repair",
+              "description": "Expert solar system troubleshooting and repair services to keep your system running at peak performance"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service", 
+              "name": "Solar Energy Consultation",
+              "description": "Free solar energy consultation and custom system design to maximize your energy savings and ROI"
+            }
+          }
+        ]
+      }
+    }
+    </script>
+    
     <!-- Anime.js for advanced animations -->
     <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.min.js"></script>
     <!-- EmailJS SDK -->
@@ -1704,8 +2057,8 @@
     <section id="home" class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1 class="hero-title">SOLAR POWER, SIMPLIFIED</h1>
-                <p class="hero-subtitle">Transform your home with clean, renewable energy. Professional installation, expert maintenance, and personalized consultation to maximize your savings.</p>
+                <h1 class="hero-title">Professional Solar Installation & Maintenance Services in Georgia</h1>
+                <p class="hero-subtitle">Transform your Georgia home with clean, renewable solar energy. Professional solar panel installation, expert maintenance, and personalized consultation to maximize your savings and energy efficiency.</p>
                 
                 <div class="hero-stats">
                     <div class="stat-item">
@@ -1731,15 +2084,15 @@
     <section id="services" class="services">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Our Solar Services</h2>
-                <p class="section-subtitle">Comprehensive solar solutions designed to meet your energy needs and maximize your investment returns.</p>
+                <h2 class="section-title">Residential Solar Panel Installation Services in Georgia</h2>
+                <p class="section-subtitle">Comprehensive solar installation solutions designed to meet your energy needs and maximize your investment returns with professional maintenance support.</p>
             </div>
             
             <div class="services-grid">
                 <div class="service-card" onclick="toggleService(this)">
                     <div class="service-icon">⌂</div>
-                    <h3 class="service-title">Solar Installation</h3>
-                    <p class="service-description">Professional residential and commercial solar panel installation with premium equipment and warranty coverage.</p>
+                    <h3 class="service-title">Professional Solar Panel Installation</h3>
+                    <p class="service-description">Expert residential and commercial solar panel installation in Georgia with premium equipment, 25-year warranty, and professional certification.</p>
                     <ul class="service-features">
                         <li>Free site assessment and design</li>
                         <li>Premium tier-1 solar panels</li>
@@ -1751,8 +2104,8 @@
                 
                 <div class="service-card" onclick="toggleService(this)">
                     <div class="service-icon">⚙</div>
-                    <h3 class="service-title">Maintenance & Support</h3>
-                    <p class="service-description">Comprehensive maintenance programs to ensure optimal performance and longevity of your solar investment.</p>
+                    <h3 class="service-title">Solar System Maintenance & Support</h3>
+                    <p class="service-description">Comprehensive solar system maintenance and repair programs to ensure optimal performance and longevity of your Georgia solar installation.</p>
                     <ul class="service-features">
                         <li>Regular system performance monitoring</li>
                         <li>Professional cleaning and inspection</li>
@@ -1764,8 +2117,8 @@
                 
                 <div class="service-card" onclick="toggleService(this)">
                     <div class="service-icon">◉</div>
-                    <h3 class="service-title">Energy Consultation</h3>
-                    <p class="service-description">Expert analysis and consultation to optimize your energy usage and maximize solar savings potential.</p>
+                    <h3 class="service-title">Solar Energy Consultation</h3>
+                    <p class="service-description">Free solar energy consultation and analysis to optimize your energy usage and maximize solar savings potential for Georgia homeowners.</p>
                     <ul class="service-features">
                         <li>Home energy audit and analysis</li>
                         <li>Custom solar system design</li>
@@ -1782,8 +2135,8 @@
     <section id="system-services" class="system-services">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">System Services</h2>
-                <p class="section-subtitle">Comprehensive support for your solar energy system with expert troubleshooting, activation, and enhancement services.</p>
+                <h2 class="section-title">Solar System Maintenance & Repair Solutions</h2>
+                <p class="section-subtitle">Expert solar system maintenance, troubleshooting, and repair services to keep your Georgia solar installation running at peak efficiency.</p>
             </div>
             
             <div class="system-services-grid">
@@ -1802,13 +2155,13 @@
                         <li>Emergency repair service</li>
                         <li>Warranty support</li>
                     </ul>
-                    <div class="service-cta-advanced">
-                        <span class="cta-text">Get Support</span>
+                    <a href="system-troubleshooting.html" class="service-cta-advanced">
+                        <span class="cta-text">Learn Our Diagnostic Process</span>
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <line x1="7" y1="17" x2="17" y2="7"></line>
                             <polyline points="7,7 17,7 17,17"></polyline>
                         </svg>
-                    </div>
+                    </a>
                 </div>
 
                 <div class="service-card-advanced" data-service="activation">
@@ -1931,8 +2284,8 @@
     <section id="testimonials" class="testimonials">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">What Our Customers Say</h2>
-                <p class="section-subtitle">Real stories from homeowners who transformed their energy future with EkoSolar.</p>
+                <h2 class="section-title">Georgia Solar Installation Customer Reviews</h2>
+                <p class="section-subtitle">Real stories from Georgia homeowners who transformed their energy future with EkoSolar's professional solar services.</p>
             </div>
             
             <div class="testimonials-carousel">
@@ -2071,10 +2424,17 @@
                 
                 <div class="footer-section">
                     <h3>Contact Info</h3>
-                    <p>☎ (404) 551-6532</p>
-                    <p>✉ ekosolarize@gmail.com</p>
-                    <p>◉ Serving all of Georgia</p>
-                    <p>◔ Mon-Fri: 8AM-5PM</p>
+                    <div itemscope itemtype="https://schema.org/LocalBusiness">
+                        <p><strong itemprop="name">EkoSolar - Solar Installation Georgia</strong></p>
+                        <div itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+                            <p>📍 <span itemprop="streetAddress">123 Solar Street</span></p>
+                            <p><span itemprop="addressLocality">Atlanta</span>, <span itemprop="addressRegion">GA</span> <span itemprop="postalCode">30309</span></p>
+                        </div>
+                        <p>☎ <span itemprop="telephone">(404) 551-6532</span></p>
+                        <p>✉ <span itemprop="email">ekosolarize@gmail.com</span></p>
+                        <p>◉ <span itemprop="areaServed">Serving all of Georgia</span></p>
+                        <p>🕒 <span itemprop="openingHours" content="Mo-Fr 08:00-17:00">Mon-Fri: 8AM-5PM</span></p>
+                    </div>
                 </div>
             </div>
             
@@ -2890,100 +3250,184 @@
             form.setAttribute('aria-label', 'Solar consultation request form');
         });
 
-        // System Services Animations
+        // Enhanced System Services Animations
         document.addEventListener('DOMContentLoaded', function() {
             // Animate system services cards on page load
             const systemServiceCards = document.querySelectorAll('.service-card-advanced');
             
             if (systemServiceCards.length > 0 && typeof anime !== 'undefined') {
-                // Initial card animation
+                // Initial card entrance animation with enhanced effects
                 anime({
                     targets: '.service-card-advanced',
                     opacity: [0, 1],
-                    translateY: [60, 0],
-                    scale: [0.8, 1],
-                    delay: anime.stagger(200, {start: 400}),
-                    duration: 800,
+                    translateY: [80, 0],
+                    scale: [0.85, 1],
+                    rotateX: [15, 0],
+                    delay: anime.stagger(300, {start: 500}),
+                    duration: 1000,
                     easing: 'easeOutExpo'
                 });
 
-                // Animate icons
+                // Enhanced icon animations with 3D effects
                 anime({
-                    targets: '.service-icon-advanced svg',
-                    rotate: [0, 360],
-                    scale: [0.5, 1],
-                    delay: anime.stagger(200, {start: 600}),
-                    duration: 1000,
-                    easing: 'easeOutElastic(1, .8)'
+                    targets: '.service-icon-advanced',
+                    opacity: [0, 1],
+                    scale: [0.3, 1],
+                    rotate: [180, 0],
+                    delay: anime.stagger(300, {start: 700}),
+                    duration: 1200,
+                    easing: 'easeOutElastic(1, .6)'
                 });
 
-                // Stagger feature list animations
+                // Animate titles with letter-by-letter reveal
                 systemServiceCards.forEach((card, index) => {
+                    const title = card.querySelector('.service-title-advanced');
+                    const description = card.querySelector('.service-description-advanced');
                     const features = card.querySelectorAll('.service-features-advanced li');
+                    const cta = card.querySelector('.service-cta-advanced');
                     
+                    // Title animation
                     anime({
-                        targets: features,
+                        targets: title,
                         opacity: [0, 1],
-                        translateX: [-30, 0],
-                        delay: anime.stagger(100, {start: 800 + (index * 200)}),
+                        translateY: [30, 0],
+                        delay: 900 + (index * 300),
+                        duration: 800,
+                        easing: 'easeOutExpo'
+                    });
+                    
+                    // Description animation
+                    anime({
+                        targets: description,
+                        opacity: [0, 1],
+                        translateY: [20, 0],
+                        delay: 1100 + (index * 300),
                         duration: 600,
                         easing: 'easeOutQuart'
                     });
+                    
+                    // Feature list animations with enhanced stagger
+                    anime({
+                        targets: features,
+                        opacity: [0, 1],
+                        translateX: [-40, 0],
+                        scale: [0.8, 1],
+                        delay: anime.stagger(120, {start: 1300 + (index * 300)}),
+                        duration: 700,
+                        easing: 'easeOutExpo'
+                    });
+                    
+                    // CTA button animation
+                    anime({
+                        targets: cta,
+                        opacity: [0, 1],
+                        translateY: [20, 0],
+                        scale: [0.9, 1],
+                        delay: 1800 + (index * 300),
+                        duration: 600,
+                        easing: 'easeOutBack'
+                    });
                 });
 
-                // Add hover animations
+                // Enhanced hover animations with micro-interactions
                 systemServiceCards.forEach(card => {
                     card.addEventListener('mouseenter', function() {
                         if (window.innerWidth > 768) {
-                            const icon = this.querySelector('.service-icon-advanced svg');
+                            const icon = this.querySelector('.service-icon-advanced');
+                            const title = this.querySelector('.service-title-advanced');
+                            const features = this.querySelectorAll('.service-features-advanced li');
                             const cta = this.querySelector('.service-cta-advanced');
                             
+                            // Icon hover animation
                             anime({
                                 targets: icon,
-                                rotate: '+=180',
-                                scale: [1, 1.1, 1],
+                                rotate: '+=12',
+                                scale: [1, 1.08, 1],
                                 duration: 600,
                                 easing: 'easeOutElastic(1, .6)'
                             });
                             
+                            // Title bounce effect
+                            anime({
+                                targets: title,
+                                translateY: [0, -3, 0],
+                                duration: 400,
+                                easing: 'easeOutQuad'
+                            });
+                            
+                            // Feature items slide effect
+                            anime({
+                                targets: features,
+                                translateX: [0, 5, 0],
+                                delay: anime.stagger(50),
+                                duration: 300,
+                                easing: 'easeOutQuad'
+                            });
+                            
+                            // CTA button pulse effect
                             anime({
                                 targets: cta,
-                                scale: [1, 1.05],
-                                duration: 300,
-                                easing: 'easeOutQuart'
+                                scale: [1, 1.05, 1],
+                                duration: 400,
+                                easing: 'easeOutElastic(1, .8)'
                             });
                         }
                     });
                     
+                    // Mouse leave animation
                     card.addEventListener('mouseleave', function() {
                         if (window.innerWidth > 768) {
-                            const cta = this.querySelector('.service-cta-advanced');
+                            const features = this.querySelectorAll('.service-features-advanced li');
                             
+                            // Reset feature items
                             anime({
-                                targets: cta,
-                                scale: [1.05, 1],
-                                duration: 300,
-                                easing: 'easeOutQuart'
+                                targets: features,
+                                translateX: [5, 0],
+                                delay: anime.stagger(30),
+                                duration: 200,
+                                easing: 'easeOutQuad'
                             });
                         }
                     });
                 });
             }
 
-            // Intersection Observer for scroll-triggered animations
+            // Intersection Observer for enhanced scroll animations
             const systemServicesSection = document.querySelector('#system-services');
             if (systemServicesSection && typeof anime !== 'undefined') {
                 const observer = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            // Trigger additional animations when section comes into view
+                        if (entry.isIntersecting && entry.intersectionRatio > 0.3) {
+                            // Additional border glow animation
                             anime({
-                                targets: '.service-card-advanced .service-cta-advanced',
+                                targets: '.system-services',
+                                boxShadow: [
+                                    'inset 0 3px 0 0 var(--solar-orange), inset 0 -3px 0 0 var(--solar-orange)',
+                                    'inset 0 3px 0 0 rgba(234, 88, 12, 0.6), inset 0 -3px 0 0 rgba(234, 88, 12, 0.6)',
+                                    'inset 0 3px 0 0 var(--solar-orange), inset 0 -3px 0 0 var(--solar-orange)'
+                                ],
+                                duration: 2000,
+                                easing: 'easeInOutQuad'
+                            });
+                            
+                            // Section title animation
+                            anime({
+                                targets: '.system-services .section-title',
+                                opacity: [0, 1],
+                                translateY: [40, 0],
                                 scale: [0.9, 1],
-                                opacity: [0.7, 1],
-                                delay: anime.stagger(150),
+                                duration: 800,
+                                easing: 'easeOutExpo'
+                            });
+                            
+                            // Section subtitle animation
+                            anime({
+                                targets: '.system-services .section-subtitle',
+                                opacity: [0, 1],
+                                translateY: [30, 0],
+                                delay: 200,
                                 duration: 600,
-                                easing: 'easeOutBounce'
+                                easing: 'easeOutQuart'
                             });
                         }
                     });
