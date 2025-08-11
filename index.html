@@ -600,6 +600,59 @@
             box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.1);
         }
         
+        .file-input {
+            padding: 15px;
+            border: 2px dashed rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            font-size: 1rem;
+            background: var(--light-gray);
+            color: var(--text-primary);
+            transition: var(--transition-fast);
+            cursor: pointer;
+        }
+        
+        .file-input:hover {
+            border-color: var(--solar-orange);
+            background: rgba(234, 88, 12, 0.05);
+        }
+        
+        .file-input:focus {
+            outline: none;
+            border-color: var(--solar-orange);
+            box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.1);
+        }
+        
+        .file-help-text {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-top: 8px;
+            font-style: italic;
+        }
+        
+        .file-display {
+            margin-top: 10px;
+            padding: 10px;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid var(--solar-green);
+            border-radius: 6px;
+            color: var(--solar-green);
+            font-size: 0.9rem;
+            display: none;
+        }
+        
+        .file-display.show {
+            display: block;
+        }
+        
+        .file-display .file-name {
+            font-weight: var(--font-weight-semibold);
+        }
+        
+        .file-display .file-size {
+            opacity: 0.8;
+            margin-left: 10px;
+        }
+        
         .submit-button {
             width: 100%;
             background: linear-gradient(135deg, var(--solar-yellow), var(--solar-orange));
@@ -1061,6 +1114,13 @@
                     </div>
                     
                     <div class="form-group">
+                        <label class="form-label">Upload Power Bill (PDF) - Optional</label>
+                        <input type="file" class="form-input file-input" name="powerBill" accept=".pdf" id="powerBillUpload">
+                        <p class="file-help-text">Upload your recent power bill (PDF, max 10MB) for more accurate solar estimates</p>
+                        <div class="file-display" id="fileDisplay"></div>
+                    </div>
+                    
+                    <div class="form-group">
                         <label class="form-label">Additional Information</label>
                         <textarea class="form-textarea" name="message" placeholder="Tell us about your energy goals, roof type, or any questions you have..."></textarea>
                     </div>
@@ -1370,6 +1430,43 @@
             inputs.forEach(input => {
                 input.addEventListener('blur', validateField);
                 input.addEventListener('input', clearFieldError);
+            });
+            
+            // File upload handling
+            const fileInput = document.getElementById('powerBillUpload');
+            const fileDisplay = document.getElementById('fileDisplay');
+            
+            fileInput.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    // Validate file type
+                    if (!file.type.includes('pdf')) {
+                        showFormMessage('Please upload a PDF file only.', 'error');
+                        fileInput.value = '';
+                        fileDisplay.classList.remove('show');
+                        return;
+                    }
+                    
+                    // Validate file size (10MB limit)
+                    const maxSize = 10 * 1024 * 1024; // 10MB in bytes
+                    if (file.size > maxSize) {
+                        showFormMessage('File size must be less than 10MB. Please compress your PDF or use a smaller file.', 'error');
+                        fileInput.value = '';
+                        fileDisplay.classList.remove('show');
+                        return;
+                    }
+                    
+                    // Show file info
+                    const fileSize = (file.size / (1024 * 1024)).toFixed(2);
+                    fileDisplay.innerHTML = `
+                        <span class="file-name">📄 ${file.name}</span>
+                        <span class="file-size">(${fileSize} MB)</span>
+                    `;
+                    fileDisplay.classList.add('show');
+                    hideFormMessage();
+                } else {
+                    fileDisplay.classList.remove('show');
+                }
             });
         }
         
