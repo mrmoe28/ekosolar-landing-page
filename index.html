@@ -1026,7 +1026,13 @@
                     </div>
                 </div>
                 
-                <form class="contact-form" id="contactForm">
+                <form class="contact-form" id="contactForm" name="solar-consultation" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                    <!-- Hidden fields for Netlify Forms -->
+                    <input type="hidden" name="form-name" value="solar-consultation" />
+                    <div style="display: none;">
+                        <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+                    </div>
+                    
                     <div class="form-group">
                         <label class="form-label">Full Name *</label>
                         <input type="text" class="form-input" name="name" required>
@@ -1381,17 +1387,31 @@
             submitButton.disabled = true;
             hideFormMessage();
             
-            // Simulate form submission (replace with actual API call)
-            setTimeout(() => {
+            // Submit to Netlify Forms
+            const formData = new FormData(e.target);
+            
+            fetch('/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams(formData).toString()
+            })
+            .then(() => {
                 submitButton.classList.remove('loading');
                 submitButton.disabled = false;
                 
                 // Show success message
-                showFormMessage('Thank you! We\'ll contact you within 24 hours to schedule your free consultation.', 'success');
+                showFormMessage('Thank you! We\'ll contact you within 24 hours to schedule your free solar consultation. Check your email for confirmation.', 'success');
                 
                 // Reset form after success
                 e.target.reset();
-            }, 2000);
+            })
+            .catch((error) => {
+                submitButton.classList.remove('loading');
+                submitButton.disabled = false;
+                
+                console.error('Form submission error:', error);
+                showFormMessage('There was an issue submitting your request. Please try again or call us directly at (404) 551-6532.', 'error');
+            });
         }
         
         function validateForm(form) {
