@@ -1026,7 +1026,7 @@
                     </div>
                 </div>
                 
-                <form class="contact-form" id="contactForm" name="solar-consultation" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                <form class="contact-form" id="contactForm" name="solar-consultation" method="POST" action="https://formspree.io/f/mkgwedrv" data-netlify="true" netlify-honeypot="bot-field">
                     <!-- Hidden fields for Netlify Forms -->
                     <input type="hidden" name="form-name" value="solar-consultation" />
                     <div style="display: none;">
@@ -1387,23 +1387,29 @@
             submitButton.disabled = true;
             hideFormMessage();
             
-            // Submit to Netlify Forms
+            // Submit to Formspree (which will email ekosolarize@gmail.com)
             const formData = new FormData(e.target);
             
-            fetch('/', {
+            fetch(e.target.action, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: new URLSearchParams(formData).toString()
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
             })
-            .then(() => {
+            .then(response => {
                 submitButton.classList.remove('loading');
                 submitButton.disabled = false;
                 
-                // Show success message
-                showFormMessage('Thank you! We\'ll contact you within 24 hours to schedule your free solar consultation. Check your email for confirmation.', 'success');
-                
-                // Reset form after success
-                e.target.reset();
+                if (response.ok) {
+                    // Show success message
+                    showFormMessage('Thank you! Your solar consultation request has been sent to ekosolarize@gmail.com. We\'ll contact you within 24 hours to schedule your free consultation.', 'success');
+                    
+                    // Reset form after success
+                    e.target.reset();
+                } else {
+                    throw new Error('Form submission failed');
+                }
             })
             .catch((error) => {
                 submitButton.classList.remove('loading');
