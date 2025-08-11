@@ -52,3 +52,5 @@ node_modules/
 # Build outputs (if any future build process is added)
 dist/
 build/
+# Local Netlify folder
+.netlify
