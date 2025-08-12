@@ -1,0 +1,34 @@
+# Optimized Image Files Needed
+
+This directory should contain the following optimized images for improved website performance:
+
+## Hero Section Images:
+- hero-solar-panels-600w.webp (WebP format, 600px wide)
+- hero-solar-panels-900w.webp (WebP format, 900px wide)  
+- hero-solar-panels-1200w.webp (WebP format, 1200px wide)
+- hero-solar-panels-600w.jpg (JPEG fallback, 600px wide)
+- hero-solar-panels-900w.jpg (JPEG fallback, 900px wide)
+- hero-solar-panels-1200w.jpg (JPEG fallback, 1200px wide)
+
+## Service Section Images:
+- solar-installation-400w.webp (WebP format, 400px wide)
+- solar-installation-400w.jpg (JPEG fallback, 400px wide)
+- solar-maintenance-400w.webp (WebP format, 400px wide)
+- solar-maintenance-400w.jpg (JPEG fallback, 400px wide)
+- solar-consultation-400w.webp (WebP format, 400px wide)
+- solar-consultation-400w.jpg (JPEG fallback, 400px wide)
+
+## Image Optimization Guidelines:
+- WebP format for modern browsers (30-50% smaller file size)
+- JPEG fallback for older browser support
+- Optimize quality to balance file size vs visual quality
+- Use responsive sizes for different screen dimensions
+- Compress images to reduce load times while maintaining quality
+
+## Original Unsplash Image Sources:
+- Hero: https://images.unsplash.com/photo-1559302504-64aae6ca6b6d (Solar panels on residential roof)
+- Installation: https://images.unsplash.com/photo-1605206885258-ce15f6aea1bb (Solar installation)
+- Maintenance: https://images.unsplash.com/photo-1620714223084-8fcacc6dfd8d (Solar maintenance)
+- Consultation: https://images.unsplash.com/photo-1560472354-b33ff0c44a43 (Solar consultation)
+
+Replace this file with actual optimized images for production deployment.
