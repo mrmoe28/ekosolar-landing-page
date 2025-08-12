@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solar Repair Services | EkoSolarPros - Professional Solar Panel Repair in Georgia</title>
+    <meta name="description" content="Expert solar panel repair and maintenance services in Georgia. Emergency repairs, inverter replacement, system diagnostics. Licensed technicians, 24/7 service.">
+    
+    <!-- CSS Framework -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-color: #10B981;
+            --secondary-color: #F59E0B;
+            --accent-color: #3B82F6;
+            --text-primary: #1F2937;
+            --text-secondary: #6B7280;
+            --background: #FFFFFF;
+            --surface: #F9FAFB;
+            --border: #E5E7EB;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--background);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        .header {
+            background: var(--background);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+        
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .logo-icon {
+            font-size: 2rem;
+            color: var(--secondary-color);
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .nav-link {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--primary-color);
+        }
+        
+        .emergency-btn {
+            background: #EF4444;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .emergency-btn:hover {
+            background: #DC2626;
+            transform: translateY(-2px);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--surface) 0%, var(--background) 100%);
+            padding: 120px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(16,185,129,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.5;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero-badge {
+            background: #EF4444;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 2rem;
+            display: inline-block;
+        }
+        
+        .hero-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+        
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-primary:hover {
+            background: #059669;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 2px solid var(--border);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-secondary:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            background: var(--background);
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-title {
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+        
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background: var(--background);
+            border: 2px solid var(--border);
+            border-radius: 16px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.05), rgba(59, 130, 246, 0.05));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .service-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(16, 185, 129, 0.15);
+        }
+        
+        .service-card:hover::before {
+            opacity: 1;
+        }
+        
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: white;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .service-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .service-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .service-features {
+            list-style: none;
+            text-align: left;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .service-features li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 2rem;
+            color: var(--text-secondary);
+        }
+        
+        .service-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        .service-price {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .price-label {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .price-amount {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-top: 0.25rem;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            padding: 80px 0;
+            color: white;
+            text-align: center;
+        }
+        
+        .cta-title {
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-subtitle {
+            font-size: 1.125rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn-white {
+            background: white;
+            color: var(--primary-color);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-white:hover {
+            background: var(--surface);
+            transform: translateY(-2px);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline:hover {
+            background: white;
+            color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--text-primary);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .footer-section p,
+        .footer-section a {
+            color: #D1D5DB;
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        .footer-section a:hover {
+            color: var(--primary-color);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid #374151;
+            padding-top: 2rem;
+            text-align: center;
+            color: #9CA3AF;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">⚡</div>
+                EkoSolarPros
+            </a>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="index.html#services" class="nav-link">Installation</a></li>
+                <li><a href="solar-repair-services.html" class="nav-link active">Repair Services</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+                <li><a href="tel:4045516532" class="emergency-btn">Emergency: (404) 551-6532</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">24/7 Emergency Repairs Available</div>
+                <h1 class="hero-title">Professional Solar Repair & Maintenance Services</h1>
+                <p class="hero-subtitle">Expert solar panel repair, emergency services, and comprehensive maintenance solutions throughout Georgia. Licensed technicians, rapid response, and guaranteed repairs.</p>
+                
+                <div class="hero-buttons">
+                    <a href="tel:4045516532" class="btn-primary">
+                        <i class="fas fa-phone"></i> Emergency Repair: (404) 551-6532
+                    </a>
+                    <a href="#services" class="btn-secondary">
+                        <i class="fas fa-tools"></i> View All Services
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Comprehensive Solar Repair Solutions</h2>
+                <p class="section-subtitle">Professional repair and maintenance services for all solar system types throughout Georgia, from emergency repairs to routine maintenance.</p>
+            </div>
+            
+            <div class="services-grid">
+                <!-- Emergency Solar Repairs -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <h3 class="service-title">Emergency Solar Repairs</h3>
+                    <p class="service-description">24/7 emergency response for urgent solar system failures, storm damage, and critical repairs throughout Georgia.</p>
+                    <ul class="service-features">
+                        <li>24/7 emergency response team</li>
+                        <li>Storm damage assessment and repair</li>
+                        <li>System failure diagnostics</li>
+                        <li>Same-day service available</li>
+                        <li>Insurance claim assistance</li>
+                        <li>Temporary power solutions</li>
+                    </ul>
+                    <div class="service-price">
+                        <div class="price-label">Starting From</div>
+                        <div class="price-amount">$199</div>
+                    </div>
+                </div>
+
+                <!-- Panel Replacement & Repair -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-solar-panel"></i>
+                    </div>
+                    <h3 class="service-title">Panel Replacement & Repair</h3>
+                    <p class="service-description">Professional solar panel replacement, crack repair, and performance restoration services with comprehensive warranties.</p>
+                    <ul class="service-features">
+                        <li>Individual panel replacement</li>
+                        <li>Micro-crack repair services</li>
+                        <li>Performance optimization</li>
+                        <li>Warranty claim processing</li>
+                        <li>Hot spot elimination</li>
+                        <li>Panel cleaning and maintenance</li>
+                    </ul>
+                    <div class="service-price">
+                        <div class="price-label">Starting From</div>
+                        <div class="price-amount">$299</div>
+                    </div>
+                </div>
+
+                <!-- Inverter Repair & Replacement -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <h3 class="service-title">Inverter Repair & Replacement</h3>
+                    <p class="service-description">Expert inverter repair and replacement for all major brands including SolarEdge, Enphase, SMA, and Fronius inverters.</p>
+                    <ul class="service-features">
+                        <li>All inverter brands serviced</li>
+                        <li>Error code diagnostics</li>
+                        <li>Component-level repairs</li>
+                        <li>Firmware updates and optimization</li>
+                        <li>Communication system repair</li>
+                        <li>Performance monitoring setup</li>
+                    </ul>
+                    <div class="service-price">
+                        <div class="price-label">Starting From</div>
+                        <div class="price-amount">$349</div>
+                    </div>
+                </div>
+
+                <!-- System Diagnostics & Troubleshooting -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3 class="service-title">System Diagnostics & Troubleshooting</h3>
+                    <p class="service-description">Comprehensive solar system analysis and troubleshooting to identify performance issues and optimize energy production.</p>
+                    <ul class="service-features">
+                        <li>Complete system performance analysis</li>
+                        <li>Electrical testing and inspection</li>
+                        <li>Thermal imaging diagnostics</li>
+                        <li>Production optimization</li>
+                        <li>Detailed diagnostic reports</li>
+                        <li>Preventive maintenance recommendations</li>
+                    </ul>
+                    <div class="service-price">
+                        <div class="price-label">Starting From</div>
+                        <div class="price-amount">$149</div>
+                    </div>
+                </div>
+
+                <!-- Wiring & Electrical Repairs -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="service-title">Wiring & Electrical Repairs</h3>
+                    <p class="service-description">Professional electrical repairs for solar systems including DC and AC wiring, grounding issues, and electrical code compliance.</p>
+                    <ul class="service-features">
+                        <li>DC and AC wiring repairs</li>
+                        <li>Grounding system inspection</li>
+                        <li>Electrical code compliance updates</li>
+                        <li>Safety disconnect repairs</li>
+                        <li>Conduit and junction box service</li>
+                        <li>Arc fault protection systems</li>
+                    </ul>
+                    <div class="service-price">
+                        <div class="price-label">Starting From</div>
+                        <div class="price-amount">$249</div>
+                    </div>
+                </div>
+
+                <!-- Maintenance Plans -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <h3 class="service-title">Maintenance Plans</h3>
+                    <p class="service-description">Comprehensive annual maintenance plans to keep your solar system performing at peak efficiency with preventive care.</p>
+                    <ul class="service-features">
+                        <li>Annual system inspections</li>
+                        <li>Professional panel cleaning</li>
+                        <li>Performance monitoring setup</li>
+                        <li>Preventive maintenance</li>
+                        <li>Priority emergency service</li>
+                        <li>Discounted repair rates</li>
+                    </ul>
+                    <div class="service-price">
+                        <div class="price-label">Annual Plan</div>
+                        <div class="price-amount">$399</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="cta-title">Ready to Get Your Solar System Repaired?</h2>
+            <p class="cta-subtitle">Our certified technicians are standing by to diagnose and repair your solar system. Get back to saving money with clean energy.</p>
+            <div class="cta-buttons">
+                <a href="tel:4045516532" class="btn-white">
+                    <i class="fas fa-phone"></i> Call for Immediate Service
+                </a>
+                <a href="index.html#contact" class="btn-outline">
+                    <i class="fas fa-calendar"></i> Schedule Appointment
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>EkoSolarPros Repair Services</h3>
+                    <p>Professional solar panel repair and maintenance services throughout Georgia. Licensed, bonded, and insured with 24/7 emergency service available.</p>
+                    <p style="margin-top: 1rem;"><strong>Emergency Hotline: (404) 551-6532</strong></p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Repair Services</h3>
+                    <a href="#services">Emergency Solar Repairs</a>
+                    <a href="#services">Panel Replacement</a>
+                    <a href="#services">Inverter Repair</a>
+                    <a href="#services">System Diagnostics</a>
+                    <a href="#services">Wiring & Electrical</a>
+                    <a href="#services">Maintenance Plans</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Service Areas</h3>
+                    <p>Atlanta Metro Area</p>
+                    <p>Stone Mountain</p>
+                    <p>Tucker & Decatur</p>
+                    <p>Gwinnett County</p>
+                    <p>DeKalb County</p>
+                    <p>All of Georgia</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p><strong>📞 Emergency Line:</strong><br>(404) 551-6532</p>
+                    <p><strong>✉️ Email:</strong><br>ekosolarize@gmail.com</p>
+                    <p><strong>🌐 Website:</strong><br><a href="index.html">ekosolarpros.com</a></p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 EkoSolarPros. All rights reserved. Licensed Solar Repair Specialists serving Georgia.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Mobile menu toggle (basic implementation)
+        document.addEventListener('DOMContentLoaded', function() {
+            const navMenu = document.querySelector('.nav-menu');
+            if (window.innerWidth <= 768) {
+                // Add mobile menu functionality if needed
+                const mobileToggle = document.createElement('button');
+                mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                mobileToggle.className = 'mobile-toggle';
+                mobileToggle.style.cssText = `
+                    background: none;
+                    border: none;
+                    font-size: 1.5rem;
+                    color: var(--text-primary);
+                    cursor: pointer;
+                    display: block;
+                `;
+                
+                document.querySelector('.nav').appendChild(mobileToggle);
+                navMenu.style.display = 'none';
+                
+                mobileToggle.addEventListener('click', () => {
+                    navMenu.style.display = navMenu.style.display === 'none' ? 'flex' : 'none';
+                    navMenu.style.flexDirection = 'column';
+                    navMenu.style.position = 'absolute';
+                    navMenu.style.top = '100%';
+                    navMenu.style.left = '0';
+                    navMenu.style.right = '0';
+                    navMenu.style.backgroundColor = 'var(--background)';
+                    navMenu.style.border = '1px solid var(--border)';
+                    navMenu.style.padding = '1rem';
+                });
+            }
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe service cards for animation
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>

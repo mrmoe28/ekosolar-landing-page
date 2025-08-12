@@ -609,40 +609,40 @@
             transform: translateY(-2px);
         }
         
-        /* Dynamic Background Images */
+        /* Dynamic Background Images - Professional Solar Photography */
         .slide[data-bg*="installation"] {
             background-image: linear-gradient(
                 rgba(234, 88, 12, 0.6), 
                 rgba(251, 146, 60, 0.4)
-            ), url('images/hero-solar-installation-1200w.jpg');
+            ), url('https://images.unsplash.com/photo-1559302504-64aae6ca6b6d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
         }
         
         .slide[data-bg*="repair"] {
             background-image: linear-gradient(
                 rgba(220, 38, 38, 0.7), 
                 rgba(239, 68, 68, 0.5)
-            ), url('images/hero-solar-repair-1200w.jpg');
+            ), url('https://images.unsplash.com/photo-1613665813446-82a78c468a1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
         }
         
         .slide[data-bg*="maintenance"] {
             background-image: linear-gradient(
                 rgba(16, 185, 129, 0.6), 
                 rgba(52, 211, 153, 0.4)
-            ), url('images/hero-solar-maintenance-1200w.jpg');
+            ), url('https://images.unsplash.com/photo-1624397640148-949b1732bb0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
         }
         
         .slide[data-bg*="commercial"] {
             background-image: linear-gradient(
                 rgba(59, 130, 246, 0.6), 
                 rgba(147, 197, 253, 0.4)
-            ), url('images/hero-commercial-solar-1200w.jpg');
+            ), url('https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
         }
         
         .slide[data-bg*="diagnostics"] {
             background-image: linear-gradient(
                 rgba(168, 85, 247, 0.6), 
                 rgba(196, 181, 253, 0.4)
-            ), url('images/hero-solar-diagnostics-1200w.jpg');
+            ), url('https://images.unsplash.com/photo-1603030070898-b67bb3ef6d7d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
         }
         
         /* Animations */
@@ -798,535 +798,134 @@
             font-weight: bold;
         }
         
-        /* ===== REPAIR SERVICES SECTION ===== */
-        .repair-services {
+        /* ===== REPAIR CTA SECTION ===== */
+        .repair-cta-section {
             padding: var(--section-padding);
-            background: linear-gradient(135deg, #EA580C 0%, #DC2626 50%, #B91C1C 100%);
+            background: linear-gradient(135deg, var(--solar-orange) 0%, #DC2626 100%);
             position: relative;
             overflow: hidden;
         }
         
-        .repair-services::before {
+        .repair-cta-section::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="repair-grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(234,88,12,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23repair-grid)"/></svg>');
-            opacity: 0.3;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="repair-grid" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M 30 0 L 0 0 0 30" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23repair-grid)"/></svg>');
+            opacity: 0.4;
         }
         
-        .repair-services-grid {
+        .repair-cta-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+            align-items: center;
             position: relative;
             z-index: 1;
         }
         
-        .repair-card {
-            background: white;
-            border: 2px solid var(--border);
-            border-radius: 15px;
-            padding: 1.5rem;
-            text-align: center;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-        }
-        
-        .repair-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
-            border-color: var(--solar-orange);
-        }
-        
-        .repair-card.emergency {
-            border-color: #EF4444;
-            background: linear-gradient(135deg, white 0%, #FEF2F2 100%);
-        }
-        
-        .repair-card.emergency:hover {
-            border-color: #EF4444;
-            box-shadow: 0 15px 35px rgba(239, 68, 68, 0.2);
-        }
-        
-        .repair-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, var(--solar-orange), var(--solar-yellow));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-            font-size: 2rem;
+        .repair-cta-text {
             color: white;
         }
         
-        .emergency-icon {
-            background: linear-gradient(135deg, #EF4444, #F87171);
-            animation: pulse-emergency 2s infinite;
-        }
-        
-        @keyframes pulse-emergency {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-        
-        .repair-title {
-            font-size: 1.5rem;
+        .repair-cta-title {
+            font-size: clamp(2rem, 4vw, 2.5rem);
             font-weight: var(--font-weight-bold);
-            color: var(--foreground);
             margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
         
-        .repair-description {
-            color: var(--muted-foreground);
-            margin-bottom: 1.5rem;
+        .repair-cta-subtitle {
+            font-size: 1.125rem;
             line-height: 1.6;
-        }
-        
-        .repair-features {
-            list-style: none;
             margin-bottom: 2rem;
-            text-align: left;
-            padding: 0;
+            opacity: 0.95;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
         }
         
-        .repair-features li {
-            padding: 0.5rem 0;
-            position: relative;
-            padding-left: 2rem;
-            color: var(--muted-foreground);
-        }
-        
-        .repair-features li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--solar-orange);
-            font-weight: var(--font-weight-bold);
-        }
-        
-        .repair-card.emergency .repair-features li::before {
-            color: #EF4444;
-        }
-        
-        .repair-cta-container {
+        .repair-highlights {
             display: flex;
             flex-direction: column;
             gap: 1rem;
         }
         
-        .repair-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.75rem 1.5rem;
-            background: var(--solar-orange);
-            color: white;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: var(--font-weight-bold);
-            transition: all 0.3s ease;
-            justify-content: center;
-        }
-        
-        .repair-cta:hover {
-            background: #DC2626;
-            transform: translateY(-2px);
-        }
-        
-        .emergency-cta {
-            background: #EF4444;
-        }
-        
-        .emergency-cta:hover {
-            background: #DC2626;
-        }
-        
-        .emergency-hotline {
-            background: #EF4444;
-            color: white;
-            padding: 0.5rem;
-            border-radius: 6px;
-            font-weight: var(--font-weight-bold);
-            font-size: 0.9rem;
-        }
-
-        /* ===== SYSTEM SERVICES SECTION ===== */
-        .system-services {
-            padding: var(--section-padding);
-            background: var(--background);
-            position: relative;
-            overflow: hidden;
-            /* Full-width border setup */
-            margin: 0 -50vw;
-            padding-left: 50vw;
-            padding-right: 50vw;
-            border-top: 3px solid transparent;
-            border-bottom: 3px solid transparent;
-            border-image: linear-gradient(90deg, var(--solar-orange), var(--solar-yellow), var(--solar-orange)) 1;
-            box-shadow: 
-                inset 0 3px 0 0 var(--solar-orange),
-                inset 0 -3px 0 0 var(--solar-orange);
-        }
-        
-        /* Orange gradient background integration at top */
-        .system-services::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 120px;
-            background: linear-gradient(135deg, var(--solar-yellow) 0%, var(--solar-orange) 100%);
-            opacity: 0.08;
-            z-index: 0;
-        }
-        
-        /* Enhanced grid pattern animation for system services */
-        .system-services::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: 
-                linear-gradient(135deg, var(--chart-4) 1px, transparent 1px),
-                linear-gradient(-135deg, var(--chart-4) 1px, transparent 1px);
-            background-size: 60px 60px;
-            opacity: 0.02;
-            animation: systemGridMove 40s linear infinite;
-        }
-        
-        @keyframes systemGridMove {
-            0% {
-                transform: translate(0, 0) rotate(0deg);
-            }
-            100% {
-                transform: translate(60px, 60px) rotate(2deg);
-            }
-        }
-        
-        .system-services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 40px;
-            position: relative;
-            z-index: 1;
-        }
-        
-        /* Advanced service cards with enhanced shadows and animations */
-        .service-card-advanced {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: var(--border-radius);
-            padding: 45px 35px;
-            text-align: center;
-            box-shadow: var(--shadow-md);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            cursor: pointer;
-            overflow: hidden;
-            position: relative;
-            transform: translateY(0) scale(1);
-            will-change: transform, box-shadow;
-            z-index: 1;
-        }
-        
-        /* Enhanced gradient overlay */
-        .service-card-advanced::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, var(--solar-orange), var(--solar-yellow));
-            opacity: 0;
-            transition: all 0.4s ease;
-            z-index: -1;
-        }
-        
-        /* Animated border effect */
-        .service-card-advanced::after {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, var(--solar-orange), var(--solar-yellow), var(--solar-orange));
-            border-radius: var(--border-radius);
-            opacity: 0;
-            z-index: -2;
-            transition: opacity 0.4s ease;
-        }
-        
-        /* Enhanced hover effects */
-        .service-card-advanced:hover {
-            transform: translateY(-18px) scale(1.02);
-            box-shadow: 
-                0 25px 50px rgba(234, 88, 12, 0.15),
-                0 15px 35px rgba(0, 0, 0, 0.1),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            border-color: var(--solar-orange);
-        }
-        
-        .service-card-advanced:hover::before {
-            opacity: 0.05;
-        }
-        
-        .service-card-advanced:hover::after {
-            opacity: 1;
-        }
-        
-        .service-card-advanced:hover .service-icon-advanced {
-            transform: scale(1.15) rotate(8deg);
-        }
-        
-        .service-card-advanced:hover .service-icon-advanced svg {
-            filter: drop-shadow(0 8px 25px rgba(234, 88, 12, 0.3));
-        }
-        
-        /* Enhanced icon styling */
-        .service-icon-advanced {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, var(--solar-orange), var(--solar-yellow));
-            border-radius: 20px;
+        .highlight-item {
             display: flex;
             align-items: center;
-            justify-content: center;
-            margin: 0 auto 25px;
-            color: white;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 8px 25px rgba(234, 88, 12, 0.2);
+            gap: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
         
-        .service-icon-advanced svg {
-            transition: all 0.4s ease;
-        }
-        
-        /* Enhanced text styling and animations */
-        .service-title-advanced {
+        .highlight-icon {
             font-size: 1.5rem;
-            font-weight: var(--font-weight-bold);
-            color: var(--foreground);
-            margin-bottom: 15px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .service-card-advanced:hover .service-title-advanced {
-            color: var(--solar-orange);
-            transform: translateY(-2px);
-        }
-        
-        .service-description-advanced {
-            font-size: 1rem;
-            line-height: 1.6;
-            color: var(--muted-foreground);
-            margin-bottom: 25px;
-            transition: all 0.3s ease;
-        }
-        
-        .service-card-advanced:hover .service-description-advanced {
-            color: var(--foreground);
-        }
-        
-        /* Enhanced feature list styling */
-        .service-features-advanced {
-            list-style: none;
-            padding: 0;
-            margin: 25px 0;
-            opacity: 0.9;
-            transition: all 0.3s ease;
-        }
-        
-        .service-features-advanced li {
-            padding: 8px 0;
-            position: relative;
-            padding-left: 25px;
-            font-size: 0.95rem;
-            color: var(--muted-foreground);
-            transition: all 0.3s ease;
-            transform: translateX(0);
-        }
-        
-        .service-features-advanced li::before {
-            content: '⚡';
-            position: absolute;
-            left: 0;
-            top: 8px;
-            color: var(--solar-orange);
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-        }
-        
-        .service-card-advanced:hover .service-features-advanced li {
-            color: var(--foreground);
-            transform: translateX(3px);
-        }
-        
-        .service-card-advanced:hover .service-features-advanced li::before {
-            transform: scale(1.2);
-        }
-        
-        /* Enhanced CTA button styling */
-        .service-cta-advanced {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 24px;
-            background: linear-gradient(135deg, var(--solar-orange), var(--solar-yellow));
-            color: white;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: var(--font-weight-semibold);
-            font-size: 0.95rem;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 4px 15px rgba(234, 88, 12, 0.2);
-            cursor: pointer;
-            border: none;
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .service-cta-advanced::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.6s ease;
-        }
-        
-        .service-cta-advanced:hover::before {
-            left: 100%;
-        }
-        
-        .service-cta-advanced:hover {
-            transform: translateY(-2px) scale(1.05);
-            box-shadow: 0 8px 25px rgba(234, 88, 12, 0.3);
-        }
-        
-        .service-cta-advanced svg {
-            transition: transform 0.3s ease;
-        }
-        
-        .service-cta-advanced:hover svg {
-            transform: translate(2px, -2px);
-        }
-        
-        .service-card-advanced:hover .advanced-service-features {
-            max-height: 300px;
-            opacity: 1;
-        }
-        
-        /* Advanced service icons with enhanced effects */
-        .advanced-service-icon {
-            width: 90px;
-            height: 90px;
-            background: linear-gradient(135deg, var(--chart-4), var(--primary));
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.2);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 30px;
-            font-size: 2.5rem;
-            color: white;
-            transition: all var(--transition-normal);
-            box-shadow: var(--shadow);
+            flex-shrink: 0;
         }
         
-        .advanced-service-title {
-            font-size: 1.5rem;
-            font-weight: var(--font-weight-bold);
-            margin-bottom: 20px;
-            color: var(--card-foreground);
-            transition: color var(--transition-normal);
-        }
-        
-        .advanced-service-description {
-            color: var(--muted-foreground);
-            margin-bottom: 25px;
-            font-size: 1.05rem;
-            line-height: 1.7;
-        }
-        
-        /* Advanced service features with enhanced animations */
-        .advanced-service-features {
-            list-style: none;
-            text-align: left;
-            margin-top: 25px;
-            opacity: 0;
-            max-height: 0;
-            overflow: hidden;
-            transition: all var(--transition-slow);
-        }
-        
-        .advanced-service-features li {
-            padding: 10px 0;
-            color: var(--muted-foreground);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            transform: translateX(-20px);
-            opacity: 0;
-            transition: all var(--transition-normal);
-        }
-        
-        .service-card-advanced:hover .advanced-service-features li {
-            transform: translateX(0);
-            opacity: 1;
-        }
-        
-        .service-card-advanced:hover .advanced-service-features li:nth-child(1) { transition-delay: 0.1s; }
-        .service-card-advanced:hover .advanced-service-features li:nth-child(2) { transition-delay: 0.15s; }
-        .service-card-advanced:hover .advanced-service-features li:nth-child(3) { transition-delay: 0.2s; }
-        .service-card-advanced:hover .advanced-service-features li:nth-child(4) { transition-delay: 0.25s; }
-        .service-card-advanced:hover .advanced-service-features li:nth-child(5) { transition-delay: 0.3s; }
-        .service-card-advanced:hover .advanced-service-features li:nth-child(6) { transition-delay: 0.35s; }
-        
-        .advanced-service-features li::before {
-            content: '⚡';
-            color: var(--solar-orange);
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-        
-        /* Call-to-action button in advanced cards */
-        .advanced-card-cta {
-            margin-top: 25px;
-            padding: 12px 24px;
-            background: linear-gradient(135deg, var(--solar-yellow), var(--solar-orange));
-            color: white;
-            border: none;
-            border-radius: 25px;
+        .highlight-text {
             font-weight: var(--font-weight-semibold);
-            cursor: pointer;
-            transition: all var(--transition-normal);
-            opacity: 0;
-            transform: translateY(20px);
+            font-size: 1rem;
         }
         
-        .service-card-advanced:hover .advanced-card-cta {
-            opacity: 1;
-            transform: translateY(0);
-            transition-delay: 0.4s;
+        .repair-cta-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: flex-start;
         }
         
-        .advanced-card-cta:hover {
+        .btn-repair-services,
+        .btn-emergency-call {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: var(--font-weight-bold);
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            min-width: 250px;
+            justify-content: center;
+            text-align: center;
+        }
+        
+        .btn-repair-services {
+            background: white;
+            color: var(--solar-orange);
+            border: 2px solid white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-repair-services:hover {
+            background: var(--background);
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(234, 88, 12, 0.4);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .btn-emergency-call {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+        
+        .btn-emergency-call:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
         }
         
         /* ===== SOLAR CALCULATOR ===== */
@@ -2047,6 +1646,33 @@
                 padding: 12px 25px;
                 font-size: 1rem;
                 min-width: 180px;
+            }
+            
+            /* Mobile Repair CTA Section */
+            .repair-cta-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+            
+            .repair-cta-title {
+                font-size: clamp(1.8rem, 6vw, 2.2rem);
+            }
+            
+            .repair-cta-subtitle {
+                font-size: 1rem;
+            }
+            
+            .repair-cta-actions {
+                align-items: center;
+                width: 100%;
+            }
+            
+            .btn-repair-services,
+            .btn-emergency-call {
+                min-width: 200px;
+                padding: 0.875rem 1.5rem;
+                font-size: 1rem;
             }
             
             .services-grid {
@@ -3016,159 +2642,41 @@
         </div>
     </section>
 
-    <!-- Repair Services Section -->
-    <section id="repair-services" class="repair-services">
+    <!-- Solar Repair & Maintenance CTA Section -->
+    <section id="repair-services" class="repair-cta-section">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Professional Solar Repair Services Georgia</h2>
-                <p class="section-subtitle">Expert solar panel repair, emergency services, and preventive maintenance to keep your system running at peak performance throughout Georgia.</p>
-            </div>
-            
-            <div class="repair-services-grid">
-                <div class="repair-card emergency">
-                    <div class="repair-icon emergency-icon">⚠</div>
-                    <h3 class="repair-title">24/7 Emergency Repair</h3>
-                    <p class="repair-description">Rapid response for storm damage, system failures, and urgent solar repairs throughout Georgia.</p>
-                    <ul class="repair-features">
-                        <li>24-48 hrs emergency response</li>
-                        <li>Insurance claim support</li>
-                    </ul>
-                    <div class="repair-cta-container">
-                        <a href="emergency-solar-repair.html" class="repair-cta emergency-cta">
-                            Emergency Service
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M7 17L17 7M17 7H7M17 7V17"/>
-                            </svg>
-                        </a>
-                        <div class="emergency-hotline">☎ (404) 551-6532</div>
+            <div class="repair-cta-content">
+                <div class="repair-cta-text">
+                    <h2 class="repair-cta-title">Need Solar Repair or Maintenance?</h2>
+                    <p class="repair-cta-subtitle">From emergency repairs to routine maintenance, our certified technicians provide comprehensive solar services throughout Georgia. Get expert diagnostics, panel repairs, inverter services, and system optimization.</p>
+                    <div class="repair-highlights">
+                        <div class="highlight-item">
+                            <span class="highlight-icon">⚠</span>
+                            <span class="highlight-text">24/7 Emergency Response</span>
+                        </div>
+                        <div class="highlight-item">
+                            <span class="highlight-icon">⚙</span>
+                            <span class="highlight-text">All Major Brands Serviced</span>
+                        </div>
+                        <div class="highlight-item">
+                            <span class="highlight-icon">✓</span>
+                            <span class="highlight-text">Licensed & Certified Technicians</span>
+                        </div>
                     </div>
                 </div>
-                
-                <div class="repair-card">
-                    <div class="repair-icon">⚙</div>
-                    <h3 class="repair-title">Solar Panel Repair</h3>
-                    <p class="repair-description">Comprehensive solar panel repair services for all issues from minor fixes to complete system restoration.</p>
-                    <ul class="repair-features">
-                        <li>Panel replacement & repair</li>
-                        <li>Performance diagnostics</li>
-                        <li>Wiring & electrical fixes</li>
-                        <li>System optimization</li>
-                    </ul>
-                    <a href="solar-panel-repair-georgia.html" class="repair-cta">
-                        Panel Repair Services
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <div class="repair-cta-actions">
+                    <a href="solar-repair-services.html" class="btn-repair-services">
+                        View All Repair Services
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M7 17L17 7M17 7H7M17 7V17"/>
                         </svg>
                     </a>
-                </div>
-                
-                <div class="repair-card">
-                    <div class="repair-icon">⟡</div>
-                    <h3 class="repair-title">Inverter Repair</h3>
-                    <p class="repair-description">Expert inverter repair and replacement for all major brands including SolarEdge, Enphase, and SMA.</p>
-                    <ul class="repair-features">
-                        <li>All inverter brands serviced</li>
-                        <li>Error code diagnostics</li>
-                        <li>Firmware updates</li>
-                        <li>Performance optimization</li>
-                    </ul>
-                    <a href="solar-inverter-repair.html" class="repair-cta">
-                        Inverter Specialists
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                    <a href="tel:4045516532" class="btn-emergency-call">
+                        Emergency: (404) 551-6532
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
                         </svg>
                     </a>
-                </div>
-                
-            </div>
-        </div>
-    </section>
-
-    <!-- System Services Section -->
-    <section id="system-services" class="system-services">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Solar System Maintenance & Repair Solutions</h2>
-                <p class="section-subtitle">Expert solar system maintenance, troubleshooting, and repair services to keep your Georgia solar installation running at peak efficiency.</p>
-            </div>
-            
-            <div class="system-services-grid">
-                <div class="service-card-advanced" data-service="troubleshooting">
-                    <div class="service-icon-advanced">
-                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
-                        </svg>
-                    </div>
-                    <h3 class="service-title-advanced">Emergency Solar Panel Repair & Troubleshooting</h3>
-                    <p class="service-description-advanced">Expert diagnosis and resolution of solar panel repair issues including inverter repair, panel replacement, wiring problems, and system troubleshooting with 24/7 emergency support and rapid response times throughout Georgia including Stone Mountain and surrounding areas.</p>
-                    <ul class="service-features-advanced">
-                        <li>Remote system monitoring</li>
-                        <li>Performance analysis</li>
-                        <li>Hardware diagnostics</li>
-                        <li>Solar inverter repair services</li>
-                        <li>Panel replacement and repair</li>
-                        <li>Emergency 24/7 repair service</li>
-                        <li>Warranty support</li>
-                    </ul>
-                    <a href="system-troubleshooting.html" class="service-cta-advanced">
-                        <span class="cta-text">Learn Our Diagnostic Process</span>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="7" y1="17" x2="17" y2="7"></line>
-                            <polyline points="7,7 17,7 17,17"></polyline>
-                        </svg>
-                    </a>
-                </div>
-
-                <div class="service-card-advanced" data-service="activation">
-                    <div class="service-icon-advanced">
-                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
-                            <line x1="3" y1="6" x2="21" y2="6"/>
-                            <path d="M16 10a4 4 0 0 1-8 0"/>
-                        </svg>
-                    </div>
-                    <h3 class="service-title-advanced">System Activation</h3>
-                    <p class="service-description-advanced">Professional activation and optimization of dormant or underperforming solar installations.</p>
-                    <ul class="service-features-advanced">
-                        <li>System inspection & testing</li>
-                        <li>Grid connection setup</li>
-                        <li>Inverter configuration</li>
-                        <li>Performance optimization</li>
-                        <li>Monitoring system setup</li>
-                    </ul>
-                    <div class="service-cta-advanced">
-                        <span class="cta-text">Activate System</span>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="7" y1="17" x2="17" y2="7"></line>
-                            <polyline points="7,7 17,7 17,17"></polyline>
-                        </svg>
-                    </div>
-                </div>
-
-                <div class="service-card-advanced" data-service="storage">
-                    <div class="service-icon-advanced">
-                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
-                            <line x1="8" y1="21" x2="16" y2="21"/>
-                            <line x1="12" y1="17" x2="12" y2="21"/>
-                        </svg>
-                    </div>
-                    <h3 class="service-title-advanced">Storage Addons</h3>
-                    <p class="service-description-advanced">Upgrade your existing solar system with advanced battery storage solutions for energy independence.</p>
-                    <ul class="service-features-advanced">
-                        <li>Battery system design</li>
-                        <li>Integration with existing solar</li>
-                        <li>Backup power solutions</li>
-                        <li>Smart energy management</li>
-                        <li>Grid-tie capabilities</li>
-                    </ul>
-                    <div class="service-cta-advanced">
-                        <span class="cta-text">Add Storage</span>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="7" y1="17" x2="17" y2="7"></line>
-                            <polyline points="7,7 17,7 17,17"></polyline>
-                        </svg>
-                    </div>
                 </div>
             </div>
         </div>
@@ -4697,11 +4205,11 @@
             // Preload background images for better performance
             preloadImages() {
                 const imageUrls = [
-                    'images/hero-solar-installation-1200w.jpg',
-                    'images/hero-solar-repair-1200w.jpg',
-                    'images/hero-solar-maintenance-1200w.jpg',
-                    'images/hero-commercial-solar-1200w.jpg',
-                    'images/hero-solar-diagnostics-1200w.jpg'
+                    'https://images.unsplash.com/photo-1559302504-64aae6ca6b6d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80',
+                    'https://images.unsplash.com/photo-1613665813446-82a78c468a1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80',
+                    'https://images.unsplash.com/photo-1624397640148-949b1732bb0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80',
+                    'https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80',
+                    'https://images.unsplash.com/photo-1603030070898-b67bb3ef6d7d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'
                 ];
 
                 imageUrls.forEach(url => {
