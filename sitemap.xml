@@ -69,6 +69,55 @@
     <priority>0.6</priority>
   </url>
 
+  <!-- Solar Repair Service Pages - High priority for repair keywords -->
+  <url>
+    <loc>https://ekosolarpros.com/solar-panel-repair-georgia.html</loc>
+    <lastmod>2025-01-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://ekosolarpros.com/images/solar-panel-repair-georgia.jpg</image:loc>
+      <image:title>Solar Panel Repair Services Georgia</image:title>
+      <image:caption>Professional solar panel repair and maintenance services throughout Georgia</image:caption>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://ekosolarpros.com/emergency-solar-repair.html</loc>
+    <lastmod>2025-01-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://ekosolarpros.com/images/emergency-solar-repair-georgia.jpg</image:loc>
+      <image:title>24/7 Emergency Solar Repair Georgia</image:title>
+      <image:caption>Emergency solar panel repair services available 24/7 throughout Georgia</image:caption>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://ekosolarpros.com/solar-inverter-repair.html</loc>
+    <lastmod>2025-01-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://ekosolarpros.com/images/solar-inverter-repair-georgia.jpg</image:loc>
+      <image:title>Solar Inverter Repair Georgia - SolarEdge Enphase SMA</image:title>
+      <image:caption>Professional solar inverter repair services for all major brands in Georgia</image:caption>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://ekosolarpros.com/solar-maintenance-contracts.html</loc>
+    <lastmod>2025-01-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://ekosolarpros.com/images/solar-maintenance-contracts-georgia.jpg</image:loc>
+      <image:title>Solar Maintenance Contracts Georgia</image:title>
+      <image:caption>Preventive solar panel maintenance contracts and care plans throughout Georgia</image:caption>
+    </image:image>
+  </url>
+
   <!-- Future local service pages (placeholder for SEO expansion) -->
   <!-- 
   <url>
