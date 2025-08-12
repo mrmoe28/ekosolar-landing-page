@@ -1,0 +1,53 @@
+# Robots.txt for EkoSolarPros - Best Solar Installation Georgia 2025
+# Optimized for solar energy SEO and search engine crawling
+
+User-agent: *
+Allow: /
+Crawl-delay: 1
+
+# Priority pages for solar installation services
+Allow: /index.html
+Allow: /#services
+Allow: /#contact
+Allow: /#testimonials
+Allow: /#calculator
+Allow: /#system-services
+
+# Allow all major search engines
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Slurp
+Allow: /
+
+# Block unnecessary crawling to optimize crawl budget
+Disallow: /admin/
+Disallow: /private/
+Disallow: /temp/
+Disallow: /*.json$
+Disallow: /*?utm_*
+Disallow: /*?ref=*
+Disallow: /*?source=*
+
+# Allow social media crawlers for rich snippets
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+# Sitemap locations for comprehensive indexing
+Sitemap: https://ekosolarpros.com/sitemap.xml
+Sitemap: https://ekosolarpros.com/images-sitemap.xml
+
+# Host directive for SEO (canonical domain)
+Host: https://ekosolarpros.com
+
+# Solar installation and maintenance services - Georgia 2025
+# This helps with solar panel installation, residential solar, and maintenance service discovery
+# Target keywords: solar installation Georgia, solar companies near me, residential solar panels

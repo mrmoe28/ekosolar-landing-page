@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+  
+  <!-- Homepage - Primary landing page for solar installation Georgia -->
+  <url>
+    <loc>https://ekosolarpros.com/</loc>
+    <lastmod>2025-01-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1559302504-64aae6ca6b6d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80</image:loc>
+      <image:title>Professional Solar Panel Installation Georgia</image:title>
+      <image:caption>Best solar panel installation services in Georgia by certified installers</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Services section - Core solar installation services -->
+  <url>
+    <loc>https://ekosolarpros.com/#services</loc>
+    <lastmod>2025-01-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1605206885258-ce15f6aea1bb?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=75</image:loc>
+      <image:title>Georgia Solar Panel Installation Services</image:title>
+      <image:caption>Residential solar installation services Georgia</image:caption>
+    </image:image>
+  </url>
+
+  <!-- System Services - Advanced solar services -->
+  <url>
+    <loc>https://ekosolarpros.com/#system-services</loc>
+    <lastmod>2025-01-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Contact page - High priority for lead generation -->
+  <url>
+    <loc>https://ekosolarpros.com/#contact</loc>
+    <lastmod>2025-01-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <!-- Solar Calculator - Interactive tool -->
+  <url>
+    <loc>https://ekosolarpros.com/#calculator</loc>
+    <lastmod>2025-01-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Customer Reviews - Trust building -->
+  <url>
+    <loc>https://ekosolarpros.com/#testimonials</loc>
+    <lastmod>2025-01-12</lastmod>
+    <changefreq>bi-weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- System Troubleshooting page -->
+  <url>
+    <loc>https://ekosolarpros.com/system-troubleshooting.html</loc>
+    <lastmod>2025-01-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Future local service pages (placeholder for SEO expansion) -->
+  <!-- 
+  <url>
+    <loc>https://ekosolarpros.com/solar-installation-atlanta</loc>
+    <lastmod>2025-01-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ekosolarpros.com/solar-installation-savannah</loc>
+    <lastmod>2025-01-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ekosolarpros.com/solar-installation-columbus</loc>
+    <lastmod>2025-01-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  -->
+</urlset>
