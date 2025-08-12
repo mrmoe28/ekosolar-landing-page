@@ -383,138 +383,269 @@
             justify-content: flex-end;
         }
         
-        /* ===== HERO SECTION ===== */
-        .hero {
-            background: linear-gradient(135deg, var(--solar-yellow) 0%, var(--solar-orange) 100%);
-            padding: 120px 0 80px;
-            text-align: center;
-            color: white;
+        /* ===== HERO SLIDESHOW SECTION ===== */
+        .hero-slideshow {
             position: relative;
+            height: 100vh;
+            min-height: 600px;
             overflow: hidden;
         }
         
-        /* ===== BACKGROUND ANIMATIONS ===== */
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-            animation: float 20s ease-in-out infinite;
-        }
-        
-        /* Floating solar particles */
-        .hero::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: 
-                radial-gradient(2px 2px at 20px 30px, rgba(255,255,255,0.4), transparent),
-                radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.3), transparent),
-                radial-gradient(1px 1px at 90px 40px, rgba(255,255,255,0.5), transparent),
-                radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.4), transparent),
-                radial-gradient(2px 2px at 160px 30px, rgba(255,255,255,0.3), transparent);
-            background-repeat: repeat;
-            background-size: 200px 100px;
-            animation: floatParticles 25s linear infinite;
-        }
-        
-        @keyframes floatParticles {
-            0% {
-                transform: translateY(0px) rotate(0deg);
-            }
-            33% {
-                transform: translateY(-10px) rotate(1deg);
-            }
-            66% {
-                transform: translateY(-5px) rotate(-1deg);
-            }
-            100% {
-                transform: translateY(0px) rotate(0deg);
-            }
-        }
-        
-        @keyframes float {
-            0%, 100% { 
-                transform: translateY(0px) rotate(0deg); 
-            }
-            50% { 
-                transform: translateY(-20px) rotate(1deg); 
-            }
-        }
-        
-        .hero-content {
+        .slideshow-container {
             position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0;
+            transition: opacity 1s ease-in-out, transform 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+        
+        .slide.active {
+            opacity: 1;
+            z-index: 2;
+        }
+        
+        .slide-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                135deg, 
+                rgba(234, 88, 12, 0.7) 0%, 
+                rgba(251, 146, 60, 0.5) 50%, 
+                rgba(234, 88, 12, 0.8) 100%
+            );
             z-index: 1;
+        }
+        
+        .slide-content {
+            position: relative;
+            z-index: 3;
+            max-width: 800px;
+            padding: 0 20px;
+            animation: slideInUp 1s ease;
         }
         
         .hero-title {
             font-size: clamp(2.5rem, 5vw, 4rem);
             font-weight: var(--font-weight-bold);
             margin-bottom: 20px;
-            animation: slideInUp 1s ease;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
         
         .hero-subtitle {
             font-size: clamp(1.1rem, 2vw, 1.3rem);
-            opacity: 0.9;
+            opacity: 0.95;
             margin-bottom: 40px;
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
-            animation: slideInUp 1s ease 0.2s both;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
         }
         
         .hero-stats {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 30px;
-            margin: 60px 0;
-            animation: slideInUp 1s ease 0.4s both;
+            margin: 50px 0;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
         .stat-item {
             text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
         
         .stat-number {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             font-weight: var(--font-weight-bold);
             display: block;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
         
         .stat-label {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             opacity: 0.9;
+            margin-top: 5px;
         }
         
-        .cta-button {
+        /* Slideshow Navigation */
+        .slideshow-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 30px;
+            z-index: 4;
+            pointer-events: none;
+        }
+        
+        .nav-arrow {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            pointer-events: all;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .nav-arrow:hover {
+            background: rgba(234, 88, 12, 0.8);
+            border-color: rgba(234, 88, 12, 1);
+            transform: scale(1.1);
+        }
+        
+        /* Slide Indicators */
+        .slide-dots {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            z-index: 4;
+        }
+        
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .dot.active,
+        .dot:hover {
+            background: var(--solar-orange);
+            border-color: var(--solar-orange);
+            transform: scale(1.2);
+        }
+        
+        /* Call to Action Buttons */
+        .hero-cta {
+            position: absolute;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            z-index: 4;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .cta-button-primary,
+        .cta-button-secondary {
             display: inline-block;
-            background: var(--background);
-            color: var(--solar-orange);
-            border: 2px solid var(--solar-orange);
             padding: 15px 30px;
             border-radius: var(--border-radius);
             text-decoration: none;
             font-weight: var(--font-weight-semibold);
             font-size: 1.1rem;
-            box-shadow: var(--shadow-lg);
-            transition: var(--transition-normal);
-            animation: slideInUp 1s ease 0.6s both;
+            transition: all 0.3s ease;
+            text-align: center;
+            min-width: 200px;
         }
         
-        .cta-button:hover {
-            transform: translateY(-2px);
+        .cta-button-primary {
             background: var(--solar-orange);
-            color: var(--background);
-            box-shadow: 0 8px 25px rgba(234, 88, 12, 0.4);
+            color: white;
+            border: 2px solid var(--solar-orange);
+            box-shadow: 0 4px 15px rgba(234, 88, 12, 0.4);
         }
         
+        .cta-button-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(234, 88, 12, 0.6);
+            background: #DC2626;
+            border-color: #DC2626;
+        }
+        
+        .cta-button-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+        
+        .cta-button-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+        }
+        
+        /* Dynamic Background Images */
+        .slide[data-bg*="installation"] {
+            background-image: linear-gradient(
+                rgba(234, 88, 12, 0.6), 
+                rgba(251, 146, 60, 0.4)
+            ), url('images/hero-solar-installation-1200w.jpg');
+        }
+        
+        .slide[data-bg*="repair"] {
+            background-image: linear-gradient(
+                rgba(220, 38, 38, 0.7), 
+                rgba(239, 68, 68, 0.5)
+            ), url('images/hero-solar-repair-1200w.jpg');
+        }
+        
+        .slide[data-bg*="maintenance"] {
+            background-image: linear-gradient(
+                rgba(16, 185, 129, 0.6), 
+                rgba(52, 211, 153, 0.4)
+            ), url('images/hero-solar-maintenance-1200w.jpg');
+        }
+        
+        .slide[data-bg*="commercial"] {
+            background-image: linear-gradient(
+                rgba(59, 130, 246, 0.6), 
+                rgba(147, 197, 253, 0.4)
+            ), url('images/hero-commercial-solar-1200w.jpg');
+        }
+        
+        .slide[data-bg*="diagnostics"] {
+            background-image: linear-gradient(
+                rgba(168, 85, 247, 0.6), 
+                rgba(196, 181, 253, 0.4)
+            ), url('images/hero-solar-diagnostics-1200w.jpg');
+        }
+        
+        /* Animations */
         @keyframes slideInUp {
             from {
                 opacity: 0;
@@ -524,6 +655,11 @@
                 opacity: 1;
                 transform: translateY(0);
             }
+        }
+        
+        /* Pause animations on hover */
+        .hero-slideshow:hover .slide {
+            animation-play-state: paused;
         }
         
         /* ===== SERVICES SECTION ===== */
@@ -665,7 +801,7 @@
         /* ===== REPAIR SERVICES SECTION ===== */
         .repair-services {
             padding: var(--section-padding);
-            background: linear-gradient(135deg, #FEF3C7 0%, var(--background) 50%, #FECACA 100%);
+            background: linear-gradient(135deg, #EA580C 0%, #DC2626 50%, #B91C1C 100%);
             position: relative;
             overflow: hidden;
         }
@@ -683,8 +819,8 @@
         
         .repair-services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
             position: relative;
             z-index: 1;
         }
@@ -693,16 +829,17 @@
             background: white;
             border: 2px solid var(--border);
             border-radius: 15px;
-            padding: 2rem;
+            padding: 1.5rem;
             text-align: center;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
         }
         
         .repair-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(234, 88, 12, 0.15);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
             border-color: var(--solar-orange);
         }
         
@@ -1838,12 +1975,78 @@
                 min-width: auto;
             }
             
-            .hero {
-                padding: 100px 0 60px;
+            /* Hero Slideshow Mobile Styles */
+            .hero-slideshow {
+                min-height: 80vh; /* Reduce height on mobile */
+            }
+            
+            .slide-content {
+                padding: 0 15px;
+            }
+            
+            .hero-title {
+                font-size: clamp(2rem, 8vw, 2.8rem);
+                margin-bottom: 15px;
+            }
+            
+            .hero-subtitle {
+                font-size: clamp(1rem, 4vw, 1.2rem);
+                margin-bottom: 30px;
             }
             
             .hero-stats {
                 grid-template-columns: 1fr 1fr;
+                gap: 20px;
+                margin: 30px 0;
+            }
+            
+            .stat-item {
+                padding: 15px 10px;
+            }
+            
+            .stat-number {
+                font-size: 1.8rem;
+            }
+            
+            .stat-label {
+                font-size: 0.8rem;
+            }
+            
+            /* Mobile Navigation Controls */
+            .slideshow-nav {
+                padding: 0 15px;
+            }
+            
+            .nav-arrow {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+            
+            /* Mobile Slide Indicators */
+            .slide-dots {
+                bottom: 20px;
+                gap: 10px;
+            }
+            
+            .dot {
+                width: 10px;
+                height: 10px;
+            }
+            
+            /* Mobile Call to Action */
+            .hero-cta {
+                bottom: 60px;
+                flex-direction: column;
+                gap: 15px;
+                padding: 0 20px;
+            }
+            
+            .cta-button-primary,
+            .cta-button-secondary {
+                padding: 12px 25px;
+                font-size: 1rem;
+                min-width: 180px;
             }
             
             .services-grid {
@@ -2606,35 +2809,145 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <picture>
-                    <source srcset="images/hero-solar-panels-600w.webp 600w, images/hero-solar-panels-900w.webp 900w, images/hero-solar-panels-1200w.webp 1200w" type="image/webp">
-                    <source srcset="images/hero-solar-panels-600w.jpg 600w, images/hero-solar-panels-900w.jpg 900w, images/hero-solar-panels-1200w.jpg 1200w" type="image/jpeg">
-                    <img src="images/hero-solar-panels-900w.jpg" alt="Professional solar panel installation, repair and maintenance services on Georgia residential home roof with certified solar technicians" width="1200" height="600" style="width: 100%; height: 300px; object-fit: cover; border-radius: 12px; margin-bottom: 30px;" loading="eager">
-                </picture>
-                <h1 class="hero-title">Solar Repair and Installation Specialist</h1>
-                <p class="hero-subtitle">Georgia's Trusted Solar Experts - Installation & Emergency Repairs</p>
-                
-                <div class="hero-stats">
-                    <div class="stat-item">
-                        <span class="stat-number" data-target="2500">0</span>
-                        <span class="stat-label">Installations Completed</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number" data-target="85">0</span>
-                        <span class="stat-label">Million kWh Generated</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number" data-target="42000">0</span>
-                        <span class="stat-label">Tons CO₂ Prevented</span>
+    <!-- Hero Section - Full Screen Solar Slideshow -->
+    <section id="home" class="hero-slideshow">
+        <!-- Slideshow Container -->
+        <div class="slideshow-container">
+            <!-- Slide 1: Rooftop Installation -->
+            <div class="slide active" data-bg="images/hero-solar-installation-1200w.jpg">
+                <div class="slide-overlay"></div>
+                <div class="slide-content">
+                    <h1 class="hero-title">Professional Solar Installation</h1>
+                    <p class="hero-subtitle">Expert rooftop installations with certified technicians across Georgia</p>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="2500">0</span>
+                            <span class="stat-label">Systems Installed</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="98">0</span>
+                            <span class="stat-label">% Customer Satisfaction</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="25">0</span>
+                            <span class="stat-label">Year Warranty</span>
+                        </div>
                     </div>
                 </div>
-                
-                <a href="#calculator" class="cta-button">Get Free Solar Quote</a>
             </div>
+
+            <!-- Slide 2: Emergency Repair & Troubleshooting -->
+            <div class="slide" data-bg="images/hero-solar-repair-1200w.jpg">
+                <div class="slide-overlay"></div>
+                <div class="slide-content">
+                    <h1 class="hero-title">24/7 Emergency Solar Repair</h1>
+                    <p class="hero-subtitle">Rapid response for system failures, storm damage, and troubleshooting</p>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="24">0</span>
+                            <span class="stat-label">Hour Response</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="1500">0</span>
+                            <span class="stat-label">Repairs Completed</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="95">0</span>
+                            <span class="stat-label">% Same-Day Fix</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3: Maintenance & Cleaning -->
+            <div class="slide" data-bg="images/hero-solar-maintenance-1200w.jpg">
+                <div class="slide-overlay"></div>
+                <div class="slide-content">
+                    <h1 class="hero-title">Professional Maintenance Services</h1>
+                    <p class="hero-subtitle">Keep your solar system performing at peak efficiency year-round</p>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="85">0</span>
+                            <span class="stat-label">Million kWh Generated</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="30">0</span>
+                            <span class="stat-label">% Efficiency Boost</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="42000">0</span>
+                            <span class="stat-label">Tons CO₂ Prevented</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 4: Commercial Installation -->
+            <div class="slide" data-bg="images/hero-commercial-solar-1200w.jpg">
+                <div class="slide-overlay"></div>
+                <div class="slide-content">
+                    <h1 class="hero-title">Commercial Solar Solutions</h1>
+                    <p class="hero-subtitle">Large-scale installations for businesses across Georgia</p>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="150">0</span>
+                            <span class="stat-label">Commercial Projects</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="15">0</span>
+                            <span class="stat-label">MW Total Capacity</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="40">0</span>
+                            <span class="stat-label">% Cost Reduction</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 5: Electrical Diagnostics -->
+            <div class="slide" data-bg="images/hero-solar-diagnostics-1200w.jpg">
+                <div class="slide-overlay"></div>
+                <div class="slide-content">
+                    <h1 class="hero-title">Advanced System Diagnostics</h1>
+                    <p class="hero-subtitle">Precision testing and optimization for maximum performance</p>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="99">0</span>
+                            <span class="stat-label">% Accurate Diagnosis</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="2">0</span>
+                            <span class="stat-label">Hour Avg Assessment</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="100">0</span>
+                            <span class="stat-label">% Free Estimates</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slideshow Navigation -->
+        <div class="slideshow-nav">
+            <button class="nav-arrow prev" aria-label="Previous slide">❮</button>
+            <button class="nav-arrow next" aria-label="Next slide">❯</button>
+        </div>
+
+        <!-- Slide Indicators -->
+        <div class="slide-dots">
+            <button class="dot active" data-slide="0" aria-label="Go to slide 1"></button>
+            <button class="dot" data-slide="1" aria-label="Go to slide 2"></button>
+            <button class="dot" data-slide="2" aria-label="Go to slide 3"></button>
+            <button class="dot" data-slide="3" aria-label="Go to slide 4"></button>
+            <button class="dot" data-slide="4" aria-label="Go to slide 5"></button>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="hero-cta">
+            <a href="#calculator" class="cta-button-primary">Get Free Solar Quote</a>
+            <a href="tel:4045516532" class="cta-button-secondary">Emergency: (404) 551-6532</a>
         </div>
     </section>
 
@@ -2717,9 +3030,7 @@
                     <h3 class="repair-title">24/7 Emergency Repair</h3>
                     <p class="repair-description">Rapid response for storm damage, system failures, and urgent solar repairs throughout Georgia.</p>
                     <ul class="repair-features">
-                        <li>2-4 hour emergency response</li>
-                        <li>Storm damage specialists</li>
-                        <li>Safety hazard resolution</li>
+                        <li>24-48 hrs emergency response</li>
                         <li>Insurance claim support</li>
                     </ul>
                     <div class="repair-cta-container">
@@ -2769,23 +3080,6 @@
                     </a>
                 </div>
                 
-                <div class="repair-card">
-                    <div class="repair-icon">◊</div>
-                    <h3 class="repair-title">Maintenance Plans</h3>
-                    <p class="repair-description">Preventive maintenance contracts to protect your investment with regular cleaning and monitoring services.</p>
-                    <ul class="repair-features">
-                        <li>Regular professional cleaning</li>
-                        <li>Performance monitoring</li>
-                        <li>Preventive maintenance</li>
-                        <li>Priority repair scheduling</li>
-                    </ul>
-                    <a href="solar-maintenance-contracts.html" class="repair-cta">
-                        Maintenance Plans
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M7 17L17 7M17 7H7M17 7V17"/>
-                        </svg>
-                    </a>
-                </div>
             </div>
         </div>
     </section>
@@ -4166,6 +4460,268 @@
             document.head.appendChild(linkPrefetch);
         };
         setTimeout(preloadNextResources, 3000);
+
+        // ===== HERO SLIDESHOW FUNCTIONALITY =====
+        class HeroSlideshow {
+            constructor() {
+                this.slides = document.querySelectorAll('.slide');
+                this.dots = document.querySelectorAll('.dot');
+                this.prevBtn = document.querySelector('.nav-arrow.prev');
+                this.nextBtn = document.querySelector('.nav-arrow.next');
+                this.currentSlide = 0;
+                this.slideInterval = null;
+                this.isPlaying = true;
+                this.touchStartX = 0;
+                this.touchEndX = 0;
+                
+                this.init();
+            }
+
+            init() {
+                // Set initial slide
+                this.setActiveSlide(0);
+                
+                // Start automatic slideshow
+                this.startSlideshow();
+                
+                // Event listeners
+                this.prevBtn?.addEventListener('click', () => this.prevSlide());
+                this.nextBtn?.addEventListener('click', () => this.nextSlide());
+                
+                // Dot navigation
+                this.dots.forEach((dot, index) => {
+                    dot.addEventListener('click', () => this.goToSlide(index));
+                });
+                
+                // Pause on hover
+                const slideshow = document.querySelector('.hero-slideshow');
+                slideshow?.addEventListener('mouseenter', () => this.pauseSlideshow());
+                slideshow?.addEventListener('mouseleave', () => this.resumeSlideshow());
+                
+                // Touch/swipe support
+                slideshow?.addEventListener('touchstart', (e) => this.handleTouchStart(e));
+                slideshow?.addEventListener('touchmove', (e) => this.handleTouchMove(e));
+                slideshow?.addEventListener('touchend', (e) => this.handleTouchEnd(e));
+                
+                // Keyboard navigation
+                document.addEventListener('keydown', (e) => this.handleKeyPress(e));
+                
+                // Visibility API - pause when tab is not visible
+                document.addEventListener('visibilitychange', () => {
+                    if (document.hidden) {
+                        this.pauseSlideshow();
+                    } else {
+                        this.resumeSlideshow();
+                    }
+                });
+                
+                // Preload background images
+                this.preloadImages();
+            }
+
+            setActiveSlide(index) {
+                // Remove active class from all slides and dots
+                this.slides.forEach(slide => slide.classList.remove('active'));
+                this.dots.forEach(dot => dot.classList.remove('active'));
+                
+                // Add active class to current slide and dot
+                if (this.slides[index]) {
+                    this.slides[index].classList.add('active');
+                    
+                    // Update background image
+                    const bgImage = this.slides[index].getAttribute('data-bg');
+                    if (bgImage) {
+                        this.slides[index].style.backgroundImage = this.getBackgroundImage(bgImage);
+                    }
+                }
+                
+                if (this.dots[index]) {
+                    this.dots[index].classList.add('active');
+                }
+                
+                this.currentSlide = index;
+                
+                // Re-animate statistics for new slide
+                this.animateStats();
+            }
+
+            nextSlide() {
+                const nextIndex = (this.currentSlide + 1) % this.slides.length;
+                this.setActiveSlide(nextIndex);
+            }
+
+            prevSlide() {
+                const prevIndex = (this.currentSlide - 1 + this.slides.length) % this.slides.length;
+                this.setActiveSlide(prevIndex);
+            }
+
+            goToSlide(index) {
+                if (index >= 0 && index < this.slides.length) {
+                    this.setActiveSlide(index);
+                }
+            }
+
+            startSlideshow() {
+                if (!this.slideInterval) {
+                    this.slideInterval = setInterval(() => {
+                        if (this.isPlaying) {
+                            this.nextSlide();
+                        }
+                    }, 6000); // 6 seconds per slide
+                }
+            }
+
+            pauseSlideshow() {
+                this.isPlaying = false;
+            }
+
+            resumeSlideshow() {
+                this.isPlaying = true;
+            }
+
+            stopSlideshow() {
+                if (this.slideInterval) {
+                    clearInterval(this.slideInterval);
+                    this.slideInterval = null;
+                }
+                this.isPlaying = false;
+            }
+
+            // Touch/swipe functionality
+            handleTouchStart(e) {
+                this.touchStartX = e.touches[0].clientX;
+            }
+
+            handleTouchMove(e) {
+                // Prevent default scrolling during swipe
+                if (Math.abs(e.touches[0].clientX - this.touchStartX) > 10) {
+                    e.preventDefault();
+                }
+            }
+
+            handleTouchEnd(e) {
+                this.touchEndX = e.changedTouches[0].clientX;
+                const swipeThreshold = 50;
+                const diff = this.touchStartX - this.touchEndX;
+
+                if (Math.abs(diff) > swipeThreshold) {
+                    if (diff > 0) {
+                        this.nextSlide(); // Swipe left - next slide
+                    } else {
+                        this.prevSlide(); // Swipe right - previous slide
+                    }
+                }
+                
+                // Reset touch positions
+                this.touchStartX = 0;
+                this.touchEndX = 0;
+            }
+
+            // Keyboard navigation
+            handleKeyPress(e) {
+                // Only handle if focus is on slideshow or no form elements are focused
+                const activeElement = document.activeElement;
+                const isFormElement = activeElement && (
+                    activeElement.tagName === 'INPUT' || 
+                    activeElement.tagName === 'TEXTAREA' || 
+                    activeElement.tagName === 'SELECT'
+                );
+
+                if (!isFormElement) {
+                    switch(e.key) {
+                        case 'ArrowLeft':
+                            e.preventDefault();
+                            this.prevSlide();
+                            break;
+                        case 'ArrowRight':
+                            e.preventDefault();
+                            this.nextSlide();
+                            break;
+                        case ' ': // Spacebar
+                            e.preventDefault();
+                            if (this.isPlaying) {
+                                this.pauseSlideshow();
+                            } else {
+                                this.resumeSlideshow();
+                            }
+                            break;
+                    }
+                }
+            }
+
+            // Get background image with gradient overlay
+            getBackgroundImage(imagePath) {
+                const gradients = {
+                    'installation': 'linear-gradient(rgba(234, 88, 12, 0.6), rgba(251, 146, 60, 0.4))',
+                    'repair': 'linear-gradient(rgba(220, 38, 38, 0.7), rgba(239, 68, 68, 0.5))',
+                    'maintenance': 'linear-gradient(rgba(16, 185, 129, 0.6), rgba(52, 211, 153, 0.4))',
+                    'commercial': 'linear-gradient(rgba(59, 130, 246, 0.6), rgba(147, 197, 253, 0.4))',
+                    'diagnostics': 'linear-gradient(rgba(168, 85, 247, 0.6), rgba(196, 181, 253, 0.4))'
+                };
+
+                // Determine gradient based on image name
+                let gradient = gradients.installation; // default
+                for (const [key, value] of Object.entries(gradients)) {
+                    if (imagePath.includes(key)) {
+                        gradient = value;
+                        break;
+                    }
+                }
+
+                return `${gradient}, url('${imagePath}')`;
+            }
+
+            // Animate statistics counters
+            animateStats() {
+                const currentSlideElement = this.slides[this.currentSlide];
+                const statNumbers = currentSlideElement.querySelectorAll('.stat-number');
+                
+                statNumbers.forEach(stat => {
+                    const target = parseInt(stat.getAttribute('data-target'));
+                    const duration = 2000;
+                    const increment = target / (duration / 16);
+                    let current = 0;
+                    
+                    const counter = setInterval(() => {
+                        current += increment;
+                        if (current >= target) {
+                            stat.textContent = target;
+                            clearInterval(counter);
+                        } else {
+                            stat.textContent = Math.floor(current);
+                        }
+                    }, 16);
+                });
+            }
+
+            // Preload background images for better performance
+            preloadImages() {
+                const imageUrls = [
+                    'images/hero-solar-installation-1200w.jpg',
+                    'images/hero-solar-repair-1200w.jpg',
+                    'images/hero-solar-maintenance-1200w.jpg',
+                    'images/hero-commercial-solar-1200w.jpg',
+                    'images/hero-solar-diagnostics-1200w.jpg'
+                ];
+
+                imageUrls.forEach(url => {
+                    const img = new Image();
+                    img.src = url;
+                });
+            }
+        }
+
+        // Initialize slideshow when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            new HeroSlideshow();
+        });
+
+        // If DOM is already loaded
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => new HeroSlideshow());
+        } else {
+            new HeroSlideshow();
+        }
     </script>
 </body>
 </html><!-- GitHub Pages deployment refresh -->
