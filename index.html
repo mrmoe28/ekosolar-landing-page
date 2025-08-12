@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Primary Meta Tags -->
-    <title>EkoSolar - Professional Solar Installation & Maintenance Services | Georgia</title>
-    <meta name="title" content="EkoSolar - Professional Solar Installation & Maintenance Services | Georgia">
+    <title>EkoSolarPros - Professional Solar Installation & Maintenance Services | Georgia</title>
+    <meta name="title" content="EkoSolarPros - Professional Solar Installation & Maintenance Services | Georgia">
     <meta name="description" content="Transform your Georgia home with professional solar panel installation, maintenance, and repair services. Free consultation & 25-year warranty. Save up to 90% on energy bills.">
     <meta name="keywords" content="solar installation Georgia, solar panels Georgia, residential solar installation, solar maintenance, solar repair, solar consultation, solar energy Georgia, solar companies near me">
     
@@ -17,24 +17,24 @@
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://ekosolar.com/">
-    <meta property="og:title" content="EkoSolar - Professional Solar Installation & Maintenance Services | Georgia">
+    <meta property="og:url" content="https://ekosolarpros.com/">
+    <meta property="og:title" content="EkoSolarPros - Professional Solar Installation & Maintenance Services | Georgia">
     <meta property="og:description" content="Transform your Georgia home with professional solar panel installation, maintenance, and repair services. Free consultation & 25-year warranty. Save up to 90% on energy bills.">
-    <meta property="og:image" content="https://ekosolar.com/images/ekosolar-solar-installation-georgia.jpg">
+    <meta property="og:image" content="https://ekosolarpros.com/images/ekosolar-solar-installation-georgia.jpg">
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://ekosolar.com/">
-    <meta property="twitter:title" content="EkoSolar - Professional Solar Installation & Maintenance Services | Georgia">
+    <meta property="twitter:url" content="https://ekosolarpros.com/">
+    <meta property="twitter:title" content="EkoSolarPros - Professional Solar Installation & Maintenance Services | Georgia">
     <meta property="twitter:description" content="Transform your Georgia home with professional solar panel installation, maintenance, and repair services. Free consultation & 25-year warranty.">
-    <meta property="twitter:image" content="https://ekosolar.com/images/ekosolar-solar-installation-georgia.jpg">
+    <meta property="twitter:image" content="https://ekosolarpros.com/images/ekosolar-solar-installation-georgia.jpg">
     
     <!-- Additional SEO Meta Tags -->
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="language" content="English">
     <meta name="revisit-after" content="7 days">
-    <meta name="author" content="EkoSolar">
-    <link rel="canonical" href="https://ekosolar.com/">
+    <meta name="author" content="EkoSolarPros">
+    <link rel="canonical" href="https://ekosolarpros.com/">
     
     <style>
         /* ===== CSS RESET AND BASE STYLES ===== */
@@ -989,6 +989,7 @@
         }
         
         .form-input {
+            width: 100%;
             padding: 15px;
             border: 2px solid var(--border);
             border-radius: 8px;
@@ -996,6 +997,9 @@
             background: var(--input);
             color: var(--card-foreground);
             transition: var(--transition-fast);
+            box-sizing: border-box;
+            min-width: 0;
+            max-width: 100%;
         }
         
         .form-input:focus {
@@ -1229,6 +1233,8 @@
             grid-template-columns: 1fr 1fr;
             gap: 60px;
             align-items: start;
+            max-width: 100%;
+            overflow: hidden;
         }
         
         .contact-info {
@@ -1240,18 +1246,23 @@
         .contact-form {
             background: var(--card);
             border: 1px solid var(--border);
-            padding: 50px;
+            padding: 40px 30px;
             border-radius: var(--border-radius);
             box-shadow: var(--shadow-lg);
             position: relative;
             z-index: 1;
+            max-width: 100%;
+            min-width: 0;
         }
         
         .contact-form .form-group {
             margin-bottom: 25px;
+            width: 100%;
+            min-width: 0;
         }
         
         .form-textarea {
+            width: 100%;
             padding: 15px;
             border: 2px solid var(--border);
             border-radius: 8px;
@@ -1262,6 +1273,9 @@
             resize: vertical;
             font-family: inherit;
             transition: var(--transition-fast);
+            box-sizing: border-box;
+            min-width: 0;
+            max-width: 100%;
         }
         
         .form-textarea:focus {
@@ -1271,6 +1285,7 @@
         }
         
         .file-input {
+            width: 100%;
             padding: 15px;
             border: 2px dashed var(--border);
             border-radius: 8px;
@@ -1279,6 +1294,9 @@
             color: var(--card-foreground);
             transition: var(--transition-fast);
             cursor: pointer;
+            box-sizing: border-box;
+            min-width: 0;
+            max-width: 100%;
         }
         
         .file-input:hover {
@@ -1438,6 +1456,16 @@
         }
         
         /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 1024px) {
+            .contact-container {
+                gap: 40px;
+            }
+            
+            .contact-form {
+                padding: 35px 25px;
+            }
+        }
+        
         @media (max-width: 768px) {
             .nav {
                 justify-content: space-between;
@@ -1496,6 +1524,14 @@
             .contact-container {
                 grid-template-columns: 1fr;
                 gap: 40px;
+            }
+            
+            .contact-form {
+                padding: 30px 20px;
+            }
+            
+            .contact-info {
+                padding: 30px 20px;
             }
             
             .testimonial-card {
@@ -1916,10 +1952,10 @@
     {
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
-      "name": "EkoSolar",
-      "image": "https://ekosolar.com/images/ekosolar-logo.jpg",
+      "name": "EkoSolarPros",
+      "image": "https://ekosolarpros.com/images/ekosolar-logo.jpg",
       "description": "Professional solar panel installation, maintenance, and repair services in Georgia. Transform your home with clean renewable energy and save up to 90% on energy bills.",
-      "url": "https://ekosolar.com",
+      "url": "https://ekosolarpros.com",
       "telephone": "+1-555-ECO-SOLAR",
       "address": {
         "@type": "PostalAddress",
@@ -1966,7 +2002,7 @@
       "serviceType": "Solar Panel Installation",
       "provider": {
         "@type": "LocalBusiness",
-        "name": "EkoSolar"
+        "name": "EkoSolarPros"
       },
       "areaServed": {
         "@type": "State",
@@ -2035,7 +2071,7 @@
         <nav class="nav container">
             <a href="#home" class="logo">
                 <div class="logo-icon">⟡</div>
-                EkoSolar
+                EkoSolarPros
             </a>
             
             <ul class="nav-menu" id="navMenu">
@@ -2285,27 +2321,27 @@
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Georgia Solar Installation Customer Reviews</h2>
-                <p class="section-subtitle">Real stories from Georgia homeowners who transformed their energy future with EkoSolar's professional solar services.</p>
+                <p class="section-subtitle">Real stories from Georgia homeowners who transformed their energy future with EkoSolarPros's professional solar services.</p>
             </div>
             
             <div class="testimonials-carousel">
                 <div class="testimonials-track" id="testimonialsTrack">
                     <div class="testimonial-card">
-                        <p class="testimonial-quote">"EkoSolar transformed our home's energy efficiency beyond our expectations. The installation was seamless, and our monthly electricity bills have dropped by 90%. The team was professional, knowledgeable, and made the entire process stress-free."</p>
+                        <p class="testimonial-quote">"EkoSolarPros transformed our home's energy efficiency beyond our expectations. The installation was seamless, and our monthly electricity bills have dropped by 90%. The team was professional, knowledgeable, and made the entire process stress-free."</p>
                         <p class="testimonial-author">Sarah & Mike Johnson</p>
                         <p class="testimonial-location">Atlanta, GA</p>
                         <div class="testimonial-savings">Saving $180/month • 95% Bill Reduction</div>
                     </div>
                     
                     <div class="testimonial-card">
-                        <p class="testimonial-quote">"The ROI has been incredible! In just 18 months, we've already seen significant returns, and the system is performing even better than projected. EkoSolar's maintenance program keeps everything running perfectly."</p>
+                        <p class="testimonial-quote">"The ROI has been incredible! In just 18 months, we've already seen significant returns, and the system is performing even better than projected. EkoSolarPros's maintenance program keeps everything running perfectly."</p>
                         <p class="testimonial-author">David Chen</p>
                         <p class="testimonial-location">Augusta, GA</p>
                         <div class="testimonial-savings">Saving $220/month • 6.2 Year Payback</div>
                     </div>
                     
                     <div class="testimonial-card">
-                        <p class="testimonial-quote">"From consultation to installation, EkoSolar exceeded every expectation. They handled all permits, rebates, and utility connections. Now we're generating more power than we use and actually earning credits!"</p>
+                        <p class="testimonial-quote">"From consultation to installation, EkoSolarPros exceeded every expectation. They handled all permits, rebates, and utility connections. Now we're generating more power than we use and actually earning credits!"</p>
                         <p class="testimonial-author">Maria Rodriguez</p>
                         <p class="testimonial-location">Savannah, GA</p>
                         <div class="testimonial-savings">Saving $165/month • Net Positive Energy</div>
@@ -2409,7 +2445,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>EkoSolar</h3>
+                    <h3>EkoSolarPros</h3>
                     <p>Leading Georgia towards a sustainable energy future with premium solar solutions and exceptional customer service.</p>
                     <p style="margin-top: 20px;">Licensed • Bonded • Insured</p>
                 </div>
@@ -2425,7 +2461,7 @@
                 <div class="footer-section">
                     <h3>Contact Info</h3>
                     <div itemscope itemtype="https://schema.org/LocalBusiness">
-                        <p><strong itemprop="name">EkoSolar - Solar Installation Georgia</strong></p>
+                        <p><strong itemprop="name">EkoSolarPros - Solar Installation Georgia</strong></p>
                         <div itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
                             <p>📍 <span itemprop="streetAddress">123 Solar Street</span></p>
                             <p><span itemprop="addressLocality">Atlanta</span>, <span itemprop="addressRegion">GA</span> <span itemprop="postalCode">30309</span></p>
@@ -2439,7 +2475,7 @@
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2024 EkoSolar. All rights reserved. | Transforming homes with clean, renewable solar energy.</p>
+                <p>&copy; 2024 EkoSolarPros. All rights reserved. | Transforming homes with clean, renewable solar energy.</p>
             </div>
         </div>
     </footer>
