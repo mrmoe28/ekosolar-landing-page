@@ -39,7 +39,35 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 20px 0 10px;
+            width: 100%;
+        }
+        
+        /* Responsive utilities */
+        .hide-mobile {
+            display: block;
+        }
+        
+        .show-mobile {
+            display: none;
+        }
+        
+        @media (max-width: 768px) {
+            .hide-mobile {
+                display: none;
+            }
+            
+            .show-mobile {
+                display: block;
+            }
+            
+            .logo {
+                margin-left: 0;
+            }
+            
+            .container {
+                padding: 0 15px;
+            }
         }
         
         /* Header */
@@ -57,6 +85,18 @@
             align-items: center;
             justify-content: space-between;
             padding: 1rem 0;
+            width: 100%;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-left: -1rem;
         }
         
         .logo {
@@ -241,8 +281,10 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
+            width: 100%;
         }
         
+        /* Service Card Styling */
         .service-card {
             background: var(--background);
             border: 2px solid var(--border);
@@ -252,6 +294,11 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            width: 100%;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         
         .service-card::before {
@@ -264,6 +311,12 @@
             background: linear-gradient(135deg, rgba(16, 185, 129, 0.05), rgba(59, 130, 246, 0.05));
             opacity: 0;
             transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        
+        /* Ensure no empty spaces at top of cards */
+        .service-card > *:first-child {
+            margin-top: 0;
         }
         
         .service-card:hover {
@@ -289,6 +342,7 @@
             color: white;
             position: relative;
             z-index: 1;
+            flex-shrink: 0;
         }
         
         .service-title {
@@ -298,6 +352,7 @@
             margin-bottom: 1rem;
             position: relative;
             z-index: 1;
+            margin-top: 0;
         }
         
         .service-description {
@@ -472,24 +527,317 @@
             color: #9CA3AF;
         }
         
-        /* Responsive Design */
+        /* Comprehensive Responsive Design */
+        
+        /* Large Tablets and Small Desktops */
+        @media (max-width: 1024px) {
+            .container {
+                padding: 0 2rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 1.5rem;
+            }
+            
+            .service-card {
+                padding: 2rem;
+            }
+            
+            .hero-title {
+                font-size: clamp(2rem, 4vw, 2.5rem);
+            }
+            
+            .section-title {
+                font-size: clamp(1.8rem, 3.5vw, 2.2rem);
+            }
+        }
+        
+        /* Tablets */
         @media (max-width: 768px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+            
             .nav-menu {
                 display: none;
+            }
+            
+            .hero {
+                padding: 4rem 0;
+            }
+            
+            .hero-content {
+                text-align: center;
+                padding: 0 1rem;
             }
             
             .hero-buttons {
                 flex-direction: column;
                 align-items: center;
+                gap: 1rem;
+            }
+            
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
+            }
+            
+            .services {
+                padding: 3rem 0;
             }
             
             .services-grid {
                 grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .service-card {
+                padding: 1.5rem;
+                margin: 0 0.5rem;
+            }
+            
+            .service-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+                margin-bottom: 1rem;
+            }
+            
+            .service-title {
+                font-size: 1.3rem;
+            }
+            
+            .service-description {
+                font-size: 0.95rem;
+            }
+            
+            .service-features {
+                font-size: 0.9rem;
+            }
+            
+            .service-features li {
+                padding: 0.4rem 0;
+                padding-left: 1.5rem;
+            }
+            
+            .service-cta-btn {
+                width: 100%;
+                padding: 0.875rem 1.5rem;
+                font-size: 0.95rem;
+            }
+            
+            .cta-section {
+                padding: 3rem 0;
             }
             
             .cta-buttons {
                 flex-direction: column;
                 align-items: center;
+                gap: 1rem;
+            }
+            
+            .btn-white,
+            .btn-outline {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+        }
+        
+        /* Mobile Phones */
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 1rem;
+            }
+            
+            .hero {
+                padding: 3rem 0;
+            }
+            
+            .hero-title {
+                font-size: 1.8rem;
+                line-height: 1.2;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+                line-height: 1.5;
+            }
+            
+            .hero-badge {
+                font-size: 0.8rem;
+                padding: 0.5rem 1rem;
+            }
+            
+            .services {
+                padding: 2rem 0;
+            }
+            
+            .section-header {
+                margin-bottom: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.6rem;
+                margin-bottom: 0.75rem;
+            }
+            
+            .section-subtitle {
+                font-size: 1rem;
+                line-height: 1.5;
+            }
+            
+            .service-card {
+                padding: 1.25rem;
+                margin: 0;
+                border-radius: 12px;
+            }
+            
+            .service-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.25rem;
+                margin-bottom: 0.75rem;
+            }
+            
+            .service-title {
+                font-size: 1.2rem;
+                margin-bottom: 0.75rem;
+            }
+            
+            .service-description {
+                font-size: 0.9rem;
+                margin-bottom: 1rem;
+                line-height: 1.5;
+            }
+            
+            .service-features {
+                font-size: 0.85rem;
+                margin-bottom: 1rem;
+            }
+            
+            .service-features li {
+                padding: 0.3rem 0;
+                padding-left: 1.25rem;
+                line-height: 1.4;
+            }
+            
+            .service-cta-btn {
+                padding: 0.75rem 1.25rem;
+                font-size: 0.9rem;
+                margin-top: 1rem;
+            }
+            
+            .cta-section {
+                padding: 2rem 0;
+            }
+            
+            .cta-title {
+                font-size: 1.5rem;
+            }
+            
+            .cta-subtitle {
+                font-size: 0.95rem;
+            }
+            
+            .btn-white,
+            .btn-outline {
+                padding: 0.875rem 1.5rem;
+                font-size: 0.9rem;
+            }
+            
+            .header {
+                padding: 0.75rem 0;
+            }
+            
+            .logo {
+                font-size: 1.1rem;
+            }
+            
+            .logo-icon {
+                width: 30px;
+                height: 30px;
+                font-size: 1rem;
+            }
+        }
+        
+        /* Extra Small Mobile Devices */
+        @media (max-width: 360px) {
+            .container {
+                padding: 0 0.75rem;
+            }
+            
+            .hero-title {
+                font-size: 1.6rem;
+            }
+            
+            .service-card {
+                padding: 1rem;
+            }
+            
+            .service-title {
+                font-size: 1.1rem;
+            }
+            
+            .service-description {
+                font-size: 0.85rem;
+            }
+            
+            .service-features {
+                font-size: 0.8rem;
+            }
+            
+            .service-cta-btn {
+                padding: 0.7rem 1rem;
+                font-size: 0.85rem;
+            }
+        }
+        
+        /* Landscape Mobile Orientation */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .hero {
+                padding: 2rem 0;
+            }
+            
+            .services {
+                padding: 2rem 0;
+            }
+            
+            .service-card {
+                padding: 1.25rem;
+            }
+        }
+        
+        /* High DPI Displays */
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+            .service-icon {
+                border: 1px solid rgba(255, 255, 255, 0.2);
+            }
+        }
+        
+        /* Print Styles */
+        @media print {
+            .header,
+            .hero-buttons,
+            .service-cta-btn,
+            .cta-section,
+            .footer {
+                display: none;
+            }
+            
+            .service-card {
+                break-inside: avoid;
+                border: 1px solid #ccc;
+                box-shadow: none;
             }
         }
     </style>
@@ -548,9 +896,9 @@
                         <i class="fas fa-exclamation-triangle"></i>
                     </div>
                     <h3 class="service-title">Emergency Solar Repairs</h3>
-                    <p class="service-description">24/7 emergency response for urgent solar system failures, storm damage, and critical repairs throughout Georgia.</p>
+                    <p class="service-description">24-48 hour response for urgent solar system failures, storm damage, and critical repairs throughout Georgia.</p>
                     <ul class="service-features">
-                        <li>24/7 emergency response team</li>
+                        <li>24-48 hour response team</li>
                         <li>Storm damage assessment and repair</li>
                         <li>System failure diagnostics</li>
                         <li>Same-day service available</li>
@@ -566,14 +914,14 @@
                         <i class="fas fa-solar-panel"></i>
                     </div>
                     <h3 class="service-title">Panel Replacement & Repair</h3>
-                    <p class="service-description">Professional solar panel replacement, crack repair, and performance restoration services with comprehensive warranties.</p>
+                    <p class="service-description">Professional solar panel replacement and performance restoration services with comprehensive warranties.</p>
                     <ul class="service-features">
                         <li>Individual panel replacement</li>
-                        <li>Micro-crack repair services</li>
                         <li>Performance optimization</li>
-                        <li>Warranty claim processing</li>
-                        <li>Hot spot elimination</li>
                         <li>Panel cleaning and maintenance</li>
+                        <li>Wiring troubleshooting</li>
+                        <li>Installation troubleshooting</li>
+                        <li>System performance testing</li>
                     </ul>
                     <a href="#contact" class="service-cta-btn">Get Panel Quote</a>
                 </div>
@@ -629,10 +977,7 @@
                         <li>Conduit and junction box service</li>
                         <li>Arc fault protection systems</li>
                     </ul>
-                    <div class="service-price">
-                        <div class="price-label">Starting From</div>
-                        <div class="price-amount">$249</div>
-                    </div>
+                    <a href="#contact" class="service-cta-btn">Get Electrical Quote</a>
                 </div>
 
                 <!-- Maintenance Plans -->
@@ -650,10 +995,7 @@
                         <li>Priority emergency service</li>
                         <li>Discounted repair rates</li>
                     </ul>
-                    <div class="service-price">
-                        <div class="price-label">Annual Plan</div>
-                        <div class="price-amount">$399</div>
-                    </div>
+                    <a href="#contact" class="service-cta-btn">Contact Us</a>
                 </div>
             </div>
         </div>
