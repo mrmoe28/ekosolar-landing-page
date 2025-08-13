@@ -192,7 +192,7 @@
         .container {
             max-width: var(--container-max-width);
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 20px 0 5px;
         }
         
         /* ===== HEADER & NAVIGATION ===== */
@@ -224,6 +224,7 @@
             font-weight: var(--font-weight-bold);
             color: var(--solar-orange);
             text-decoration: none;
+            margin-left: -2rem;
         }
         
         .logo-icon {
@@ -1728,6 +1729,14 @@
         @media (max-width: 768px) {
             .nav {
                 justify-content: space-between;
+            }
+            
+            .logo {
+                margin-left: 0;
+            }
+            
+            .container {
+                padding: 0 15px;
             }
             
             .nav-menu {
