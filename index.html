@@ -999,6 +999,17 @@
             }
         }
         
+        @keyframes slideInFromRight {
+            0% {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
         .highlight-icon {
             font-size: 1.5rem;
             width: 40px;
@@ -1369,7 +1380,7 @@
         /* ===== CONTACT SECTION ===== */
         .contact {
             padding: var(--section-padding);
-            background: var(--background);
+            background: #000000;
             position: relative;
             overflow: hidden;
         }
@@ -1412,6 +1423,48 @@
             padding: 40px;
             position: relative;
             z-index: 1;
+            color: #ffffff;
+            animation: slideInFromLeft 1s ease-out 0.5s both;
+        }
+        
+        .contact-info h3 {
+            color: #ffffff;
+            font-size: 2rem;
+            font-weight: var(--font-weight-bold);
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+        }
+        
+        .contact-info p {
+            color: #ffffff;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        
+        .contact-info ul li {
+            color: #ffffff;
+        }
+        
+        .contact .section-title {
+            color: #ffffff;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: var(--font-weight-bold);
+            text-align: center;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+            animation: slideInFromLeft 1.2s ease-out;
+        }
+        
+        .contact .section-subtitle {
+            color: #ffffff;
+            font-size: 1.2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+            animation: slideInFromRight 1.2s ease-out 0.3s both;
         }
         
         .contact-form {
@@ -1424,6 +1477,7 @@
             z-index: 1;
             max-width: 100%;
             min-width: 0;
+            animation: slideInFromRight 1s ease-out 0.7s both;
         }
         
         .contact-form .form-group {
@@ -3087,7 +3141,7 @@
                         </ul>
                     </div>
                     
-                    <div style="margin-top: 40px;">
+                    <div style="margin-top: 40px; color: #ffffff;">
                         <p><strong>Call us:</strong> (404) 551-6532</p>
                         <p><strong>Email:</strong> ekosolarize@gmail.com</p>
                         <p><strong>◉ Service Areas:</strong> Entire state of Georgia</p>

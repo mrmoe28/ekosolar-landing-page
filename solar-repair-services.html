@@ -212,7 +212,7 @@
         /* Services Section */
         .services {
             padding: 80px 0;
-            background: var(--background);
+            background: #000000;
         }
         
         .section-header {
@@ -223,15 +223,18 @@
         .section-title {
             font-size: clamp(2rem, 4vw, 2.5rem);
             font-weight: 700;
-            color: var(--text-primary);
+            color: #ffffff;
             margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
         
         .section-subtitle {
             font-size: 1.125rem;
-            color: var(--text-secondary);
+            color: #ffffff;
             max-width: 600px;
             margin: 0 auto;
+            opacity: 0.9;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
         }
         
         .services-grid {
@@ -325,6 +328,28 @@
             left: 0;
             color: var(--primary-color);
             font-weight: 600;
+        }
+        
+        .service-cta-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .service-cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
+            background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
         }
         
         .service-price {
@@ -532,10 +557,7 @@
                         <li>Insurance claim assistance</li>
                         <li>Temporary power solutions</li>
                     </ul>
-                    <div class="service-price">
-                        <div class="price-label">Starting From</div>
-                        <div class="price-amount">$199</div>
-                    </div>
+                    <a href="#contact" class="service-cta-btn">Get Emergency Quote</a>
                 </div>
 
                 <!-- Panel Replacement & Repair -->
@@ -553,10 +575,7 @@
                         <li>Hot spot elimination</li>
                         <li>Panel cleaning and maintenance</li>
                     </ul>
-                    <div class="service-price">
-                        <div class="price-label">Starting From</div>
-                        <div class="price-amount">$299</div>
-                    </div>
+                    <a href="#contact" class="service-cta-btn">Get Panel Quote</a>
                 </div>
 
                 <!-- Inverter Repair & Replacement -->
@@ -574,10 +593,7 @@
                         <li>Communication system repair</li>
                         <li>Performance monitoring setup</li>
                     </ul>
-                    <div class="service-price">
-                        <div class="price-label">Starting From</div>
-                        <div class="price-amount">$349</div>
-                    </div>
+                    <a href="#contact" class="service-cta-btn">Get Inverter Quote</a>
                 </div>
 
                 <!-- System Diagnostics & Troubleshooting -->
@@ -595,10 +611,7 @@
                         <li>Detailed diagnostic reports</li>
                         <li>Preventive maintenance recommendations</li>
                     </ul>
-                    <div class="service-price">
-                        <div class="price-label">Starting From</div>
-                        <div class="price-amount">$149</div>
-                    </div>
+                    <a href="#contact" class="service-cta-btn">Get Diagnostic Quote</a>
                 </div>
 
                 <!-- Wiring & Electrical Repairs -->
