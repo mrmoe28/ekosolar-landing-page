@@ -900,24 +900,12 @@
         /* ===== REPAIR CTA SECTION ===== */
         .repair-cta-section {
             padding: var(--section-padding);
-            background: linear-gradient(135deg, var(--solar-orange) 0%, #DC2626 100%);
+            background: url('images/slideshow/solar-repair-5.jpg') center/cover no-repeat;
             position: relative;
             overflow: hidden;
-            animation: gradientShift 10s ease infinite;
-            background-size: 200% 200%;
         }
         
-        @keyframes gradientShift {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
-        }
+
         
         .repair-cta-section::before {
             content: '';
@@ -926,19 +914,15 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="repair-grid" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M 30 0 L 0 0 0 30" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23repair-grid)"/></svg>');
-            opacity: 0.4;
-            animation: floatingGrid 20s linear infinite;
+            background: linear-gradient(
+                135deg, 
+                rgba(0, 0, 0, 0.5) 0%, 
+                rgba(0, 0, 0, 0.4) 50%, 
+                rgba(0, 0, 0, 0.6) 100%
+            );
         }
         
-        @keyframes floatingGrid {
-            0% {
-                transform: translate(0, 0);
-            }
-            100% {
-                transform: translate(30px, -30px);
-            }
-        }
+
         
         .repair-cta-content {
             display: grid;
@@ -957,7 +941,7 @@
             font-size: clamp(2rem, 4vw, 2.5rem);
             font-weight: var(--font-weight-bold);
             margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
         }
         
         .repair-cta-subtitle {
@@ -965,7 +949,7 @@
             line-height: 1.6;
             margin-bottom: 2rem;
             opacity: 0.95;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
         }
         
         .repair-highlights {
@@ -978,14 +962,15 @@
             display: flex;
             align-items: center;
             gap: 1rem;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 1rem;
-            border-radius: 10px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.15);
+            padding: 1.2rem;
+            border-radius: 12px;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             animation: slideInFromLeft 0.8s ease-out;
             transition: all 0.3s ease;
             cursor: pointer;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
         }
         
         .highlight-item:nth-child(2) {
@@ -998,8 +983,9 @@
         
         .highlight-item:hover {
             transform: translateX(10px) scale(1.05);
-            background: rgba(255, 255, 255, 0.15);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
         }
         
         @keyframes slideInFromLeft {
@@ -1092,17 +1078,19 @@
         }
         
         .btn-emergency-call {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.15);
             color: white;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(15px);
             animation-delay: 0.3s;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
         }
         
         .btn-emergency-call:hover {
-            background: rgba(255, 255, 255, 0.2);
-            border-color: rgba(255, 255, 255, 0.5);
-            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.6);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
         }
         
         /* ===== SOLAR CALCULATOR ===== */
@@ -3100,8 +3088,8 @@
                     </div>
                     
                     <div style="margin-top: 40px;">
-                        <p><strong>☎ Call us:</strong> (404) 551-6532</p>
-                        <p><strong>✉ Email:</strong> ekosolarize@gmail.com</p>
+                        <p><strong>Call us:</strong> (404) 551-6532</p>
+                        <p><strong>Email:</strong> ekosolarize@gmail.com</p>
                         <p><strong>◉ Service Areas:</strong> Entire state of Georgia</p>
                     </div>
                 </div>
@@ -3188,13 +3176,13 @@
                     <div itemscope itemtype="https://schema.org/LocalBusiness">
                         <p><strong itemprop="name">EkoSolarPros - Solar Installation Georgia</strong></p>
                         <div itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
-                            <p>📍 <span itemprop="streetAddress">123 Solar Street</span></p>
+                            <p><span itemprop="streetAddress">123 Solar Street</span></p>
                             <p><span itemprop="addressLocality">Stone Mountain</span>, <span itemprop="addressRegion">GA</span> <span itemprop="postalCode">30083</span></p>
                         </div>
-                        <p>☎ <span itemprop="telephone">(404) 551-6532</span></p>
-                        <p>✉ <span itemprop="email">ekosolarize@gmail.com</span></p>
+                        <p><span itemprop="telephone">(404) 551-6532</span></p>
+                        <p><span itemprop="email">ekosolarize@gmail.com</span></p>
                         <p>◉ <span itemprop="areaServed">Serving all of Georgia</span></p>
-                        <p>🕒 <span itemprop="openingHours" content="Mo-Fr 08:00-17:00">Mon-Fri: 8AM-5PM</span></p>
+                        <p><span itemprop="openingHours" content="Mo-Fr 08:00-17:00">Mon-Fri: 8AM-5PM</span></p>
                     </div>
                 </div>
             </div>
