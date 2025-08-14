@@ -1,0 +1,33 @@
+[build]
+  publish = "."
+  
+[functions]
+  directory = "netlify/functions"
+  
+# Redirect form submissions to our function
+[[redirects]]
+  from = "/api/submit-form"
+  to = "/.netlify/functions/form-submission-handler"
+  status = 200
+  
+# Handle Netlify Forms webhook
+[[redirects]]
+  from = "/api/form-webhook"
+  to = "/.netlify/functions/form-submission-handler"
+  status = 200
+
+# Email tracking endpoints
+[[redirects]]
+  from = "/api/track-email-open"
+  to = "/.netlify/functions/track-email-open"
+  status = 200
+
+[[redirects]]
+  from = "/api/track-link-click"
+  to = "/.netlify/functions/track-link-click"
+  status = 200
+  
+# Environment variables for production
+[context.production.environment]
+  NODE_ENV = "production"
+  SITE_URL = "https://ekosolarpros.com"
