@@ -118,23 +118,60 @@
     </image:image>
   </url>
 
-  <!-- Future local service pages (placeholder for SEO expansion) -->
+  <!-- Local service pages for major Georgia cities -->
+  <url>
+    <loc>https://ekosolarpros.com/solar-installation-atlanta.html</loc>
+    <lastmod>2025-01-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://ekosolarpros.com/images/atlanta-solar-installation.jpg</image:loc>
+      <image:title>Solar Panel Installation Atlanta Georgia</image:title>
+      <image:caption>Professional solar panel installation services in Atlanta, GA</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://ekosolarpros.com/solar-installation-savannah.html</loc>
+    <lastmod>2025-01-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://ekosolarpros.com/images/savannah-solar-installation.jpg</image:loc>
+      <image:title>Solar Panel Installation Savannah Georgia</image:title>
+      <image:caption>Historic District and coastal solar installation services in Savannah, GA</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- Blog Section -->
+  <url>
+    <loc>https://ekosolarpros.com/blog/</loc>
+    <lastmod>2025-01-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://ekosolarpros.com/images/blog-header-georgia-solar.jpg</image:loc>
+      <image:title>Solar Energy Blog Georgia - Expert Tips and Guides</image:title>
+      <image:caption>Expert solar energy insights, installation guides, and Georgia solar industry news</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- Featured Blog Posts -->
+  <url>
+    <loc>https://ekosolarpros.com/blog/georgia-solar-installation-guide-2025.html</loc>
+    <lastmod>2025-01-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://ekosolarpros.com/images/blog/georgia-solar-guide-2025-featured.jpg</image:loc>
+      <image:title>Complete Guide to Solar Panel Installation in Georgia 2025</image:title>
+      <image:caption>Ultimate guide covering costs, incentives, choosing contractors, and installation process in Georgia</image:caption>
+    </image:image>
+  </url>
+  
   <!-- 
   <url>
-    <loc>https://ekosolarpros.com/solar-installation-atlanta</loc>
-    <lastmod>2025-01-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ekosolarpros.com/solar-installation-savannah</loc>
-    <lastmod>2025-01-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ekosolarpros.com/solar-installation-columbus</loc>
-    <lastmod>2025-01-12</lastmod>
+    <loc>https://ekosolarpros.com/solar-installation-columbus.html</loc>
+    <lastmod>2025-01-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

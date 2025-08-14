@@ -13,6 +13,15 @@ Allow: /#testimonials
 Allow: /#calculator
 Allow: /#system-services
 
+# Local service pages - high priority for SEO
+Allow: /solar-installation-atlanta.html
+Allow: /solar-installation-savannah.html
+
+# Blog content for organic traffic
+Allow: /blog/
+Allow: /blog/index.html
+Allow: /blog/*.html
+
 # Allow all major search engines
 User-agent: Googlebot
 Allow: /
