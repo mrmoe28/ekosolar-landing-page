@@ -206,6 +206,14 @@
             border-radius: 1rem;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             border: 1px solid var(--border);
+            text-align: center;
+        }
+        
+        .card-icon {
+            color: var(--solar-green);
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: center;
         }
         
         .card h4 {
@@ -255,6 +263,13 @@
         
         .contact-item {
             text-align: center;
+        }
+        
+        .contact-icon {
+            color: white;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: center;
         }
         
         .contact-item h3 {
@@ -373,15 +388,43 @@
             
             <div class="grid">
                 <div class="card">
-                    <h4>🌅 Coastal Solar Advantage</h4>
+                    <div class="card-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-label="Coastal solar advantage">
+                            <circle cx="12" cy="12" r="4"/>
+                            <path d="M12 2v2"/>
+                            <path d="M12 20v2"/>
+                            <path d="m4.93 4.93 1.41 1.41"/>
+                            <path d="m17.66 17.66 1.41 1.41"/>
+                            <path d="M2 12h2"/>
+                            <path d="M20 12h2"/>
+                            <path d="m6.34 17.66-1.41 1.41"/>
+                            <path d="m19.07 4.93-1.41 1.41"/>
+                        </svg>
+                    </div>
+                    <h4>Coastal Solar Advantage</h4>
                     <p>Savannah receives 5.1 peak sun hours daily, making it one of Georgia's most productive solar markets.</p>
                 </div>
                 <div class="card">
-                    <h4>🏛️ Historic District Expertise</h4>
+                    <div class="card-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-label="Historic District expertise">
+                            <path d="m3 21 18-18"/>
+                            <path d="M3 7v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7"/>
+                            <path d="M21 7 12 2 3 7"/>
+                        </svg>
+                    </div>
+                    <h4>Historic District Expertise</h4>
                     <p>Special expertise in Historic District solar installations, ensuring compliance with preservation guidelines.</p>
                 </div>
                 <div class="card">
-                    <h4>🌊 Hurricane-Resistant Systems</h4>
+                    <div class="card-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-label="Hurricane-resistant systems">
+                            <path d="M2 6s1.5-2 5-2 5 2 5 2v6s-1.5 2-5 2-5-2-5-2z"/>
+                            <path d="M12 6s1.5-2 5-2 5 2 5 2v6s-1.5 2-5 2-5-2-5-2z"/>
+                            <path d="M2 12s1.5-2 5-2 5 2 5 2"/>
+                            <path d="M12 12s1.5-2 5-2 5 2 5 2"/>
+                        </svg>
+                    </div>
+                    <h4>Hurricane-Resistant Systems</h4>
                     <p>Coastal-rated solar installations designed to withstand Savannah's coastal weather conditions.</p>
                 </div>
             </div>
@@ -438,15 +481,32 @@
             
             <div class="contact-info">
                 <div class="contact-item">
-                    <h3>📞 Call Us Today</h3>
+                    <div class="contact-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-label="Phone">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                        </svg>
+                    </div>
+                    <h3>Call Us Today</h3>
                     <p><a href="tel:404-551-6532" style="color: white; text-decoration: none;">(404) 551-6532</a></p>
                 </div>
                 <div class="contact-item">
-                    <h3>📧 Email Us</h3>
+                    <div class="contact-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-label="Email">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                    </div>
+                    <h3>Email Us</h3>
                     <p><a href="mailto:ekosolarize@gmail.com" style="color: white; text-decoration: none;">ekosolarize@gmail.com</a></p>
                 </div>
                 <div class="contact-item">
-                    <h3>⏰ Business Hours</h3>
+                    <div class="contact-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-label="Business hours">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12,6 12,12 16,14"/>
+                        </svg>
+                    </div>
+                    <h3>Business Hours</h3>
                     <p>Mon-Fri: 8AM-6PM<br>Sat: 9AM-3PM<br>Emergency Service: 24/7</p>
                 </div>
             </div>
