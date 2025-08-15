@@ -141,6 +141,62 @@
             --transition-slow: 0.5s ease;
         }
         
+        /* Fast CSS Animations to replace anime.js */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        /* Animation classes */
+        .animate-fade-in-up {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+        
+        .animate-slide-in-left {
+            animation: slideInLeft 0.5s ease-out forwards;
+        }
+        
+        .animate-slide-in-right {
+            animation: slideInRight 0.5s ease-out forwards;
+        }
+        
+        .animate-scale-in {
+            animation: scaleIn 0.4s ease-out forwards;
+        }
+        
+        /* Stagger delays for multiple elements */
+        .stagger-1 { animation-delay: 0.1s; }
+        .stagger-2 { animation-delay: 0.2s; }
+        .stagger-3 { animation-delay: 0.3s; }
+        .stagger-4 { animation-delay: 0.4s; }
+        .stagger-5 { animation-delay: 0.5s; }
+        .stagger-6 { animation-delay: 0.6s; }
+        }
+        
         .dark {
             --background: oklch(0.1822 0 0);
             --foreground: oklch(0.9288 0.0126 255.5078);
@@ -192,7 +248,7 @@
         .container {
             max-width: var(--container-max-width);
             margin: 0 auto;
-            padding: 0 20px 0 10px;
+            padding: 0 20px 0 5px;
         }
         
         /* ===== HEADER & NAVIGATION ===== */
@@ -224,7 +280,7 @@
             font-weight: var(--font-weight-bold);
             color: var(--solar-orange);
             text-decoration: none;
-            margin-left: -10px;
+            margin-left: -40px;
         }
         
         .logo-icon {
@@ -2354,7 +2410,7 @@
       "email": "ekosolarize@gmail.com",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "123 Solar Street",
+        "streetAddress": "Georgia Service Area",
         "addressLocality": "Stone Mountain",
         "addressRegion": "GA",
         "postalCode": "30083",
@@ -2597,7 +2653,6 @@
     </script>
     
     <!-- Defer external scripts for better performance -->
-    <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.min.js" defer></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
 </head>
 <body>
@@ -3247,7 +3302,7 @@
                     <div itemscope itemtype="https://schema.org/LocalBusiness">
                         <p><strong itemprop="name">EkoSolarPros - Solar Installation Georgia</strong></p>
                         <div itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
-                            <p><span itemprop="streetAddress">123 Solar Street</span></p>
+                            <p><span itemprop="streetAddress">Georgia Service Area</span></p>
                             <p><span itemprop="addressLocality">Stone Mountain</span>, <span itemprop="addressRegion">GA</span> <span itemprop="postalCode">30083</span></p>
                         </div>
                         <p><span itemprop="telephone">(404) 551-6532</span></p>
@@ -4088,206 +4143,58 @@
             form.setAttribute('aria-label', 'Solar consultation request form');
         });
 
-        // Enhanced System Services Animations
-        // Wait for both DOM and anime.js to load
+        // Fast CSS-only animations - no external dependencies
         function initializeAnimations() {
-            if (typeof anime === 'undefined') {
-                setTimeout(initializeAnimations, 100);
-                return;
-            }
-
             // Respect reduced motion preferences
             const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
             if (prefersReducedMotion) {
                 return; // Skip animations for users who prefer reduced motion
             }
             
-            // Animate system services cards on page load
-            const systemServiceCards = document.querySelectorAll('.service-card-advanced');
+            // Add CSS animation classes to elements
+            const elements = document.querySelectorAll('.service-card, .testimonial-card, .feature-card');
+            elements.forEach((el, index) => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                setTimeout(() => {
+                    el.classList.add('animate-fade-in-up');
+                }, index * 100);
+            });
             
-            if (systemServiceCards.length > 0) {
-                // Initial card entrance animation with enhanced effects
-                anime({
-                    targets: '.service-card-advanced',
-                    opacity: [0, 1],
-                    translateY: [80, 0],
-                    scale: [0.85, 1],
-                    rotateX: [15, 0],
-                    delay: anime.stagger(300, {start: 500}),
-                    duration: 1000,
-                    easing: 'easeOutExpo'
-                });
+            // Simple CSS animations for service cards
+            const systemServiceCards = document.querySelectorAll('.service-card-advanced');
+            systemServiceCards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                setTimeout(() => {
+                    card.classList.add('animate-fade-in-up', `stagger-${Math.min(index + 1, 6)}`);
+                }, 200 + (index * 100));
+            });
 
-                // Enhanced icon animations with 3D effects
-                anime({
-                    targets: '.service-icon-advanced',
-                    opacity: [0, 1],
-                    scale: [0.3, 1],
-                    rotate: [180, 0],
-                    delay: anime.stagger(300, {start: 700}),
-                    duration: 1200,
-                    easing: 'easeOutElastic(1, .6)'
-                });
+            // Simple CSS-based animations for service elements
+            const serviceElements = document.querySelectorAll('.service-title-advanced, .service-description-advanced, .service-cta-advanced');
+            serviceElements.forEach((el, index) => {
+                el.style.opacity = '0';
+                setTimeout(() => {
+                    el.classList.add('animate-fade-in');
+                }, 300 + (index * 50));
+            });
 
-                // Animate titles with letter-by-letter reveal
-                systemServiceCards.forEach((card, index) => {
-                    const title = card.querySelector('.service-title-advanced');
-                    const description = card.querySelector('.service-description-advanced');
-                    const features = card.querySelectorAll('.service-features-advanced li');
-                    const cta = card.querySelector('.service-cta-advanced');
-                    
-                    // Title animation
-                    anime({
-                        targets: title,
-                        opacity: [0, 1],
-                        translateY: [30, 0],
-                        delay: 900 + (index * 300),
-                        duration: 800,
-                        easing: 'easeOutExpo'
-                    });
-                    
-                    // Description animation
-                    anime({
-                        targets: description,
-                        opacity: [0, 1],
-                        translateY: [20, 0],
-                        delay: 1100 + (index * 300),
-                        duration: 600,
-                        easing: 'easeOutQuart'
-                    });
-                    
-                    // Feature list animations with enhanced stagger
-                    anime({
-                        targets: features,
-                        opacity: [0, 1],
-                        translateX: [-40, 0],
-                        scale: [0.8, 1],
-                        delay: anime.stagger(120, {start: 1300 + (index * 300)}),
-                        duration: 700,
-                        easing: 'easeOutExpo'
-                    });
-                    
-                    // CTA button animation
-                    anime({
-                        targets: cta,
-                        opacity: [0, 1],
-                        translateY: [20, 0],
-                        scale: [0.9, 1],
-                        delay: 1800 + (index * 300),
-                        duration: 600,
-                        easing: 'easeOutBack'
-                    });
+            // Simple CSS hover effects - no external dependencies
+            const serviceCards = document.querySelectorAll('.service-card-advanced');
+            serviceCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                    this.style.transition = 'transform 0.3s ease';
                 });
-
-                // Enhanced hover animations with micro-interactions
-                systemServiceCards.forEach(card => {
-                    card.addEventListener('mouseenter', function() {
-                        if (window.innerWidth > 768) {
-                            const icon = this.querySelector('.service-icon-advanced');
-                            const title = this.querySelector('.service-title-advanced');
-                            const features = this.querySelectorAll('.service-features-advanced li');
-                            const cta = this.querySelector('.service-cta-advanced');
-                            
-                            // Icon hover animation
-                            anime({
-                                targets: icon,
-                                rotate: '+=12',
-                                scale: [1, 1.08, 1],
-                                duration: 600,
-                                easing: 'easeOutElastic(1, .6)'
-                            });
-                            
-                            // Title bounce effect
-                            anime({
-                                targets: title,
-                                translateY: [0, -3, 0],
-                                duration: 400,
-                                easing: 'easeOutQuad'
-                            });
-                            
-                            // Feature items slide effect
-                            anime({
-                                targets: features,
-                                translateX: [0, 5, 0],
-                                delay: anime.stagger(50),
-                                duration: 300,
-                                easing: 'easeOutQuad'
-                            });
-                            
-                            // CTA button pulse effect
-                            anime({
-                                targets: cta,
-                                scale: [1, 1.05, 1],
-                                duration: 400,
-                                easing: 'easeOutElastic(1, .8)'
-                            });
-                        }
-                    });
-                    
-                    // Mouse leave animation
-                    card.addEventListener('mouseleave', function() {
-                        if (window.innerWidth > 768) {
-                            const features = this.querySelectorAll('.service-features-advanced li');
-                            
-                            // Reset feature items
-                            anime({
-                                targets: features,
-                                translateX: [5, 0],
-                                delay: anime.stagger(30),
-                                duration: 200,
-                                easing: 'easeOutQuad'
-                            });
-                        }
-                    });
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
                 });
-            }
+            });
 
-            // Intersection Observer for enhanced scroll animations
-            const systemServicesSection = document.querySelector('#system-services');
-            if (systemServicesSection && typeof anime !== 'undefined') {
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting && entry.intersectionRatio > 0.3) {
-                            // Additional border glow animation
-                            anime({
-                                targets: '.system-services',
-                                boxShadow: [
-                                    'inset 0 3px 0 0 var(--solar-orange), inset 0 -3px 0 0 var(--solar-orange)',
-                                    'inset 0 3px 0 0 rgba(234, 88, 12, 0.6), inset 0 -3px 0 0 rgba(234, 88, 12, 0.6)',
-                                    'inset 0 3px 0 0 var(--solar-orange), inset 0 -3px 0 0 var(--solar-orange)'
-                                ],
-                                duration: 2000,
-                                easing: 'easeInOutQuad'
-                            });
-                            
-                            // Section title animation
-                            anime({
-                                targets: '.system-services .section-title',
-                                opacity: [0, 1],
-                                translateY: [40, 0],
-                                scale: [0.9, 1],
-                                duration: 800,
-                                easing: 'easeOutExpo'
-                            });
-                            
-                            // Section subtitle animation
-                            anime({
-                                targets: '.system-services .section-subtitle',
-                                opacity: [0, 1],
-                                translateY: [30, 0],
-                                delay: 200,
-                                duration: 600,
-                                easing: 'easeOutQuart'
-                            });
-                        }
-                    });
-                }, { threshold: 0.3 });
-                
-                observer.observe(systemServicesSection);
-            }
         }
-
-        // Initialize animations when DOM is loaded
+        
+        // Initialize animations when DOM is ready
         document.addEventListener('DOMContentLoaded', initializeAnimations);
 
         // Lazy load images for better performance

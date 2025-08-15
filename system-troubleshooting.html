@@ -1203,8 +1203,7 @@
         </div>
     </section>
 
-    <!-- Anime.js for animations -->
-    <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.min.js"></script>
+    <!-- Native CSS animations - no external dependencies -->
     
     <script>
         // Calendar functionality
@@ -1448,22 +1447,29 @@
             }
 
             animateHero() {
-                anime({
-                    targets: '.hero-title',
-                    opacity: [0, 1],
-                    translateY: [50, 0],
-                    duration: 1000,
-                    easing: 'easeOutExpo'
-                });
-
-                anime({
-                    targets: '.hero-subtitle',
-                    opacity: [0, 1],
-                    translateY: [30, 0],
-                    delay: 300,
-                    duration: 800,
-                    easing: 'easeOutExpo'
-                });
+                // Simple CSS animations without external dependencies
+                const heroTitle = document.querySelector('.hero-title');
+                const heroSubtitle = document.querySelector('.hero-subtitle');
+                
+                if (heroTitle) {
+                    heroTitle.style.opacity = '0';
+                    heroTitle.style.transform = 'translateY(50px)';
+                    setTimeout(() => {
+                        heroTitle.style.transition = 'opacity 1s ease, transform 1s ease';
+                        heroTitle.style.opacity = '1';
+                        heroTitle.style.transform = 'translateY(0)';
+                    }, 100);
+                }
+                
+                if (heroSubtitle) {
+                    heroSubtitle.style.opacity = '0';
+                    heroSubtitle.style.transform = 'translateY(30px)';
+                    setTimeout(() => {
+                        heroSubtitle.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                        heroSubtitle.style.opacity = '1';
+                        heroSubtitle.style.transform = 'translateY(0)';
+                    }, 400);
+                }
             }
 
             animateOnScroll() {
@@ -1479,14 +1485,16 @@
                     observer.observe(el);
                 });
 
-                // Animate diagnostic cards with stagger
-                anime({
-                    targets: '.diagnostic-card',
-                    opacity: [0, 1],
-                    translateY: [40, 0],
-                    delay: anime.stagger(200),
-                    duration: 800,
-                    easing: 'easeOutExpo'
+                // Simple staggered animation for diagnostic cards
+                const diagnosticCards = document.querySelectorAll('.diagnostic-card');
+                diagnosticCards.forEach((card, index) => {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(40px)';
+                    setTimeout(() => {
+                        card.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, 200 * index);
                 });
             }
         }
