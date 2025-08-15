@@ -3631,8 +3631,15 @@
             const navLinks = document.querySelectorAll('.nav-link');
             navLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    
+                    // Allow external links (like blog) to work normally
+                    if (href.includes('.html') || href.includes('http')) {
+                        return; // Don't prevent default for external links
+                    }
+                    
                     e.preventDefault();
-                    const targetId = this.getAttribute('href').substring(1);
+                    const targetId = href.substring(1);
                     const targetSection = document.getElementById(targetId);
                     
                     if (targetSection) {
