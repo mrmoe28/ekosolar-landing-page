@@ -49,6 +49,7 @@ Disallow: /404
 Disallow: /*.pdf$
 
 # Priority pages for immediate crawling
+Allow: /solar-installation-stone-mountain.html
 Allow: /solar-installation-atlanta.html
 Allow: /solar-installation-savannah.html
 Allow: /solar-installation-columbus.html
