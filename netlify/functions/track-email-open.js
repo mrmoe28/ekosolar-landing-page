@@ -1,5 +1,3 @@
-const EmailAnalyticsService = require('../../lib/email-analytics');
-
 exports.handler = async (event, context) => {
   // Only accept GET requests
   if (event.httpMethod !== 'GET') {
@@ -12,24 +10,14 @@ exports.handler = async (event, context) => {
   try {
     const trackingId = event.queryStringParameters?.id;
     
-    if (!trackingId) {
-      return {
-        statusCode: 400,
-        body: 'Missing tracking ID'
-      };
-    }
-
-    // Initialize analytics service
-    const analytics = new EmailAnalyticsService();
-    
-    // Get client information
+    // Get client information for simple logging
     const userAgent = event.headers['user-agent'] || '';
     const ipAddress = event.headers['x-forwarded-for'] || event.headers['client-ip'] || 'unknown';
     
-    // Record the email open
-    const record = analytics.recordEmailOpen(trackingId, userAgent, ipAddress);
-    
-    console.log(`📧 Email opened: ${trackingId} from ${ipAddress}`);
+    // Simple console logging (can be enhanced later)
+    if (trackingId) {
+      console.log(`📧 Email opened: ${trackingId} from ${ipAddress} (${userAgent.substring(0, 50)})`);
+    }
     
     // Return a 1x1 transparent pixel
     const pixel = Buffer.from(
@@ -51,9 +39,9 @@ exports.handler = async (event, context) => {
     };
 
   } catch (error) {
-    console.error('Error tracking email open:', error);
+    console.error('Error in email tracking:', error);
     
-    // Still return a pixel even if tracking fails
+    // Always return a pixel even if tracking fails
     const pixel = Buffer.from(
       'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==',
       'base64'

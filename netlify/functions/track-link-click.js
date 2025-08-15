@@ -1,5 +1,3 @@
-const EmailAnalyticsService = require('../../lib/email-analytics');
-
 exports.handler = async (event, context) => {
   // Only accept GET requests
   if (event.httpMethod !== 'GET') {
@@ -12,24 +10,21 @@ exports.handler = async (event, context) => {
   try {
     const { id: trackingId, url: originalUrl, link: linkName } = event.queryStringParameters || {};
     
-    if (!trackingId || !originalUrl) {
+    if (!originalUrl) {
       return {
         statusCode: 400,
-        body: 'Missing required parameters'
+        body: 'Missing URL parameter'
       };
     }
 
-    // Initialize analytics service
-    const analytics = new EmailAnalyticsService();
-    
-    // Get client information
+    // Get client information for simple logging
     const userAgent = event.headers['user-agent'] || '';
     const ipAddress = event.headers['x-forwarded-for'] || event.headers['client-ip'] || 'unknown';
     
-    // Record the link click
-    const record = analytics.recordLinkClick(trackingId, userAgent, ipAddress, linkName || 'unknown');
-    
-    console.log(`🔗 Link clicked: ${linkName} by ${trackingId} from ${ipAddress}`);
+    // Simple console logging (can be enhanced later)
+    if (trackingId) {
+      console.log(`🔗 Link clicked: ${linkName || 'unknown'} by ${trackingId} from ${ipAddress}`);
+    }
     
     // Decode the original URL
     const decodedUrl = decodeURIComponent(originalUrl);
