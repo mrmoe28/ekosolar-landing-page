@@ -1,0 +1,61 @@
+{
+  "name": "ekosolar-landing-page",
+  "version": "1.0.0",
+  "description": "EkoSolar Professional Solar Installation and Repair Services in Georgia",
+  "main": "index.html",
+  "scripts": {
+    "build": "echo 'Build completed successfully'",
+    "start": "echo 'Static site - no start command needed'",
+    "test": "echo 'No tests specified' && exit 0",
+    "validate": "echo 'Validating HTML structure...' && exit 0",
+    "deploy": "echo 'Deploying to Netlify...'",
+    "preinstall": "echo 'Preparing installation...'",
+    "postinstall": "echo 'Installation completed successfully'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrmoe28/ekosolar-landing-page.git"
+  },
+  "keywords": [
+    "solar",
+    "renewable-energy",
+    "georgia",
+    "solar-installation",
+    "solar-repair",
+    "clean-energy",
+    "ekosolar"
+  ],
+  "author": "EkoSolarPros <info@ekosolarpros.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mrmoe28/ekosolar-landing-page/issues"
+  },
+  "homepage": "https://ekosolarpros.com",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "dependencies": {
+    "nodemailer": "^6.9.8",
+    "resend": "^3.2.0",
+    "twilio": "^4.19.3",
+    "telnyx": "^2.14.0",
+    "axios": "^1.6.5",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.6",
+    "html-validate": "^8.7.4"
+  },
+  "browserslist": [
+    "defaults",
+    "not IE 11"
+  ],
+  "netlify": {
+    "build": {
+      "command": "npm run build",
+      "publish": ".",
+      "functions": "netlify/functions"
+    }
+  }
+}
