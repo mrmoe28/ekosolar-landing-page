@@ -629,7 +629,7 @@
                 
                 if (response.ok) {
                     // Show success message
-                    showFormMessage('Thank you! Your solar consultation request has been automatically sent to ekosolarize@gmail.com. We\'ll contact you within 24 hours to schedule your free consultation.', 'success');
+                    showFormMessage('Thank you! Your solar consultation request has been automatically sent to ekosolarize@gmail.com. We\'ll contact you within 24 hours to schedule your consultation.', 'success');
                     
                     // Reset form after success
                     e.target.reset();
