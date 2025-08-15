@@ -878,7 +878,7 @@
         }
         
         .service-card {
-            background: var(--card);
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
             border: 1px solid var(--border);
             border-radius: var(--border-radius);
             padding: 40px 30px;
@@ -889,27 +889,6 @@
             overflow: hidden;
             position: relative;
             z-index: 2;
-            min-height: 400px;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-        
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.6);
-            z-index: 1;
-        }
-        
-        .service-card > * {
-            position: relative;
-            z-index: 2;
-            color: white;
         }
         
         .service-card:hover {
@@ -918,18 +897,25 @@
             border-color: var(--solar-orange);
         }
         
+        .service-thumbnail {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
         .service-icon {
             width: 80px;
             height: 80px;
-            background: rgba(255, 255, 255, 0.9);
+            background: linear-gradient(135deg, var(--solar-yellow), var(--solar-orange));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 25px;
             font-size: 2rem;
-            color: var(--solar-orange);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            color: white;
         }
         
         .service-title {
@@ -3013,7 +2999,8 @@
             </div>
             
             <div class="services-grid">
-                <div class="service-card" onclick="toggleService(this)" style="background-image: url('images/slideshow/solar-installation-1.jpg');"
+                <div class="service-card" onclick="toggleService(this)">
+                    <img src="images/slideshow/solar-installation-1.jpg" alt="Residential solar panel installation Georgia certified technicians installing rooftop solar system" class="service-thumbnail" loading="lazy">
                     <div class="service-icon">⌂</div>
                     <h3 class="service-title">Professional Solar Panel Installation</h3>
                     <p class="service-description">Expert residential and commercial solar panel installation in Georgia with premium equipment, 25-year warranty, and professional certification.</p>
@@ -3026,7 +3013,8 @@
                     </ul>
                 </div>
                 
-                <div class="service-card" onclick="toggleService(this)" style="background-image: url('images/slideshow/solar-maintenance-3.jpg');"
+                <div class="service-card" onclick="toggleService(this)">
+                    <img src="images/slideshow/solar-maintenance-3.jpg" alt="Solar panel repair and maintenance Georgia technician troubleshooting and servicing residential solar installation near Stone Mountain" class="service-thumbnail" loading="lazy">
                     <div class="service-icon">⚙</div>
                     <h3 class="service-title">Solar Maintenance & System Optimization Services</h3>
                     <p class="service-description">Comprehensive solar system maintenance and optimization programs including diagnostics, preventive maintenance, and inverter troubleshooting to ensure optimal performance and longevity of your Georgia solar installation.</p>
@@ -3041,7 +3029,8 @@
                     </ul>
                 </div>
                 
-                <div class="service-card" onclick="toggleService(this)" style="background-image: url('images/slideshow/solar-technician-9.jpg');"
+                <div class="service-card" onclick="toggleService(this)">
+                    <img src="images/slideshow/solar-technician-9.jpg" alt="Solar energy consultation and repair assessment Georgia expert analyzing system performance and troubleshooting issues" class="service-thumbnail" loading="lazy">
                     <div class="service-icon">◉</div>
                     <h3 class="service-title">Solar Energy Consultation</h3>
                     <p class="service-description">Free solar energy consultation and analysis to optimize your energy usage and maximize solar savings potential for Georgia homeowners.</p>
