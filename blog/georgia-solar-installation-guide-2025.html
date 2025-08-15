@@ -44,13 +44,14 @@
         }
         
         :root {
-            --background: oklch(0.9911 0 0);
-            --foreground: oklch(0.2046 0 0);
+            --background: #1a1a1a;
+            --foreground: #ffffff;
             --solar-amber: #F59E0B;
             --solar-orange: #EA580C;
             --solar-green: #10B981;
-            --muted: oklch(0.9461 0 0);
-            --border: oklch(0.9037 0 0);
+            --muted: #2d2d2d;
+            --border: #404040;
+            --card-bg: rgba(45, 45, 45, 0.9);
         }
         
         body {
@@ -58,6 +59,35 @@
             line-height: 1.6;
             color: var(--foreground);
             background: var(--background);
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        /* Translucent Background Images */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('../images/slideshow/solar-installation-1.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            opacity: 0.1;
+            z-index: -2;
+        }
+        
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(245, 158, 11, 0.05) 0%, rgba(234, 88, 12, 0.05) 50%, rgba(26, 26, 26, 0.8) 100%);
+            z-index: -1;
         }
         
         .container {
@@ -68,12 +98,13 @@
         
         /* Header */
         .header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border);
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--solar-orange);
             position: sticky;
             top: 0;
             z-index: 100;
+            box-shadow: 0 4px 20px rgba(234, 88, 12, 0.3);
         }
         
         .nav {
@@ -115,9 +146,25 @@
         
         /* Article Header */
         .article-header {
-            background: linear-gradient(135deg, var(--solar-amber) 0%, var(--solar-orange) 100%);
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.9) 0%, rgba(234, 88, 12, 0.9) 100%);
             color: white;
-            padding: 4rem 0;
+            padding: 6rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .article-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('../images/slideshow/solar-panels-roof-2.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+            z-index: -1;
         }
         
         .article-meta {
@@ -143,17 +190,27 @@
         
         /* Article Content */
         .article-content {
-            padding: 4rem 0;
+            padding: 6rem 0;
+            position: relative;
         }
         
         .content {
             font-size: 1.1rem;
             line-height: 1.8;
+            background: var(--card-bg);
+            padding: 3rem;
+            border-radius: 1rem;
+            border: 1px solid var(--solar-orange);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
         }
         
         .content h2 {
             font-size: 2rem;
-            color: var(--solar-orange);
+            background: linear-gradient(135deg, var(--solar-amber), var(--solar-orange));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin: 3rem 0 1.5rem 0;
             border-bottom: 3px solid var(--solar-amber);
             padding-bottom: 0.5rem;
@@ -161,7 +218,7 @@
         
         .content h3 {
             font-size: 1.5rem;
-            color: var(--solar-green);
+            color: var(--solar-amber);
             margin: 2rem 0 1rem 0;
         }
         
@@ -178,20 +235,23 @@
         }
         
         .highlight-box {
-            background: var(--muted);
+            background: rgba(245, 158, 11, 0.1);
             border-left: 4px solid var(--solar-orange);
             padding: 2rem;
             margin: 2rem 0;
-            border-radius: 0.5rem;
+            border-radius: 0.8rem;
+            border: 1px solid var(--border);
+            backdrop-filter: blur(10px);
         }
         
         .cta-box {
-            background: var(--solar-green);
+            background: linear-gradient(135deg, var(--solar-amber), var(--solar-orange));
             color: white;
             padding: 2rem;
             border-radius: 1rem;
             text-align: center;
             margin: 3rem 0;
+            box-shadow: 0 8px 25px rgba(234, 88, 12, 0.4);
         }
         
         .cta-box h3 {
@@ -213,17 +273,22 @@
         
         /* Table of Contents */
         .toc {
-            background: white;
-            border: 1px solid var(--border);
+            background: var(--card-bg);
+            border: 1px solid var(--solar-orange);
             border-radius: 1rem;
             padding: 2rem;
             margin: 2rem 0;
             position: sticky;
             top: 100px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
         }
         
         .toc h3 {
-            color: var(--solar-orange);
+            background: linear-gradient(135deg, var(--solar-amber), var(--solar-orange));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 1rem;
         }
         
@@ -233,39 +298,20 @@
         }
         
         .toc a {
-            color: var(--foreground);
+            color: rgba(255, 255, 255, 0.9);
             text-decoration: none;
             display: block;
             padding: 0.5rem 0;
             border-bottom: 1px solid var(--border);
+            transition: all 0.3s ease;
         }
         
         .toc a:hover {
             color: var(--solar-orange);
         }
         
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav-menu {
-                display: none;
-            }
-            
-            .article-title {
-                font-size: 2rem;
-            }
-            
-            .content h2 {
-                font-size: 1.5rem;
-            }
-            
-            .container {
-                padding: 0 15px;
-            }
-            
-            .toc {
-                position: static;
-            }
-        }
+        /* Animations */
+        @keyframes glow {\n            0%, 100% { box-shadow: 0 0 20px rgba(234, 88, 12, 0.3); }\n            50% { box-shadow: 0 0 40px rgba(234, 88, 12, 0.6); }\n        }\n        \n        @keyframes fadeInUp {\n            from {\n                opacity: 0;\n                transform: translateY(30px);\n            }\n            to {\n                opacity: 1;\n                transform: translateY(0);\n            }\n        }\n        \n        .article-header {\n            animation: glow 4s ease-in-out infinite;\n        }\n        \n        .content {\n            animation: fadeInUp 0.8s ease-out;\n        }\n        \n        .toc {\n            animation: fadeInUp 1s ease-out;\n        }\n        \n        /* Responsive */\n        @media (max-width: 768px) {\n            .nav-menu {\n                display: none;\n            }\n            \n            .article-title {\n                font-size: 2rem;\n            }\n            \n            .content h2 {\n                font-size: 1.5rem;\n            }\n            \n            .container {\n                padding: 0 15px;\n            }\n            \n            .toc {\n                position: static;\n            }\n            \n            body::before {\n                background-attachment: scroll;\n            }\n        }
     </style>
 
     <!-- Structured Data for Article -->

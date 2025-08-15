@@ -851,6 +851,8 @@
         .section-header {
             text-align: center;
             margin-bottom: 60px;
+            position: relative;
+            z-index: 3;
         }
         
         .section-title {
@@ -1174,6 +1176,44 @@
             overflow: hidden;
         }
         
+        /* Calculator Background Slideshow */
+        .calculator-slideshow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+        
+        .calculator-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+        }
+        
+        .calculator-slide.active {
+            opacity: 1;
+        }
+        
+        .calculator-slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.75);
+            z-index: 1;
+        }
+        
         /* Energy flow line animations for calculator */
         .calculator::before {
             content: '';
@@ -1188,6 +1228,7 @@
             background-size: 100px 100px;
             opacity: 0.1;
             animation: energyFlow 20s linear infinite;
+            z-index: 2;
         }
         
         @keyframes energyFlow {
@@ -1207,7 +1248,7 @@
             margin: 0 auto;
             box-shadow: var(--shadow-lg);
             position: relative;
-            z-index: 1;
+            z-index: 3;
         }
         
         .calculator-form {
@@ -3030,7 +3071,7 @@
                 </div>
                 
                 <div class="service-card" onclick="toggleService(this)">
-                    <img src="images/slideshow/solar-technician-9.jpg" alt="Solar energy consultation and repair assessment Georgia expert analyzing system performance and troubleshooting issues" class="service-thumbnail" loading="lazy">
+                    <img src="images/slideshow/solar-panels-roof-2.jpg" alt="Rooftop solar panels installation consultation Georgia expert system assessment and energy analysis" class="service-thumbnail" loading="lazy">
                     <div class="service-icon">◉</div>
                     <h3 class="service-title">Solar Energy Consultation</h3>
                     <p class="service-description">Free solar energy consultation and analysis to optimize your energy usage and maximize solar savings potential for Georgia homeowners.</p>
@@ -3084,6 +3125,14 @@
 
     <!-- Solar Calculator Section -->
     <section id="calculator" class="calculator">
+        <!-- Background Slideshow -->
+        <div class="calculator-slideshow">
+            <div class="calculator-slide active" style="background-image: url('images/slideshow/solar-panels-roof-2.jpg');"></div>
+            <div class="calculator-slide" style="background-image: url('images/slideshow/solar-commercial-4.jpg');"></div>
+            <div class="calculator-slide" style="background-image: url('images/slideshow/solar-diagnostics-7.jpg');"></div>
+            <div class="calculator-slide" style="background-image: url('images/slideshow/solar-installation-1.jpg');"></div>
+        </div>
+        
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Solar Savings Calculator</h2>
@@ -3662,6 +3711,7 @@
             // Initialize animations and counters
             initializeAnimations();
             initializeCalculator();
+            initializeCalculatorSlideshow();
             initializeTestimonials();
             initializeContactForm();
         });
@@ -3752,6 +3802,26 @@
             
             // Toggle current card
             card.classList.toggle('expanded');
+        }
+        
+        // ===== CALCULATOR SLIDESHOW FUNCTIONALITY =====
+        function initializeCalculatorSlideshow() {
+            const slides = document.querySelectorAll('.calculator-slide');
+            let currentSlide = 0;
+            
+            function showNextSlide() {
+                // Remove active class from current slide
+                slides[currentSlide].classList.remove('active');
+                
+                // Move to next slide (loop back to 0 when reaching the end)
+                currentSlide = (currentSlide + 1) % slides.length;
+                
+                // Add active class to new slide
+                slides[currentSlide].classList.add('active');
+            }
+            
+            // Change slide every 5 seconds
+            setInterval(showNextSlide, 5000);
         }
         
         // ===== SOLAR CALCULATOR FUNCTIONALITY =====
