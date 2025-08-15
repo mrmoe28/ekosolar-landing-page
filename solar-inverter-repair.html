@@ -968,7 +968,7 @@
                 <div class="diagnostic-text">
                     <h2>Advanced Inverter Diagnostic Services</h2>
                     <p>Our comprehensive inverter diagnostic services use state-of-the-art testing equipment and certified technicians to identify and resolve any inverter issues quickly and effectively.</p>
-                    <a href="tel:4045516532" class="btn-primary">Schedule Diagnostic Service</a>
+                    <button id="openDiagnosticForm" class="btn-primary">Start Diagnostic Assessment</button>
                 </div>
                 <div class="diagnostic-features">
                     <h3>Diagnostic Testing Includes:</h3>
@@ -1109,6 +1109,747 @@
                 });
             });
         });
+
+        // Diagnostic Form Modal Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('diagnosticModal');
+            const openBtn = document.getElementById('openDiagnosticForm');
+            const closeBtn = document.querySelector('.close-modal');
+            const form = document.getElementById('diagnosticForm');
+            const steps = document.querySelectorAll('.form-step');
+            const nextBtns = document.querySelectorAll('.next-step');
+            const prevBtns = document.querySelectorAll('.prev-step');
+            const progressBar = document.querySelector('.progress-fill');
+            const stepNumbers = document.querySelectorAll('.step-number');
+            let currentStep = 0;
+
+            // Open modal
+            openBtn.addEventListener('click', function() {
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            });
+
+            // Close modal
+            closeBtn.addEventListener('click', function() {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            });
+
+            // Close modal when clicking outside
+            window.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+
+            // Show specific step
+            function showStep(n) {
+                steps.forEach((step, index) => {
+                    step.style.display = index === n ? 'block' : 'none';
+                });
+                
+                // Update progress bar
+                const progress = ((n + 1) / steps.length) * 100;
+                progressBar.style.width = progress + '%';
+
+                // Update step indicators
+                stepNumbers.forEach((step, index) => {
+                    if (index <= n) {
+                        step.classList.add('active');
+                    } else {
+                        step.classList.remove('active');
+                    }
+                });
+            }
+
+            // Next step buttons
+            nextBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    if (currentStep < steps.length - 1) {
+                        currentStep++;
+                        showStep(currentStep);
+                    }
+                });
+            });
+
+            // Previous step buttons
+            prevBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    if (currentStep > 0) {
+                        currentStep--;
+                        showStep(currentStep);
+                    }
+                });
+            });
+
+            // File upload preview
+            document.getElementById('photoUpload').addEventListener('change', function(e) {
+                const files = e.target.files;
+                const preview = document.getElementById('photoPreview');
+                preview.innerHTML = '';
+
+                for (let i = 0; i < files.length; i++) {
+                    const file = files[i];
+                    if (file.type.startsWith('image/')) {
+                        const reader = new FileReader();
+                        reader.onload = function(e) {
+                            const img = document.createElement('img');
+                            img.src = e.target.result;
+                            img.style.width = '100px';
+                            img.style.height = '100px';
+                            img.style.objectFit = 'cover';
+                            img.style.margin = '5px';
+                            img.style.borderRadius = '8px';
+                            preview.appendChild(img);
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                }
+            });
+
+            // Form submission
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Collect form data
+                const formData = new FormData(form);
+                
+                // Simulate form submission (replace with actual endpoint)
+                document.getElementById('submitBtn').textContent = 'Submitting...';
+                document.getElementById('submitBtn').disabled = true;
+                
+                setTimeout(() => {
+                    alert('Thank you! Your diagnostic request has been submitted. We\'ll contact you within 2 hours.');
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                    form.reset();
+                    currentStep = 0;
+                    showStep(0);
+                    document.getElementById('submitBtn').textContent = 'Submit Assessment Request';
+                    document.getElementById('submitBtn').disabled = false;
+                    document.getElementById('photoPreview').innerHTML = '';
+                }, 2000);
+            });
+
+            // Initialize first step
+            showStep(0);
+        });
     </script>
+
+    <!-- Solar Diagnostic Form Modal -->
+    <div id="diagnosticModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Solar System Diagnostic Assessment</h2>
+                <span class="close-modal">&times;</span>
+            </div>
+            
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+                <div class="step-indicators">
+                    <div class="step-number active">1</div>
+                    <div class="step-number">2</div>
+                    <div class="step-number">3</div>
+                    <div class="step-number">4</div>
+                </div>
+            </div>
+
+            <form id="diagnosticForm">
+                <!-- Step 1: System Information -->
+                <div class="form-step">
+                    <h3>System Information</h3>
+                    <div class="form-group">
+                        <label for="systemBrand">Solar System Brand *</label>
+                        <select id="systemBrand" name="systemBrand" required>
+                            <option value="">Select your system brand</option>
+                            <option value="SolarEdge">SolarEdge</option>
+                            <option value="Enphase">Enphase</option>
+                            <option value="SMA">SMA</option>
+                            <option value="Fronius">Fronius</option>
+                            <option value="ABB">ABB</option>
+                            <option value="Huawei">Huawei</option>
+                            <option value="Tesla">Tesla</option>
+                            <option value="LG">LG</option>
+                            <option value="SunPower">SunPower</option>
+                            <option value="Other">Other</option>
+                            <option value="Unknown">I don't know</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="inverterModel">Inverter Type/Model</label>
+                        <input type="text" id="inverterModel" name="inverterModel" placeholder="e.g., SE7600H-US, IQ7+, SB7700-US">
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="systemSize">System Size (kW)</label>
+                            <input type="number" id="systemSize" name="systemSize" step="0.1" placeholder="e.g., 8.5">
+                        </div>
+                        <div class="form-group">
+                            <label for="installDate">Installation Date</label>
+                            <input type="date" id="installDate" name="installDate">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="systemAge">System Age</label>
+                        <select id="systemAge" name="systemAge">
+                            <option value="">Select age range</option>
+                            <option value="0-1">Less than 1 year</option>
+                            <option value="1-3">1-3 years</option>
+                            <option value="3-5">3-5 years</option>
+                            <option value="5-10">5-10 years</option>
+                            <option value="10+">More than 10 years</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-navigation">
+                        <button type="button" class="btn-secondary next-step">Next Step</button>
+                    </div>
+                </div>
+
+                <!-- Step 2: Issue Description -->
+                <div class="form-step">
+                    <h3>Issue Description</h3>
+                    <div class="form-group">
+                        <label>What issues are you experiencing? (Check all that apply)</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="issues[]" value="performance-drop">
+                                <span class="checkmark"></span>
+                                Decreased energy production
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="issues[]" value="error-codes">
+                                <span class="checkmark"></span>
+                                Error codes on display
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="issues[]" value="system-offline">
+                                <span class="checkmark"></span>
+                                System completely offline
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="issues[]" value="physical-damage">
+                                <span class="checkmark"></span>
+                                Visible physical damage
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="issues[]" value="monitoring-issues">
+                                <span class="checkmark"></span>
+                                Monitoring system problems
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="issues[]" value="electrical-issues">
+                                <span class="checkmark"></span>
+                                Electrical connection problems
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="issues[]" value="other">
+                                <span class="checkmark"></span>
+                                Other (describe below)
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="issueDescription">Detailed Problem Description *</label>
+                        <textarea id="issueDescription" name="issueDescription" rows="4" placeholder="Please describe the issue in detail, including any error messages, when it started, and what you've observed..." required></textarea>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="issueStart">When did the issue start?</label>
+                            <select id="issueStart" name="issueStart">
+                                <option value="">Select timeframe</option>
+                                <option value="today">Today</option>
+                                <option value="this-week">This week</option>
+                                <option value="this-month">This month</option>
+                                <option value="1-3-months">1-3 months ago</option>
+                                <option value="longer">Longer than 3 months</option>
+                                <option value="gradual">Gradual decline over time</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Urgency Level *</label>
+                            <div class="radio-group">
+                                <label class="radio-label">
+                                    <input type="radio" name="urgency" value="urgent" required>
+                                    <span class="radio-mark"></span>
+                                    Urgent (No power)
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="urgency" value="moderate" required>
+                                    <span class="radio-mark"></span>
+                                    Moderate (Reduced power)
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="urgency" value="minor" required>
+                                    <span class="radio-mark"></span>
+                                    Minor (Performance check)
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-navigation">
+                        <button type="button" class="btn-outline prev-step">Previous</button>
+                        <button type="button" class="btn-secondary next-step">Next Step</button>
+                    </div>
+                </div>
+
+                <!-- Step 3: Photo Upload -->
+                <div class="form-step">
+                    <h3>Photo Upload</h3>
+                    <p class="step-description">Upload photos to help us diagnose your system remotely. This helps us prepare for your service call.</p>
+                    
+                    <div class="form-group">
+                        <label for="photoUpload">Upload Photos (JPG, PNG, PDF - Max 10MB each)</label>
+                        <div class="file-upload-area">
+                            <input type="file" id="photoUpload" name="photos[]" multiple accept="image/*,.pdf">
+                            <div class="file-upload-text">
+                                <div class="upload-icon">📸</div>
+                                <p>Drag and drop files here or click to browse</p>
+                                <small>Recommended photos:</small>
+                                <ul>
+                                    <li>Inverter display showing error codes</li>
+                                    <li>Physical system photos</li>
+                                    <li>Monitoring app screenshots</li>
+                                    <li>Electrical panel photos</li>
+                                    <li>Any visible damage</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div id="photoPreview" class="photo-preview"></div>
+                    </div>
+                    
+                    <div class="form-navigation">
+                        <button type="button" class="btn-outline prev-step">Previous</button>
+                        <button type="button" class="btn-secondary next-step">Next Step</button>
+                    </div>
+                </div>
+
+                <!-- Step 4: Contact & Scheduling -->
+                <div class="form-step">
+                    <h3>Contact & Scheduling</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name *</label>
+                            <input type="text" id="firstName" name="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name *</label>
+                            <input type="text" id="lastName" name="lastName" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" placeholder="(xxx) xxx-xxxx" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="address">Service Address *</label>
+                        <textarea id="address" name="address" rows="2" placeholder="Street address, City, State, ZIP" required></textarea>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="contactMethod">Preferred Contact Method</label>
+                            <select id="contactMethod" name="contactMethod">
+                                <option value="phone">Phone call</option>
+                                <option value="text">Text message</option>
+                                <option value="email">Email</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="responseTime">Response Priority</label>
+                            <select id="responseTime" name="responseTime">
+                                <option value="2-hours">Within 2 hours (Emergency)</option>
+                                <option value="same-day">Same day</option>
+                                <option value="next-day">Next business day</option>
+                                <option value="this-week">Within this week</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="availability">Best Times to Reach You</label>
+                        <textarea id="availability" name="availability" rows="2" placeholder="e.g., Weekdays 9-5, Evenings after 6pm, Weekends only"></textarea>
+                    </div>
+                    
+                    <div class="competitive-note">
+                        <strong>Why Choose EkoSolar Atlanta?</strong> Unlike Beyond Solar and Golden Rule Solar, we provide 24/7 emergency support, faster response times, and competitive pricing for Stone Mountain and DeKalb County residents.
+                    </div>
+                    
+                    <div class="form-navigation">
+                        <button type="button" class="btn-outline prev-step">Previous</button>
+                        <button type="submit" id="submitBtn" class="btn-primary">Submit Assessment Request</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <style>
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 2% auto;
+            padding: 0;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            animation: modalSlideIn 0.3s ease-out;
+        }
+
+        @keyframes modalSlideIn {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 40px 20px;
+            border-bottom: 2px solid #f0f0f0;
+            background: linear-gradient(135deg, #F59E0B, #EA580C);
+            color: white;
+            border-radius: 15px 15px 0 0;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .close-modal {
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            color: white;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .close-modal:hover {
+            opacity: 1;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            padding: 30px 40px 20px;
+            background: #f8f9fa;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background-color: #e9ecef;
+            border-radius: 3px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #F59E0B, #EA580C);
+            width: 25%;
+            transition: width 0.3s ease;
+        }
+
+        .step-indicators {
+            display: flex;
+            justify-content: space-between;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #e9ecef;
+            color: #6c757d;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .step-number.active {
+            background: #F59E0B;
+            color: white;
+        }
+
+        /* Form Styles */
+        .form-step {
+            display: none;
+            padding: 30px 40px 40px;
+        }
+
+        .form-step h3 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+
+        .step-description {
+            color: #666;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #F59E0B;
+            box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1);
+        }
+
+        /* Checkbox and Radio Styles */
+        .checkbox-group,
+        .radio-group {
+            display: grid;
+            gap: 10px;
+        }
+
+        .checkbox-label,
+        .radio-label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        .checkbox-label:hover,
+        .radio-label:hover {
+            background-color: #f8f9fa;
+        }
+
+        .checkbox-label input,
+        .radio-label input {
+            width: auto;
+            margin-right: 10px;
+        }
+
+        /* File Upload Styles */
+        .file-upload-area {
+            border: 2px dashed #dee2e6;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .file-upload-area:hover {
+            border-color: #F59E0B;
+            background-color: #fefbf3;
+        }
+
+        .file-upload-area input[type="file"] {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .upload-icon {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .file-upload-text p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .file-upload-text small {
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        .file-upload-text ul {
+            text-align: left;
+            margin-top: 10px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .photo-preview {
+            margin-top: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        /* Navigation Buttons */
+        .form-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #e9ecef;
+        }
+
+        .btn-primary,
+        .btn-secondary,
+        .btn-outline {
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: #F59E0B;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #EA580C;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #6c757d;
+            border: 2px solid #dee2e6;
+        }
+
+        .btn-outline:hover {
+            background: #f8f9fa;
+            border-color: #6c757d;
+        }
+
+        .competitive-note {
+            background: #e8f4f8;
+            border-left: 4px solid #0EA5E9;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+            font-size: 0.95rem;
+            color: #0369a1;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .modal-content {
+                width: 95%;
+                margin: 5% auto;
+            }
+
+            .modal-header {
+                padding: 20px 25px 15px;
+            }
+
+            .modal-header h2 {
+                font-size: 1.5rem;
+            }
+
+            .progress-container,
+            .form-step {
+                padding: 20px 25px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .form-navigation {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .step-indicators {
+                max-width: 250px;
+            }
+
+            .step-number {
+                width: 35px;
+                height: 35px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
 </body>
 </html>
