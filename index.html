@@ -3006,6 +3006,50 @@
     }
     </script>
     
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      
+      gtag('config', 'GA_MEASUREMENT_ID', {
+        page_title: 'Solar Installation Georgia | EkoSolarPros',
+        page_location: window.location.href,
+        custom_map: {
+          'custom_dimension_1': 'service_area',
+          'custom_dimension_2': 'solar_service_type'
+        }
+      });
+      
+      // Enhanced ecommerce tracking for solar consultations
+      gtag('event', 'page_view', {
+        custom_dimension_1: 'Georgia',
+        custom_dimension_2: 'Solar Installation'
+      });
+      
+      // Track contact form submissions
+      function trackConsultationRequest(method) {
+        gtag('event', 'generate_lead', {
+          currency: 'USD',
+          value: 500, // Estimated value of a consultation lead
+          event_category: 'Solar Consultation',
+          event_label: method,
+          custom_dimension_1: 'Georgia',
+          custom_dimension_2: 'Lead Generation'
+        });
+      }
+      
+      // Track calculator usage
+      function trackCalculatorUsage() {
+        gtag('event', 'calculator_usage', {
+          event_category: 'Solar Calculator',
+          event_label: 'Savings Calculation',
+          custom_dimension_2: 'Calculator Tool'
+        });
+      }
+    </script>
+    
     <!-- External scripts removed for better performance -->
 </head>
 <body>
