@@ -142,6 +142,42 @@
     </image:image>
   </url>
   
+  <url>
+    <loc>https://ekosolarpros.com/solar-installation-columbus.html</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://ekosolarpros.com/images/columbus-solar-installation.jpg</image:loc>
+      <image:title>Solar Panel Installation Columbus Georgia</image:title>
+      <image:caption>Professional solar panel installation services in Columbus, GA and Phenix City area</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://ekosolarpros.com/solar-installation-augusta.html</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://ekosolarpros.com/images/augusta-solar-installation.jpg</image:loc>
+      <image:title>Solar Panel Installation Augusta Georgia</image:title>
+      <image:caption>Expert solar installation services in Augusta, GA and CSRA region</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://ekosolarpros.com/solar-installation-macon.html</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://ekosolarpros.com/images/macon-solar-installation.jpg</image:loc>
+      <image:title>Solar Panel Installation Macon Georgia</image:title>
+      <image:caption>Professional solar installation services in Macon, GA and Middle Georgia</image:caption>
+    </image:image>
+  </url>
+  
   <!-- Blog Section -->
   <url>
     <loc>https://ekosolarpros.com/blog/</loc>
@@ -177,6 +213,18 @@
       <image:loc>https://ekosolarpros.com/images/blog/georgia-solar-guide-2025-featured.jpg</image:loc>
       <image:title>Complete Guide to Solar Panel Installation in Georgia 2025</image:title>
       <image:caption>Ultimate guide covering costs, incentives, choosing contractors, and installation process in Georgia</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://ekosolarpros.com/blog/solar-panel-cost-georgia-2025.html</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://ekosolarpros.com/images/blog/solar-cost-georgia-2025.jpg</image:loc>
+      <image:title>Solar Panel Cost Georgia 2025 - Complete Pricing Guide</image:title>
+      <image:caption>Comprehensive guide to solar panel costs, incentives, and savings for Georgia homeowners in 2025</image:caption>
     </image:image>
   </url>
   

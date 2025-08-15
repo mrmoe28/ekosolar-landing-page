@@ -42,6 +42,20 @@ Disallow: /*.json$
 Disallow: /*?utm_*
 Disallow: /*?ref=*
 Disallow: /*?source=*
+Disallow: /*?gclid=*
+Disallow: /*?fbclid=*
+Disallow: /search
+Disallow: /404
+Disallow: /*.pdf$
+
+# Priority pages for immediate crawling
+Allow: /solar-installation-atlanta.html
+Allow: /solar-installation-savannah.html
+Allow: /solar-installation-columbus.html
+Allow: /solar-installation-augusta.html
+Allow: /solar-installation-macon.html
+Allow: /solar-panel-repair-georgia.html
+Allow: /emergency-solar-repair.html
 
 # Allow social media crawlers for rich snippets
 User-agent: facebookexternalhit

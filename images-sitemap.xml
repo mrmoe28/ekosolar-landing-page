@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <!-- Homepage Images -->
+  <url>
+    <loc>https://ekosolarpros.com/</loc>
+    <image:image>
+      <image:loc>https://ekosolarpros.com/images/slideshow/solar-installation-1.jpg</image:loc>
+      <image:title>Residential Solar Panel Installation Georgia</image:title>
+      <image:caption>Professional solar panel installation by certified technicians in Georgia</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://ekosolarpros.com/images/slideshow/solar-maintenance-3.jpg</image:loc>
+      <image:title>Solar Panel Maintenance and Repair Georgia</image:title>
+      <image:caption>Expert solar panel maintenance and repair services throughout Georgia</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://ekosolarpros.com/images/slideshow/solar-panels-roof-2.jpg</image:loc>
+      <image:title>Rooftop Solar Installation Consultation Georgia</image:title>
+      <image:caption>Professional solar consultation and system assessment in Georgia</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Atlanta Solar Images -->
+  <url>
+    <loc>https://ekosolarpros.com/solar-installation-atlanta.html</loc>
+    <image:image>
+      <image:loc>https://ekosolarpros.com/images/atlanta-solar-installation.jpg</image:loc>
+      <image:title>Solar Panel Installation Atlanta Georgia</image:title>
+      <image:caption>Professional solar panel installation services in Atlanta, GA metro area</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Savannah Solar Images -->
+  <url>
+    <loc>https://ekosolarpros.com/solar-installation-savannah.html</loc>
+    <image:image>
+      <image:loc>https://ekosolarpros.com/images/savannah-solar-installation.jpg</image:loc>
+      <image:title>Solar Panel Installation Savannah Georgia</image:title>
+      <image:caption>Historic District and coastal solar installation services in Savannah, GA</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Columbus Solar Images -->
+  <url>
+    <loc>https://ekosolarpros.com/solar-installation-columbus.html</loc>
+    <image:image>
+      <image:loc>https://ekosolarpros.com/images/columbus-solar-installation.jpg</image:loc>
+      <image:title>Solar Panel Installation Columbus Georgia</image:title>
+      <image:caption>Professional solar installation services in Columbus, GA and Phenix City area</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Augusta Solar Images -->
+  <url>
+    <loc>https://ekosolarpros.com/solar-installation-augusta.html</loc>
+    <image:image>
+      <image:loc>https://ekosolarpros.com/images/augusta-solar-installation.jpg</image:loc>
+      <image:title>Solar Panel Installation Augusta Georgia</image:title>
+      <image:caption>Expert solar installation services in Augusta, GA and CSRA region</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Macon Solar Images -->
+  <url>
+    <loc>https://ekosolarpros.com/solar-installation-macon.html</loc>
+    <image:image>
+      <image:loc>https://ekosolarpros.com/images/macon-solar-installation.jpg</image:loc>
+      <image:title>Solar Panel Installation Macon Georgia</image:title>
+      <image:caption>Professional solar installation services in Macon, GA and Middle Georgia</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Solar Repair Service Images -->
+  <url>
+    <loc>https://ekosolarpros.com/solar-panel-repair-georgia.html</loc>
+    <image:image>
+      <image:loc>https://ekosolarpros.com/images/solar-panel-repair-georgia.jpg</image:loc>
+      <image:title>Solar Panel Repair Services Georgia</image:title>
+      <image:caption>Professional solar panel repair and maintenance services throughout Georgia</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Emergency Solar Repair Images -->
+  <url>
+    <loc>https://ekosolarpros.com/emergency-solar-repair.html</loc>
+    <image:image>
+      <image:loc>https://ekosolarpros.com/images/emergency-solar-repair-georgia.jpg</image:loc>
+      <image:title>24/7 Emergency Solar Repair Georgia</image:title>
+      <image:caption>Emergency solar panel repair services available 24/7 throughout Georgia</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Solar Inverter Repair Images -->
+  <url>
+    <loc>https://ekosolarpros.com/solar-inverter-repair.html</loc>
+    <image:image>
+      <image:loc>https://ekosolarpros.com/images/solar-inverter-repair-georgia.jpg</image:loc>
+      <image:title>Solar Inverter Repair Georgia - All Major Brands</image:title>
+      <image:caption>Professional solar inverter repair services for SolarEdge, Enphase, SMA and all major brands in Georgia</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Blog Images -->
+  <url>
+    <loc>https://ekosolarpros.com/blog/</loc>
+    <image:image>
+      <image:loc>https://ekosolarpros.com/images/blog-header-georgia-solar.jpg</image:loc>
+      <image:title>Georgia Solar Energy Blog</image:title>
+      <image:caption>Expert solar energy insights, installation guides, and Georgia solar industry news</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Blog Post Images -->
+  <url>
+    <loc>https://ekosolarpros.com/blog/stranded-solar-installations-georgia-rescue-services.html</loc>
+    <image:image>
+      <image:loc>https://ekosolarpros.com/images/blog/stranded-solar-installations-rescue.jpg</image:loc>
+      <image:title>Stranded Solar Installations Rescue Services Georgia</image:title>
+      <image:caption>Professional rescue services for stranded, abandoned, or malfunctioning solar installations in Georgia</image:caption>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://ekosolarpros.com/blog/georgia-solar-installation-guide-2025.html</loc>
+    <image:image>
+      <image:loc>https://ekosolarpros.com/images/blog/georgia-solar-guide-2025-featured.jpg</image:loc>
+      <image:title>Complete Guide to Solar Panel Installation in Georgia 2025</image:title>
+      <image:caption>Ultimate guide covering costs, incentives, choosing contractors, and installation process in Georgia</image:caption>
+    </image:image>
+  </url>
+
+</urlset>
