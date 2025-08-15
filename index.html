@@ -546,10 +546,22 @@
         .mobile-menu-toggle {
             display: none;
             background: none;
-            border: none;
-            font-size: 24px;
-            color: var(--foreground);
+            border: 2px solid var(--solar-orange);
+            color: var(--solar-orange);
+            font-size: 1.4rem;
+            width: 45px;
+            height: 45px;
+            border-radius: 8px;
             cursor: pointer;
+            transition: all 0.3s ease;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .mobile-menu-toggle:hover {
+            background: var(--solar-orange);
+            color: white;
+            transform: scale(1.05);
         }
         
         .nav-right {
@@ -1953,36 +1965,54 @@
         @media (max-width: 768px) {
             .nav {
                 justify-content: space-between;
+                padding: 0 20px;
+                height: 80px;
             }
             
             .logo {
                 margin-left: 0;
+                font-size: 1.4rem;
             }
             
             .container {
-                padding: 0 15px;
+                padding: 0 20px;
             }
             
             .nav-menu {
                 position: fixed;
-                top: 70px;
+                top: 80px;
                 left: -100%;
                 width: 100%;
-                height: calc(100vh - 70px);
+                height: calc(100vh - 80px);
                 background: var(--background);
                 border: 1px solid var(--border);
                 flex-direction: column;
                 justify-content: flex-start;
                 align-items: center;
-                padding: 50px 0;
-                gap: 40px;
-                transition: var(--transition-normal);
+                padding: 30px 20px;
+                gap: 25px;
+                transition: left 0.3s ease-in-out;
                 box-shadow: var(--shadow-lg);
-                transform: none; /* Reset the centering transform for mobile */
+                transform: none;
+                z-index: 1000;
+                overflow-y: auto;
             }
             
             .nav-menu.active {
                 left: 0;
+            }
+            
+            .nav-link {
+                font-size: 1.1rem;
+                padding: 15px 20px;
+                width: 100%;
+                text-align: center;
+                border-bottom: 1px solid var(--border);
+            }
+            
+            .nav-link:hover {
+                background: var(--muted);
+                border-radius: 8px;
             }
             
             /* Mobile dropdown styles */
@@ -2019,7 +2049,7 @@
             }
             
             .mobile-menu-toggle {
-                display: block;
+                display: flex;
             }
             
             .nav-right {
@@ -2028,39 +2058,53 @@
             
             /* Hero Slideshow Mobile Styles */
             .hero-slideshow {
-                min-height: 80vh; /* Reduce height on mobile */
+                min-height: 100vh;
+                padding-top: 80px;
             }
             
             .slide-content {
-                padding: 0 15px;
+                padding: 0 20px;
+                max-width: 100%;
             }
             
             .hero-title {
-                font-size: clamp(2rem, 8vw, 2.8rem);
-                margin-bottom: 15px;
+                font-size: clamp(2.2rem, 10vw, 3.2rem);
+                margin-bottom: 20px;
+                line-height: 1.2;
+                text-align: center;
             }
             
             .hero-subtitle {
-                font-size: clamp(1rem, 4vw, 1.2rem);
-                margin-bottom: 30px;
+                font-size: clamp(1.1rem, 5vw, 1.4rem);
+                margin-bottom: 40px;
+                text-align: center;
+                max-width: 90%;
+                margin-left: auto;
+                margin-right: auto;
             }
             
             .hero-stats {
                 grid-template-columns: 1fr 1fr;
-                gap: 20px;
-                margin: 30px 0;
+                gap: 15px;
+                margin: 40px 0;
+                max-width: 350px;
+                margin-left: auto;
+                margin-right: auto;
             }
             
             .stat-item {
-                padding: 15px 10px;
+                padding: 20px 15px;
+                border-radius: 8px;
             }
             
             .stat-number {
-                font-size: 1.8rem;
+                font-size: 2rem;
+                margin-bottom: 5px;
             }
             
             .stat-label {
-                font-size: 0.8rem;
+                font-size: 0.85rem;
+                line-height: 1.3;
             }
             
             /* Mobile Navigation Controls */
@@ -2087,17 +2131,36 @@
             
             /* Mobile Call to Action */
             .hero-cta {
-                bottom: 60px;
+                bottom: 80px;
                 flex-direction: column;
-                gap: 15px;
+                gap: 20px;
                 padding: 0 20px;
+                width: 100%;
+                max-width: 320px;
+                left: 50%;
+                transform: translateX(-50%);
             }
             
             .cta-button-primary,
             .cta-button-secondary {
-                padding: 12px 25px;
-                font-size: 1rem;
-                min-width: 180px;
+                padding: 15px 30px;
+                font-size: 1.1rem;
+                min-width: 100%;
+                width: 100%;
+                border-radius: 12px;
+                font-weight: 600;
+                text-align: center;
+            }
+            
+            .cta-button-primary {
+                background: var(--solar-orange);
+                box-shadow: 0 8px 25px rgba(234, 88, 12, 0.4);
+            }
+            
+            .cta-button-secondary {
+                background: rgba(255, 255, 255, 0.1);
+                border: 2px solid rgba(255, 255, 255, 0.8);
+                backdrop-filter: blur(10px);
             }
             
             /* Mobile Repair CTA Section */
@@ -2167,12 +2230,105 @@
                 padding: 0 15px;
             }
             
+            .nav {
+                padding: 0 15px;
+                height: 70px;
+            }
+            
+            .nav-menu {
+                top: 70px;
+                height: calc(100vh - 70px);
+                padding: 20px 15px;
+            }
+            
+            .logo {
+                font-size: 1.2rem;
+            }
+            
+            .mobile-menu-toggle {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+            
+            .hero-slideshow {
+                padding-top: 70px;
+                min-height: 100vh;
+            }
+            
+            .hero-title {
+                font-size: clamp(1.8rem, 9vw, 2.5rem);
+                margin-bottom: 15px;
+            }
+            
+            .hero-subtitle {
+                font-size: clamp(1rem, 4.5vw, 1.2rem);
+                margin-bottom: 30px;
+            }
+            
             .hero-stats {
                 grid-template-columns: 1fr;
+                gap: 12px;
+                max-width: 280px;
+            }
+            
+            .stat-item {
+                padding: 15px 12px;
+            }
+            
+            .stat-number {
+                font-size: 1.8rem;
+            }
+            
+            .hero-cta {
+                bottom: 60px;
+                max-width: 290px;
+                gap: 15px;
+            }
+            
+            .cta-button-primary,
+            .cta-button-secondary {
+                padding: 12px 25px;
+                font-size: 1rem;
             }
             
             .results-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .service-card {
+                padding: 25px 20px;
+            }
+            
+            .calculator-container {
+                padding: 25px 15px;
+                margin: 0 15px;
+            }
+            
+            .contact-form,
+            .contact-info {
+                padding: 25px 15px;
+            }
+            
+            .section-title {
+                font-size: clamp(1.8rem, 6vw, 2.2rem);
+                margin-bottom: 20px;
+            }
+            
+            .repair-cta-title {
+                font-size: clamp(1.6rem, 7vw, 2rem);
+            }
+            
+            .btn-repair-services,
+            .btn-emergency-call {
+                min-width: 100%;
+                padding: 12px 20px;
+                font-size: 0.95rem;
             }
         }
         
