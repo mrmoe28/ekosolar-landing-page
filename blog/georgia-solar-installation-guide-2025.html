@@ -44,14 +44,23 @@
         }
         
         :root {
-            --background: #1a1a1a;
-            --foreground: #ffffff;
+            /* Match main site light theme */
+            --background: #ffffff;
+            --foreground: #1a1a1a;
+            --card: #ffffff;
+            --card-foreground: #1a1a1a;
+            --muted: #f8f9fa;
+            --muted-foreground: #6c757d;
+            --border: #e9ecef;
+            --primary: #F59E0B;
+            --primary-foreground: #ffffff;
+            
+            /* Solar brand colors for accents */
             --solar-amber: #F59E0B;
             --solar-orange: #EA580C;
             --solar-green: #10B981;
-            --muted: #2d2d2d;
-            --border: #404040;
-            --card-bg: rgba(45, 45, 45, 0.9);
+            --solar-blue: #0EA5E9;
+            --solar-yellow: #EAB308;
         }
         
         body {
@@ -59,36 +68,9 @@
             line-height: 1.6;
             color: var(--foreground);
             background: var(--background);
-            position: relative;
-            overflow-x: hidden;
+            min-height: 100vh;
         }
         
-        /* Translucent Background Images */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('../images/slideshow/solar-installation-1.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            opacity: 0.1;
-            z-index: -2;
-        }
-        
-        body::after {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, rgba(245, 158, 11, 0.05) 0%, rgba(234, 88, 12, 0.05) 50%, rgba(26, 26, 26, 0.8) 100%);
-            z-index: -1;
-        }
         
         .container {
             max-width: 1000px;
@@ -98,13 +80,12 @@
         
         /* Header */
         .header {
-            background: rgba(26, 26, 26, 0.95);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--solar-orange);
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 4px 20px rgba(234, 88, 12, 0.3);
+            border-bottom: 3px solid var(--solar-amber);
         }
         
         .nav {
@@ -119,8 +100,13 @@
             align-items: center;
             font-size: 1.5rem;
             font-weight: 700;
-            color: var(--solar-orange);
+            color: var(--solar-amber);
             text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .logo:hover {
+            transform: translateX(5px);
         }
         
         .logo-icon {
@@ -138,17 +124,36 @@
             color: var(--foreground);
             text-decoration: none;
             font-weight: 500;
+            padding: 0.5rem 0;
+            transition: all 0.3s ease;
+            position: relative;
         }
         
-        .nav-link:hover {
-            color: var(--solar-orange);
+        .nav-link:hover, .nav-link.active {
+            color: var(--solar-amber);
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--solar-amber);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
         }
         
         /* Article Header */
         .article-header {
-            background: linear-gradient(135deg, rgba(245, 158, 11, 0.9) 0%, rgba(234, 88, 12, 0.9) 100%);
+            background: linear-gradient(135deg, var(--solar-amber) 0%, var(--solar-orange) 100%);
             color: white;
-            padding: 6rem 0;
+            padding: 4rem 0;
+            text-align: center;
             position: relative;
             overflow: hidden;
         }
@@ -156,23 +161,32 @@
         .article-header::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('../images/slideshow/solar-panels-roof-2.jpg');
-            background-size: cover;
-            background-position: center;
-            opacity: 0.3;
-            z-index: -1;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 30s linear infinite;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
         
         .article-meta {
             display: flex;
-            gap: 1rem;
+            gap: 20px;
+            justify-content: center;
             margin-bottom: 2rem;
             font-size: 0.9rem;
             opacity: 0.9;
+        }
+        
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
         
         .article-title {
@@ -180,46 +194,52 @@
             font-weight: 700;
             line-height: 1.2;
             margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
         }
         
         .article-excerpt {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+            position: relative;
+            z-index: 1;
             opacity: 0.95;
         }
         
         /* Article Content */
         .article-content {
-            padding: 6rem 0;
-            position: relative;
+            padding: 60px 0;
+            background: var(--muted);
         }
         
         .content {
             font-size: 1.1rem;
             line-height: 1.8;
-            background: var(--card-bg);
-            padding: 3rem;
-            border-radius: 1rem;
-            border: 1px solid var(--solar-orange);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            max-width: 800px;
+            margin: 0 auto;
         }
         
         .content h2 {
             font-size: 2rem;
-            background: linear-gradient(135deg, var(--solar-amber), var(--solar-orange));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--foreground);
             margin: 3rem 0 1.5rem 0;
             border-bottom: 3px solid var(--solar-amber);
             padding-bottom: 0.5rem;
+            font-weight: 700;
         }
         
         .content h3 {
             font-size: 1.5rem;
             color: var(--solar-amber);
             margin: 2rem 0 1rem 0;
+            font-weight: 600;
         }
         
         .content p {
@@ -235,13 +255,12 @@
         }
         
         .highlight-box {
-            background: rgba(245, 158, 11, 0.1);
+            background: rgba(245, 158, 11, 0.05);
             border-left: 4px solid var(--solar-orange);
             padding: 2rem;
             margin: 2rem 0;
             border-radius: 0.8rem;
             border: 1px solid var(--border);
-            backdrop-filter: blur(10px);
         }
         
         .cta-box {
@@ -273,23 +292,22 @@
         
         /* Table of Contents */
         .toc {
-            background: var(--card-bg);
-            border: 1px solid var(--solar-orange);
-            border-radius: 1rem;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 12px;
             padding: 2rem;
             margin: 2rem 0;
             position: sticky;
             top: 100px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
         }
         
         .toc h3 {
-            background: linear-gradient(135deg, var(--solar-amber), var(--solar-orange));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--foreground);
             margin-bottom: 1rem;
+            font-weight: 700;
+            border-bottom: 2px solid var(--solar-amber);
+            padding-bottom: 0.5rem;
         }
         
         .toc ul {
@@ -298,7 +316,7 @@
         }
         
         .toc a {
-            color: rgba(255, 255, 255, 0.9);
+            color: var(--muted-foreground);
             text-decoration: none;
             display: block;
             padding: 0.5rem 0;
@@ -307,7 +325,8 @@
         }
         
         .toc a:hover {
-            color: var(--solar-orange);
+            color: var(--solar-amber);
+            padding-left: 0.5rem;
         }
         
         /* Animations */
