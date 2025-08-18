@@ -577,6 +577,9 @@
             height: 100vh;
             min-height: 600px;
             overflow: hidden;
+            top: 0;
+            left: 0;
+            width: 100%;
         }
         
         .slideshow-container {
@@ -633,7 +636,7 @@
             position: relative;
             z-index: 3;
             max-width: 800px;
-            padding: 0 20px;
+            padding: 120px 20px 0 20px;
             animation: slideInUp 1.2s ease;
             transform: translateY(30px);
             opacity: 0;
@@ -2133,11 +2136,11 @@
             .hero-slideshow {
                 height: 100vh;
                 min-height: 100vh;
-                padding-top: 80px;
+                padding-top: 0;
             }
             
             .slide-content {
-                padding: 0 20px;
+                padding: 100px 20px 0 20px;
                 max-width: 100%;
             }
             
@@ -3311,7 +3314,7 @@
     <!-- Mobile-First Indexing Audit -->
     <script src="mobile-first-indexing-audit.js" defer></script>
     
-    <!-- React dependencies for chatbot -->
+    <!-- React dependencies for chatbot - load synchronously in order -->
     <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>

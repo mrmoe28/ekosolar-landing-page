@@ -748,10 +748,46 @@ const EkoSolarChatbot = () => {
   ]));
 };
 
-// Render the component
-const container = document.getElementById('solar-chatbot');
-if (container) {
-  ReactDOM.render(React.createElement(EkoSolarChatbot), container);
+// Render the component with error handling and modern React
+function initializeChatbot() {
+  try {
+    const container = document.getElementById('solar-chatbot');
+    if (container && typeof React !== 'undefined' && typeof ReactDOM !== 'undefined') {
+      console.log('✅ Initializing EkoSolar Chatbot...');
+      
+      // Use modern React 18 createRoot if available, fallback to legacy render
+      if (ReactDOM.createRoot) {
+        const root = ReactDOM.createRoot(container);
+        root.render(React.createElement(EkoSolarChatbot));
+      } else {
+        ReactDOM.render(React.createElement(EkoSolarChatbot), container);
+      }
+      
+      console.log('✅ EkoSolar Chatbot initialized successfully');
+    } else {
+      console.error('❌ Chatbot initialization failed:', {
+        container: !!container,
+        React: typeof React,
+        ReactDOM: typeof ReactDOM,
+        LucideReact: typeof LucideReact
+      });
+    }
+  } catch (error) {
+    console.error('❌ Chatbot error:', error);
+  }
+}
+
+// Initialize when DOM is ready and dependencies are loaded
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initializeChatbot);
+} else {
+  // DOM already loaded, try immediately or wait a bit for dependencies
+  if (typeof React !== 'undefined' && typeof ReactDOM !== 'undefined') {
+    initializeChatbot();
+  } else {
+    // Wait for dependencies to load
+    setTimeout(initializeChatbot, 100);
+  }
 }
 
 // Add required CSS animations
