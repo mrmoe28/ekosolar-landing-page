@@ -272,6 +272,16 @@
             }
         }
     </style>
+    <!-- Google Integration Scripts -->
+    <script src="/google-integration.js" defer></script>
+    <script src="/schema-markup.js" defer></script>
+    
+    
+    <!-- React dependencies for chatbot -->
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/lucide-react@latest/dist/umd/lucide-react.js"></script>
 </head>
 <body>
     <!-- Header -->
@@ -362,5 +372,11 @@
             <p>Augusta Solar Installation | Professional Solar Services</p>
         </div>
     </footer>
+    
+    <!-- Solar Chatbot Container -->
+    <div id="solar-chatbot"></div>
+    
+    <!-- Load EkoSolar Chatbot -->
+    <script type="text/babel" src="/solar-chatbot.js"></script>
 </body>
 </html>

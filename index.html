@@ -3206,6 +3206,25 @@
       }
     </script>
     
+    <!-- Google Integration Scripts -->
+    <script src="google-integration.js" defer></script>
+    <script src="schema-markup.js" defer></script>
+    
+    <!-- SEO Components for Google Best Practices -->
+    <script src="seo-components.js" defer></script>
+    
+    <!-- Core Web Vitals Optimizer -->
+    <script src="core-web-vitals-optimizer.js" defer></script>
+    
+    <!-- Mobile-First Indexing Audit -->
+    <script src="mobile-first-indexing-audit.js" defer></script>
+    
+    <!-- React dependencies for chatbot -->
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/lucide-react@latest/dist/umd/lucide-react.js"></script>
+    
     <!-- External scripts removed for better performance -->
 </head>
 <body>
@@ -3308,7 +3327,7 @@
             <div class="slide" data-bg="images/slideshow/solar-panels-roof-2.jpg">
                 <div class="slide-overlay"></div>
                 <div class="slide-content">
-                    <h1 class="hero-title">Premium Rooftop Solar Solutions</h1>
+                    <h2 class="hero-title">Premium Rooftop Solar Solutions</h2>
                     <p class="hero-subtitle">Custom-designed systems that maximize your roof's solar potential</p>
                     <div class="hero-stats">
                         <div class="stat-item">
@@ -3331,7 +3350,7 @@
             <div class="slide" data-bg="images/slideshow/solar-maintenance-3.jpg">
                 <div class="slide-overlay"></div>
                 <div class="slide-content">
-                    <h1 class="hero-title">Professional Maintenance Services</h1>
+                    <h2 class="hero-title">Professional Maintenance Services</h2>
                     <p class="hero-subtitle">Keep your solar system performing at peak efficiency year-round</p>
                     <div class="hero-stats">
                         <div class="stat-item">
@@ -3354,7 +3373,7 @@
             <div class="slide" data-bg="images/slideshow/solar-commercial-4.jpg">
                 <div class="slide-overlay"></div>
                 <div class="slide-content">
-                    <h1 class="hero-title">Commercial Solar Solutions</h1>
+                    <h2 class="hero-title">Commercial Solar Solutions</h2>
                     <p class="hero-subtitle">Large-scale installations for businesses across Georgia</p>
                     <div class="hero-stats">
                         <div class="stat-item">
@@ -3377,7 +3396,7 @@
             <div class="slide" data-bg="images/slideshow/solar-repair-5.jpg">
                 <div class="slide-overlay"></div>
                 <div class="slide-content">
-                    <h1 class="hero-title">24/7 Emergency Solar Repair</h1>
+                    <h2 class="hero-title">24/7 Emergency Solar Repair</h2>
                     <p class="hero-subtitle">Rapid response for system failures, storm damage, and troubleshooting</p>
                     <div class="hero-stats">
                         <div class="stat-item">
@@ -3400,7 +3419,7 @@
             <div class="slide" data-bg="images/slideshow/renewable-energy-6.jpg">
                 <div class="slide-overlay"></div>
                 <div class="slide-content">
-                    <h1 class="hero-title">Renewable Energy Innovation</h1>
+                    <h2 class="hero-title">Renewable Energy Innovation</h2>
                     <p class="hero-subtitle">Cutting-edge technology for sustainable energy solutions</p>
                     <div class="hero-stats">
                         <div class="stat-item">
@@ -3423,7 +3442,7 @@
             <div class="slide" data-bg="images/slideshow/solar-diagnostics-7.jpg">
                 <div class="slide-overlay"></div>
                 <div class="slide-content">
-                    <h1 class="hero-title">Advanced System Diagnostics</h1>
+                    <h2 class="hero-title">Advanced System Diagnostics</h2>
                     <p class="hero-subtitle">Precision testing and optimization for maximum performance</p>
                     <div class="hero-stats">
                         <div class="stat-item">
@@ -3446,7 +3465,7 @@
             <div class="slide" data-bg="images/slideshow/solar-emergency-8.jpg">
                 <div class="slide-overlay"></div>
                 <div class="slide-content">
-                    <h1 class="hero-title">Emergency Response Services</h1>
+                    <h2 class="hero-title">Emergency Response Services</h2>
                     <p class="hero-subtitle">Round-the-clock support for critical solar system issues</p>
                     <div class="hero-stats">
                         <div class="stat-item">
@@ -3469,7 +3488,7 @@
             <div class="slide" data-bg="images/slideshow/solar-technician-9.jpg">
                 <div class="slide-overlay"></div>
                 <div class="slide-content">
-                    <h1 class="hero-title">Expert Solar Technicians</h1>
+                    <h2 class="hero-title">Expert Solar Technicians</h2>
                     <p class="hero-subtitle">Certified professionals with years of solar experience</p>
                     <div class="hero-stats">
                         <div class="stat-item">
@@ -3492,7 +3511,7 @@
             <div class="slide" data-bg="images/slideshow/solar-optimization-10.jpg">
                 <div class="slide-overlay"></div>
                 <div class="slide-content">
-                    <h1 class="hero-title">System Optimization & Performance</h1>
+                    <h2 class="hero-title">System Optimization & Performance</h2>
                     <p class="hero-subtitle">Maximize your solar investment with expert optimization</p>
                     <div class="hero-stats">
                         <div class="stat-item">
@@ -5159,5 +5178,11 @@
             new HeroSlideshow();
         }
     </script>
+    
+    <!-- Solar Chatbot Container -->
+    <div id="solar-chatbot"></div>
+    
+    <!-- Load EkoSolar Chatbot -->
+    <script type="text/babel" src="solar-chatbot.js"></script>
 </body>
 </html><!-- GitHub Pages deployment refresh -->

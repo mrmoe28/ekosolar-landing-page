@@ -1,0 +1,61 @@
+GOOGLE SEARCH CONSOLE DNS VERIFICATION RECORD
+==============================================
+Domain: ekosolarpros.com
+Date: 2025-01-18
+Method: DNS TXT Record Verification
+
+VERIFICATION TXT RECORD:
+------------------------
+Type: TXT
+Name/Host: @ (or ekosolarpros.com, or leave blank depending on provider)
+Value: google-site-verification=0MteZqJD37YDp4TuovOagBQhnyYZrb30iHoY2DrUqc8
+TTL: 3600 (or use default)
+
+IMPORTANT NOTES:
+----------------
+1. This record must be added to your domain's DNS settings
+2. DNS propagation can take 5 minutes to 48 hours
+3. Keep this record in your DNS even after verification
+4. This verifies ownership at the domain level (all subdomains included)
+
+DNS PROVIDER SPECIFIC INSTRUCTIONS:
+------------------------------------
+
+GoDaddy:
+1. Log in to GoDaddy account
+2. Go to "My Products" > Domain > DNS
+3. Click "Add" under Records
+4. Type: TXT
+5. Host: @
+6. TXT Value: google-site-verification=0MteZqJD37YDp4TuovOagBQhnyYZrb30iHoY2DrUqc8
+7. TTL: 1 hour
+8. Save
+
+Namecheap:
+1. Sign in to Namecheap
+2. Select Domain List > Manage
+3. Advanced DNS tab
+4. Add New Record
+5. Type: TXT Record
+6. Host: @
+7. Value: google-site-verification=0MteZqJD37YDp4TuovOagBQhnyYZrb30iHoY2DrUqc8
+8. TTL: Automatic
+9. Save
+
+Cloudflare:
+1. Log in to Cloudflare
+2. Select your domain
+3. Go to DNS
+4. Add record
+5. Type: TXT
+6. Name: @ (or ekosolarpros.com)
+7. Content: google-site-verification=0MteZqJD37YDp4TuovOagBQhnyYZrb30iHoY2DrUqc8
+8. TTL: Auto
+9. Save
+
+VERIFICATION STATUS:
+--------------------
+[ ] DNS Record Added to Provider
+[ ] DNS Propagation Complete
+[ ] Google Verification Successful
+[ ] Search Console Access Granted

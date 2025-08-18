@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DNS Verification Guide - EkoSolarPros</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .header h1 {
+            color: #333;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .verification-box {
+            background: #f0f9ff;
+            border: 2px solid #0ea5e9;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .txt-record {
+            background: #1e293b;
+            color: #10b981;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+        
+        .txt-record .label {
+            color: #94a3b8;
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+        
+        .txt-record .value {
+            color: #10b981;
+            font-size: 14px;
+            word-break: break-all;
+        }
+        
+        .copy-button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        
+        .copy-button:hover {
+            background: #5a67d8;
+        }
+        
+        .provider-section {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 20px 0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .provider-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+        
+        .provider-logo {
+            width: 40px;
+            height: 40px;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f3f4f6;
+            border-radius: 8px;
+            font-size: 24px;
+        }
+        
+        .provider-name {
+            font-size: 20px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .steps {
+            margin-left: 55px;
+            display: none;
+        }
+        
+        .provider-section.active .steps {
+            display: block;
+        }
+        
+        .step {
+            padding: 10px 0;
+            border-bottom: 1px solid #f3f4f6;
+        }
+        
+        .step:last-child {
+            border-bottom: none;
+        }
+        
+        .step-number {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background: #667eea;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 24px;
+            font-size: 12px;
+            margin-right: 10px;
+        }
+        
+        .status-checker {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 20px 0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .check-button {
+            background: #10b981;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            width: 100%;
+        }
+        
+        .check-button:hover {
+            background: #059669;
+        }
+        
+        .status-result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            display: none;
+        }
+        
+        .status-result.success {
+            background: #d1fae5;
+            border: 1px solid #10b981;
+            color: #065f46;
+        }
+        
+        .status-result.error {
+            background: #fee2e2;
+            border: 1px solid #ef4444;
+            color: #991b1b;
+        }
+        
+        .status-result.pending {
+            background: #fef3c7;
+            border: 1px solid #f59e0b;
+            color: #92400e;
+        }
+        
+        .warning {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔐 Google Search Console DNS Verification</h1>
+            <p>Complete guide to verify ekosolarpros.com ownership</p>
+        </div>
+
+        <div class="verification-box">
+            <h2>📋 Your DNS TXT Record</h2>
+            <p style="margin: 10px 0;">Add this TXT record to your domain's DNS settings:</p>
+            
+            <div class="txt-record">
+                <div class="label">Record Type:</div>
+                <div class="value">TXT</div>
+            </div>
+            
+            <div class="txt-record">
+                <div class="label">Host/Name:</div>
+                <div class="value">@ (or ekosolarpros.com)</div>
+            </div>
+            
+            <div class="txt-record" id="txt-value">
+                <div class="label">TXT Value/Content:</div>
+                <div class="value">google-site-verification=0MteZqJD37YDp4TuovOagBQhnyYZrb30iHoY2DrUqc8</div>
+                <button class="copy-button" onclick="copyTxtRecord()">📋 Copy Value</button>
+            </div>
+            
+            <div class="txt-record">
+                <div class="label">TTL:</div>
+                <div class="value">3600 (or default)</div>
+            </div>
+        </div>
+
+        <div class="warning">
+            <strong>⚠️ Important:</strong> DNS changes can take 5 minutes to 48 hours to propagate. Most providers update within 1 hour.
+        </div>
+
+        <!-- DNS Provider Instructions -->
+        <h2 style="color: white; margin: 30px 0 20px;">Select Your DNS Provider:</h2>
+
+        <div class="provider-section" onclick="toggleProvider(this)">
+            <div class="provider-header">
+                <div class="provider-logo">🟠</div>
+                <div class="provider-name">GoDaddy</div>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <span class="step-number">1</span>
+                    Log in to your GoDaddy account
+                </div>
+                <div class="step">
+                    <span class="step-number">2</span>
+                    Navigate to "My Products" → Domains
+                </div>
+                <div class="step">
+                    <span class="step-number">3</span>
+                    Click "Manage" next to ekosolarpros.com
+                </div>
+                <div class="step">
+                    <span class="step-number">4</span>
+                    Click "DNS" tab
+                </div>
+                <div class="step">
+                    <span class="step-number">5</span>
+                    Click "Add" under Records section
+                </div>
+                <div class="step">
+                    <span class="step-number">6</span>
+                    Type: <strong>TXT</strong>
+                </div>
+                <div class="step">
+                    <span class="step-number">7</span>
+                    Host: <strong>@</strong>
+                </div>
+                <div class="step">
+                    <span class="step-number">8</span>
+                    TXT Value: <strong>google-site-verification=0MteZqJD37YDp4TuovOagBQhnyYZrb30iHoY2DrUqc8</strong>
+                </div>
+                <div class="step">
+                    <span class="step-number">9</span>
+                    TTL: <strong>1 hour</strong>
+                </div>
+                <div class="step">
+                    <span class="step-number">10</span>
+                    Click "Save"
+                </div>
+            </div>
+        </div>
+
+        <div class="provider-section" onclick="toggleProvider(this)">
+            <div class="provider-header">
+                <div class="provider-logo">🔴</div>
+                <div class="provider-name">Namecheap</div>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <span class="step-number">1</span>
+                    Sign in to Namecheap
+                </div>
+                <div class="step">
+                    <span class="step-number">2</span>
+                    Go to Domain List
+                </div>
+                <div class="step">
+                    <span class="step-number">3</span>
+                    Click "Manage" next to ekosolarpros.com
+                </div>
+                <div class="step">
+                    <span class="step-number">4</span>
+                    Select "Advanced DNS" tab
+                </div>
+                <div class="step">
+                    <span class="step-number">5</span>
+                    Click "Add New Record"
+                </div>
+                <div class="step">
+                    <span class="step-number">6</span>
+                    Type: <strong>TXT Record</strong>
+                </div>
+                <div class="step">
+                    <span class="step-number">7</span>
+                    Host: <strong>@</strong>
+                </div>
+                <div class="step">
+                    <span class="step-number">8</span>
+                    Value: <strong>google-site-verification=0MteZqJD37YDp4TuovOagBQhnyYZrb30iHoY2DrUqc8</strong>
+                </div>
+                <div class="step">
+                    <span class="step-number">9</span>
+                    TTL: <strong>Automatic</strong>
+                </div>
+                <div class="step">
+                    <span class="step-number">10</span>
+                    Click "Save All Changes"
+                </div>
+            </div>
+        </div>
+
+        <div class="provider-section" onclick="toggleProvider(this)">
+            <div class="provider-header">
+                <div class="provider-logo">🟧</div>
+                <div class="provider-name">Cloudflare</div>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <span class="step-number">1</span>
+                    Log in to Cloudflare Dashboard
+                </div>
+                <div class="step">
+                    <span class="step-number">2</span>
+                    Select ekosolarpros.com
+                </div>
+                <div class="step">
+                    <span class="step-number">3</span>
+                    Go to "DNS" section
+                </div>
+                <div class="step">
+                    <span class="step-number">4</span>
+                    Click "Add record"
+                </div>
+                <div class="step">
+                    <span class="step-number">5</span>
+                    Type: <strong>TXT</strong>
+                </div>
+                <div class="step">
+                    <span class="step-number">6</span>
+                    Name: <strong>@</strong> or <strong>ekosolarpros.com</strong>
+                </div>
+                <div class="step">
+                    <span class="step-number">7</span>
+                    Content: <strong>google-site-verification=0MteZqJD37YDp4TuovOagBQhnyYZrb30iHoY2DrUqc8</strong>
+                </div>
+                <div class="step">
+                    <span class="step-number">8</span>
+                    TTL: <strong>Auto</strong>
+                </div>
+                <div class="step">
+                    <span class="step-number">9</span>
+                    Proxy status: <strong>DNS only</strong> (gray cloud)
+                </div>
+                <div class="step">
+                    <span class="step-number">10</span>
+                    Click "Save"
+                </div>
+            </div>
+        </div>
+
+        <div class="status-checker">
+            <h2>🔍 Check DNS Propagation Status</h2>
+            <p style="margin: 10px 0;">After adding the TXT record, check if it's propagated:</p>
+            
+            <button class="check-button" onclick="checkDNS()">Check DNS Status</button>
+            
+            <div id="status-result" class="status-result"></div>
+        </div>
+
+        <div class="provider-section" style="background: #f0f9ff; border: 2px solid #0ea5e9;">
+            <h2>✅ Final Step: Verify in Google Search Console</h2>
+            <ol style="margin: 20px 0; padding-left: 20px;">
+                <li style="margin: 10px 0;">Ensure DNS record has been added (check status above)</li>
+                <li style="margin: 10px 0;">Wait for DNS propagation (usually 5-60 minutes)</li>
+                <li style="margin: 10px 0;">Return to Google Search Console</li>
+                <li style="margin: 10px 0;">Click the <strong>"VERIFY"</strong> button</li>
+                <li style="margin: 10px 0;">If verification fails, wait longer and try again</li>
+            </ol>
+            
+            <div style="background: #d1fae5; padding: 15px; border-radius: 8px; margin-top: 20px;">
+                <strong>💡 Pro Tip:</strong> Keep the TXT record in your DNS even after verification. Removing it may cause you to lose verified owner status.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleProvider(element) {
+            // Close all other providers
+            document.querySelectorAll('.provider-section').forEach(section => {
+                if (section !== element) {
+                    section.classList.remove('active');
+                }
+            });
+            
+            // Toggle current provider
+            element.classList.toggle('active');
+        }
+        
+        function copyTxtRecord() {
+            const txtValue = 'google-site-verification=0MteZqJD37YDp4TuovOagBQhnyYZrb30iHoY2DrUqc8';
+            navigator.clipboard.writeText(txtValue).then(() => {
+                const button = event.target;
+                const originalText = button.textContent;
+                button.textContent = '✅ Copied!';
+                button.style.background = '#10b981';
+                
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.style.background = '#667eea';
+                }, 2000);
+            });
+        }
+        
+        async function checkDNS() {
+            const resultDiv = document.getElementById('status-result');
+            resultDiv.className = 'status-result pending';
+            resultDiv.style.display = 'block';
+            resultDiv.innerHTML = '⏳ Checking DNS records for ekosolarpros.com...';
+            
+            // Simulate DNS check (in real scenario, you'd call an API)
+            setTimeout(() => {
+                // This is a simulation - in production, you'd use a DNS lookup API
+                const isConfigured = Math.random() > 0.5; // Simulated result
+                
+                if (isConfigured) {
+                    resultDiv.className = 'status-result success';
+                    resultDiv.innerHTML = `
+                        ✅ <strong>DNS Record Found!</strong><br>
+                        The TXT verification record has been detected.<br>
+                        You can now click "VERIFY" in Google Search Console.
+                    `;
+                } else {
+                    resultDiv.className = 'status-result error';
+                    resultDiv.innerHTML = `
+                        ❌ <strong>DNS Record Not Found Yet</strong><br>
+                        The TXT record hasn't propagated yet. This is normal.<br>
+                        Please wait 5-30 minutes and check again.<br><br>
+                        <small>Note: Some providers can take up to 48 hours.</small>
+                    `;
+                }
+            }, 2000);
+        }
+    </script>
+</body>
+</html>

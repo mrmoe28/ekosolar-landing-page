@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Services Dashboard - EkoSolarPros</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .dashboard-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .header h1 {
+            color: #333;
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            color: #666;
+            font-size: 16px;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        
+        .service-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .service-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-right: 15px;
+        }
+        
+        .google-search { background: #4285f4; color: white; }
+        .google-analytics { background: #f57c00; color: white; }
+        .google-business { background: #34a853; color: white; }
+        .google-ads { background: #fbbc04; color: white; }
+        .google-tag { background: #8e24aa; color: white; }
+        .schema { background: #e91e63; color: white; }
+        
+        .service-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .status {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .status.active { background: #d4edda; color: #155724; }
+        .status.pending { background: #fff3cd; color: #856404; }
+        .status.not-setup { background: #f8d7da; color: #721c24; }
+        
+        .service-details {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .action-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+        
+        .action-button:hover {
+            background: #5a67d8;
+        }
+        
+        .checklist {
+            list-style: none;
+            margin: 15px 0;
+        }
+        
+        .checklist li {
+            padding: 8px 0;
+            color: #666;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .checklist li:before {
+            content: '✓';
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background: #34a853;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 20px;
+            margin-right: 10px;
+            font-size: 12px;
+        }
+        
+        .checklist li.pending:before {
+            content: '○';
+            background: #ffd93d;
+        }
+        
+        .checklist li.not-done:before {
+            content: '✗';
+            background: #dc3545;
+        }
+        
+        .setup-instructions {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+        
+        .setup-instructions h4 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        
+        .setup-instructions ol {
+            padding-left: 20px;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .setup-instructions li {
+            margin: 8px 0;
+        }
+        
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            overflow-x: auto;
+        }
+        
+        .warning {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        
+        .warning strong {
+            color: #856404;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="header">
+            <h1>🚀 Google Services Dashboard</h1>
+            <p>EkoSolarPros - Google Integration Status & Setup Guide</p>
+        </div>
+
+        <div class="services-grid">
+            <!-- Google Search Console -->
+            <div class="service-card">
+                <div class="service-header">
+                    <div class="service-icon google-search">🔍</div>
+                    <div>
+                        <div class="service-title">Google Search Console</div>
+                    </div>
+                </div>
+                <span class="status active">✅ Verified</span>
+                <div class="service-details">
+                    Monitor your site's search performance and fix issues that prevent proper indexing.
+                </div>
+                <ul class="checklist">
+                    <li>HTML verification file uploaded</li>
+                    <li>Sitemap submitted (sitemap.xml)</li>
+                    <li>Image sitemap submitted</li>
+                    <li class="pending">Check indexing status</li>
+                </ul>
+                <a href="https://search.google.com/search-console" target="_blank" class="action-button">Open Search Console</a>
+                
+                <div class="setup-instructions">
+                    <h4>Verification File:</h4>
+                    <code>google44d7e3a72b5cfc88.html</code>
+                </div>
+            </div>
+
+            <!-- Google Analytics -->
+            <div class="service-card">
+                <div class="service-header">
+                    <div class="service-icon google-analytics">📊</div>
+                    <div>
+                        <div class="service-title">Google Analytics GA4</div>
+                    </div>
+                </div>
+                <span class="status pending">⚠️ Configuration Required</span>
+                <div class="service-details">
+                    Track visitor behavior, conversions, and solar quote requests.
+                </div>
+                <ul class="checklist">
+                    <li>Tracking script added to site</li>
+                    <li class="not-done">Add your GA4 Measurement ID</li>
+                    <li class="not-done">Configure conversion events</li>
+                    <li class="not-done">Set up goals</li>
+                </ul>
+                
+                <div class="setup-instructions">
+                    <h4>Setup Instructions:</h4>
+                    <ol>
+                        <li>Go to <a href="https://analytics.google.com" target="_blank">Google Analytics</a></li>
+                        <li>Create a GA4 property for ekosolarpros.com</li>
+                        <li>Copy your Measurement ID (G-XXXXXXXXXX)</li>
+                        <li>Update google-integration.js:</li>
+                    </ol>
+                    <div class="code-block">const GA4_MEASUREMENT_ID = 'G-YOUR-ID-HERE';</div>
+                </div>
+                <a href="https://analytics.google.com" target="_blank" class="action-button">Setup Analytics</a>
+            </div>
+
+            <!-- Google Business Profile -->
+            <div class="service-card">
+                <div class="service-header">
+                    <div class="service-icon google-business">📍</div>
+                    <div>
+                        <div class="service-title">Google Business Profile</div>
+                    </div>
+                </div>
+                <span class="status not-setup">❌ Not Setup</span>
+                <div class="service-details">
+                    Critical for local SEO - appear in Google Maps and local search results.
+                </div>
+                <ul class="checklist">
+                    <li class="not-done">Create business listing</li>
+                    <li class="not-done">Verify business location</li>
+                    <li class="not-done">Add photos & services</li>
+                    <li class="not-done">Enable reviews</li>
+                </ul>
+                
+                <div class="setup-instructions">
+                    <h4>Required Information:</h4>
+                    <ol>
+                        <li>Business Name: EkoSolarPros</li>
+                        <li>Category: Solar Energy Company</li>
+                        <li>Service Areas: All of Georgia</li>
+                        <li>Phone: 678-555-SOLAR</li>
+                    </ol>
+                </div>
+                <a href="https://business.google.com" target="_blank" class="action-button">Create Listing</a>
+            </div>
+
+            <!-- Google Ads -->
+            <div class="service-card">
+                <div class="service-header">
+                    <div class="service-icon google-ads">💰</div>
+                    <div>
+                        <div class="service-title">Google Ads</div>
+                    </div>
+                </div>
+                <span class="status not-setup">❌ Optional</span>
+                <div class="service-details">
+                    Run targeted ads for "solar installation Georgia" and related keywords.
+                </div>
+                <ul class="checklist">
+                    <li class="not-done">Create Ads account</li>
+                    <li class="not-done">Link with Analytics</li>
+                    <li class="not-done">Setup conversion tracking</li>
+                    <li class="not-done">Create first campaign</li>
+                </ul>
+                
+                <div class="setup-instructions">
+                    <h4>Recommended Keywords:</h4>
+                    <ul style="padding-left: 20px;">
+                        <li>solar installation georgia</li>
+                        <li>solar panels atlanta</li>
+                        <li>solar repair near me</li>
+                        <li>georgia solar incentives</li>
+                    </ul>
+                </div>
+                <a href="https://ads.google.com" target="_blank" class="action-button">Setup Ads</a>
+            </div>
+
+            <!-- Google Tag Manager -->
+            <div class="service-card">
+                <div class="service-header">
+                    <div class="service-icon google-tag">🏷️</div>
+                    <div>
+                        <div class="service-title">Google Tag Manager</div>
+                    </div>
+                </div>
+                <span class="status pending">⚠️ Configuration Required</span>
+                <div class="service-details">
+                    Manage all tracking codes and marketing tags in one place.
+                </div>
+                <ul class="checklist">
+                    <li>Container script added</li>
+                    <li class="not-done">Add your Container ID</li>
+                    <li class="not-done">Configure tags</li>
+                    <li class="not-done">Test & publish</li>
+                </ul>
+                
+                <div class="setup-instructions">
+                    <h4>Setup Instructions:</h4>
+                    <ol>
+                        <li>Go to <a href="https://tagmanager.google.com" target="_blank">Tag Manager</a></li>
+                        <li>Create container for ekosolarpros.com</li>
+                        <li>Copy Container ID (GTM-XXXXXXX)</li>
+                        <li>Update google-integration.js:</li>
+                    </ol>
+                    <div class="code-block">const GTM_CONTAINER_ID = 'GTM-YOUR-ID';</div>
+                </div>
+                <a href="https://tagmanager.google.com" target="_blank" class="action-button">Setup GTM</a>
+            </div>
+
+            <!-- Schema Markup -->
+            <div class="service-card">
+                <div class="service-header">
+                    <div class="service-icon schema">📋</div>
+                    <div>
+                        <div class="service-title">Schema Markup</div>
+                    </div>
+                </div>
+                <span class="status active">✅ Implemented</span>
+                <div class="service-details">
+                    Rich structured data for better search results and featured snippets.
+                </div>
+                <ul class="checklist">
+                    <li>LocalBusiness schema</li>
+                    <li>Service schema</li>
+                    <li>FAQ schema</li>
+                    <li>Product schema</li>
+                    <li>Review/Rating schema</li>
+                </ul>
+                
+                <div class="setup-instructions">
+                    <h4>Test Your Schema:</h4>
+                    <a href="https://search.google.com/test/rich-results" target="_blank" style="color: #667eea;">Rich Results Test →</a>
+                </div>
+                <a href="https://search.google.com/test/rich-results" target="_blank" class="action-button">Test Schema</a>
+            </div>
+        </div>
+
+        <div class="warning">
+            <strong>⚠️ Important Next Steps:</strong>
+            <ol style="margin-top: 10px; padding-left: 20px;">
+                <li>Get your GA4 Measurement ID and update google-integration.js</li>
+                <li>Get your GTM Container ID and update google-integration.js</li>
+                <li>Create Google Business Profile listing (critical for local SEO)</li>
+                <li>Submit your site to Google Search Console if not already done</li>
+                <li>Monitor Core Web Vitals in Search Console</li>
+            </ol>
+        </div>
+
+        <div class="header" style="margin-top: 30px;">
+            <h2 style="font-size: 24px; margin-bottom: 15px;">📈 Quick Links & Resources</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                <a href="https://search.google.com/search-console" target="_blank" style="color: #667eea;">Search Console →</a>
+                <a href="https://analytics.google.com" target="_blank" style="color: #667eea;">Google Analytics →</a>
+                <a href="https://business.google.com" target="_blank" style="color: #667eea;">Business Profile →</a>
+                <a href="https://ads.google.com" target="_blank" style="color: #667eea;">Google Ads →</a>
+                <a href="https://tagmanager.google.com" target="_blank" style="color: #667eea;">Tag Manager →</a>
+                <a href="https://pagespeed.web.dev" target="_blank" style="color: #667eea;">PageSpeed Insights →</a>
+                <a href="https://search.google.com/test/mobile-friendly" target="_blank" style="color: #667eea;">Mobile Test →</a>
+                <a href="https://search.google.com/test/rich-results" target="_blank" style="color: #667eea;">Rich Results Test →</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Check Google services status
+        function checkGoogleServices() {
+            // Check for GA4
+            if (typeof gtag !== 'undefined') {
+                console.log('✅ Google Analytics detected');
+            } else {
+                console.log('⚠️ Google Analytics not configured');
+            }
+            
+            // Check for GTM
+            if (typeof dataLayer !== 'undefined') {
+                console.log('✅ Google Tag Manager detected');
+            } else {
+                console.log('⚠️ Google Tag Manager not configured');
+            }
+            
+            // Check for Schema
+            const schemas = document.querySelectorAll('script[type="application/ld+json"]');
+            if (schemas.length > 0) {
+                console.log(`✅ ${schemas.length} Schema markup blocks found`);
+            }
+        }
+        
+        // Run check on page load
+        window.addEventListener('load', checkGoogleServices);
+    </script>
+</body>
+</html>
