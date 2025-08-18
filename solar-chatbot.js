@@ -115,7 +115,7 @@ const EkoSolarChatbot = () => {
         case 'emergency':
           addBotMessage("🚨 Solar system emergency? We're here 24/7! Our certified technicians provide immediate assistance throughout Georgia.", 'emergency');
           setTimeout(() => {
-            addBotMessage("Emergency Solar Services:\\n\\n⚡ System not producing power\\n🔧 Inverter failures\\n⛈️ Storm damage assessment\\n🔥 Electrical safety concerns\\n💡 Complete system outages\\n\\n📞 Emergency Hotline: (678) 555-SOLAR\\n⏰ Available 24/7/365\\n\\nWhat type of emergency are you experiencing?", 'emergency', [
+            addBotMessage("Emergency Solar Services:\\n\\n⚡ System not producing power\\n🔧 Inverter failures\\n⛈️ Storm damage assessment\\n🔥 Electrical safety concerns\\n💡 Complete system outages\\n\\n📞 Emergency Hotline: (404) 364-5456\\n⏰ Available 24/7/365\\n\\nWhat type of emergency are you experiencing?", 'emergency', [
               { text: 'Call Emergency Line', value: 'Call emergency number', action: 'emergency_call' },
               { text: 'System Not Working', value: 'My system is not working', action: 'system_down' },
               { text: 'Storm Damage', value: 'Storm damaged my panels', action: 'storm_damage' },
@@ -128,7 +128,7 @@ const EkoSolarChatbot = () => {
         case 'contact':
           addBotMessage("I'd love to connect you with our Georgia solar experts! EkoSolarPros has helped thousands of Georgia families go solar. Here's how to reach us:", 'contact');
           setTimeout(() => {
-            addBotMessage("📞 Call: (678) 555-SOLAR (7652)\\n📧 Email: info@ekosolarpros.com\\n🏢 Serving: Atlanta, Savannah, Columbus, Augusta, Macon & all of Georgia\\n📅 Free consultations available weekdays & weekends\\n⏰ Monday-Friday: 8 AM - 7 PM\\n⏰ Saturday: 9 AM - 5 PM\\n⏰ Sunday: 10 AM - 4 PM\\n\\nWhat works best for you?", 'contact', [
+            addBotMessage("📞 Call: (404) 364-5456 (7652)\\n📧 Email: info@ekosolarpros.com\\n🏢 Serving: Atlanta, Savannah, Columbus, Augusta, Macon & all of Georgia\\n📅 Free consultations available weekdays & weekends\\n⏰ Monday-Friday: 8 AM - 7 PM\\n⏰ Saturday: 9 AM - 5 PM\\n⏰ Sunday: 10 AM - 4 PM\\n\\nWhat works best for you?", 'contact', [
               { text: 'Schedule Free Consultation', value: 'Schedule consultation', action: 'schedule' },
               { text: 'Call Now', value: 'I want to call now', action: 'call' },
               { text: 'Email Quote Request', value: 'Send me info by email', action: 'email' },
@@ -189,7 +189,7 @@ const EkoSolarChatbot = () => {
           addBotMessage("Perfect! Let's get you connected with our Georgia solar experts for a FREE consultation. Here's what you'll get:\\n\\n✅ Complete energy analysis\\n✅ Custom system design\\n✅ Exact pricing & financing\\n✅ Permit & installation timeline\\n✅ Incentive calculations\\n✅ 25-year production guarantee\\n\\nWhat's the best way to reach you?", 'lead_capture');
           setTimeout(() => {
             addBotMessage("Please provide:\\n\\n📧 Email address\\n📞 Phone number\\n📍 City in Georgia\\n🏠 Property type (house/townhome/etc)\\n⚡ Monthly electric bill range\\n\\nOur certified solar consultants will contact you within 2 hours with a personalized quote!", 'lead_capture', [
-              { text: 'Call Me: (678) 555-SOLAR', value: 'Call me at your number', action: 'call_now' },
+              { text: 'Call Me: (404) 364-5456', value: 'Call me at your number', action: 'call_now' },
               { text: 'Text Me Information', value: 'Text me details', action: 'text_info' },
               { text: 'Email Quote Request', value: 'Email me a quote', action: 'email_info' },
               { text: 'Live Chat with Expert', value: 'Connect me now', action: 'live_chat' }
@@ -207,12 +207,12 @@ const EkoSolarChatbot = () => {
           break;
 
         case 'emergency_call':
-          addBotMessage("🚨 **EMERGENCY SOLAR SERVICE**\\n\\n📞 Call NOW: **(678) 555-SOLAR**\\n\\n🔧 **Our emergency team provides:**\\n• Immediate phone diagnosis\\n• Same-day service calls\\n• Certified electricians on-call\\n• Safety assessments\\n• Insurance claim assistance\\n\\n⚡ **Available 24/7/365** throughout Georgia\\n\\n**SAFETY FIRST:** If you smell burning, see sparks, or have electrical concerns, call 911 first, then call us!");
+          addBotMessage("🚨 **EMERGENCY SOLAR SERVICE**\\n\\n📞 Call NOW: **(404) 364-5456**\\n\\n🔧 **Our emergency team provides:**\\n• Immediate phone diagnosis\\n• Same-day service calls\\n• Certified electricians on-call\\n• Safety assessments\\n• Insurance claim assistance\\n\\n⚡ **Available 24/7/365** throughout Georgia\\n\\n**SAFETY FIRST:** If you smell burning, see sparks, or have electrical concerns, call 911 first, then call us!");
           trackChatEvent('emergency_call', 'urgent_service');
           break;
 
         case 'call_now':
-          addBotMessage("📞 **Call EkoSolarPros Now:**\\n\\n**(678) 555-SOLAR (7652)**\\n\\n🕘 **Current Hours:**\\n• Monday-Friday: 8 AM - 7 PM\\n• Saturday: 9 AM - 5 PM\\n• Sunday: 10 AM - 4 PM\\n• Emergency Service: 24/7\\n\\n💬 **Mention this chat for:**\\n• Priority scheduling\\n• $500 additional discount\\n• Free system monitoring\\n\\nOur solar experts are standing by!");
+          addBotMessage("📞 **Call EkoSolarPros Now:**\\n\\n**(404) 364-5456 (7652)**\\n\\n🕘 **Current Hours:**\\n• Monday-Friday: 8 AM - 7 PM\\n• Saturday: 9 AM - 5 PM\\n• Sunday: 10 AM - 4 PM\\n• Emergency Service: 24/7\\n\\n💬 **Mention this chat for:**\\n• Priority scheduling\\n• $500 additional discount\\n• Free system monitoring\\n\\nOur solar experts are standing by!");
           trackChatEvent('phone_call', 'direct_contact');
           break;
 
@@ -222,7 +222,7 @@ const EkoSolarChatbot = () => {
           break;
 
         case 'text_info':
-          addBotMessage("📱 **Get Solar Info by Text:**\\n\\nText **\"SOLAR QUOTE\"** to:\\n**(678) 555-7652**\\n\\n**You'll receive:**\\n• Quick response (within 30 min)\\n• Link to personalized calculator\\n• Appointment scheduling link\\n• Local installer contact\\n• Current incentive updates\\n\\n**Or we can text you:**\\nJust provide your cell number and we'll send you a comprehensive solar information packet!");
+          addBotMessage("📱 **Get Solar Info by Text:**\\n\\nText **\"SOLAR QUOTE\"** to:\\n**(404) 364-5456**\\n\\n**You'll receive:**\\n• Quick response (within 30 min)\\n• Link to personalized calculator\\n• Appointment scheduling link\\n• Local installer contact\\n• Current incentive updates\\n\\n**Or we can text you:**\\nJust provide your cell number and we'll send you a comprehensive solar information packet!");
           trackChatEvent('text_request', 'mobile_lead');
           break;
 
@@ -230,7 +230,7 @@ const EkoSolarChatbot = () => {
           addBotMessage("I'd be happy to help you with that! Let me connect you with our Georgia solar experts who can provide detailed information and a personalized consultation.", 'general', [
             { text: 'Get Free Quote', value: 'I want a free quote', action: 'quote' },
             { text: 'Calculate Savings', value: 'Calculate my savings', action: 'calculate' },
-            { text: 'Call (678) 555-SOLAR', value: 'Call now', action: 'call_now' },
+            { text: 'Call (404) 364-5456', value: 'Call now', action: 'call_now' },
             { text: 'Schedule Consultation', value: 'Schedule consultation', action: 'schedule' }
           ]);
       }
@@ -741,7 +741,7 @@ const EkoSolarChatbot = () => {
           }
         }, [
           React.createElement(Phone, { key: 'phone-icon', size: 12 }),
-          '(678) 555-SOLAR'
+          '(404) 364-5456'
         ])
       ])
     ])

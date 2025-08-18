@@ -24,7 +24,7 @@ const EkoSolarSchema = {
         "description": "Professional solar panel installation and repair services throughout Georgia. Licensed solar contractors serving Atlanta, Savannah, Columbus, Augusta, Macon, and surrounding areas. 24/7 emergency repair, 25-year warranty, 30% federal tax credit available.",
         "slogan": "Solar Power, Simplified",
         "priceRange": "$$",
-        "telephone": "+1-678-555-SOLAR",
+        "telephone": "+1-404-364-5456",
         "email": "info@ekosolarpros.com",
         "address": {
             "@type": "PostalAddress",
@@ -270,7 +270,7 @@ const EkoSolarSchema = {
                 "name": "Do you offer emergency solar repair services?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Yes, EkoSolar offers 24/7 emergency solar repair services throughout Georgia. We can typically respond within 2-4 hours for urgent issues like inverter failures, storm damage, or complete system outages. Call our emergency hotline at 678-555-SOLAR."
+                    "text": "Yes, EkoSolar offers 24/7 emergency solar repair services throughout Georgia. We can typically respond within 2-4 hours for urgent issues like inverter failures, storm damage, or complete system outages. Call our emergency hotline at 404-364-5456."
                 }
             },
             {
@@ -320,14 +320,14 @@ const EkoSolarSchema = {
         "contactPoint": [
             {
                 "@type": "ContactPoint",
-                "telephone": "+1-678-555-SOLAR",
+                "telephone": "+1-404-364-5456",
                 "contactType": "sales",
                 "areaServed": "US-GA",
                 "availableLanguage": ["en"]
             },
             {
                 "@type": "ContactPoint",
-                "telephone": "+1-678-555-SOLAR",
+                "telephone": "+1-404-364-5456",
                 "contactType": "customer support",
                 "areaServed": "US-GA",
                 "availableLanguage": ["en"],

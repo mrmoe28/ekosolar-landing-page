@@ -62,7 +62,7 @@
         "image": "https://ekosolarpros.com/images/ekosolar-solar-installation-georgia.jpg",
         "description": "Professional solar panel installation and repair services throughout Georgia. Licensed solar contractors serving Atlanta, Savannah, Columbus, Augusta, and surrounding areas.",
         "priceRange": "$$",
-        "telephone": "+1-678-555-SOLAR",
+        "telephone": "+1-404-364-5456",
         "email": "info@ekosolarpros.com",
         "address": {
             "@type": "PostalAddress",
@@ -852,6 +852,79 @@
             background: rgba(255, 255, 255, 0.2);
             border-color: rgba(255, 255, 255, 0.5);
             transform: translateY(-2px);
+        }
+
+        /* CTA Buttons Section - Below Slideshow */
+        .cta-buttons-section {
+            background: transparent;
+            padding: 40px 0;
+            margin: 0;
+        }
+
+        .cta-buttons-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 25px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            min-width: 180px;
+            justify-content: center;
+            color: white;
+        }
+
+        .cta-button.cta-primary {
+            background: var(--solar-orange);
+            border: 2px solid var(--solar-orange);
+            color: white;
+        }
+
+        .cta-button.cta-primary:hover {
+            background: #DC2626;
+            border-color: #DC2626;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(234, 88, 12, 0.4);
+        }
+
+        .cta-button.cta-secondary {
+            background: var(--solar-blue);
+            border: 2px solid var(--solar-blue);
+            color: white;
+        }
+
+        .cta-button.cta-secondary:hover {
+            background: #1e40af;
+            border-color: #1e40af;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+        }
+
+        .cta-button.cta-tertiary {
+            background: var(--solar-blue);
+            border: 2px solid var(--solar-blue);
+            color: white;
+        }
+
+        .cta-button.cta-tertiary:hover {
+            background: #1e40af;
+            border-color: #1e40af;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+        }
+
+        .cta-icon {
+            font-size: 1.2em;
         }
         
         /* Dynamic Background Images - Professional Solar Photography */
@@ -2058,6 +2131,7 @@
             
             /* Hero Slideshow Mobile Styles */
             .hero-slideshow {
+                height: 100vh;
                 min-height: 100vh;
                 padding-top: 80px;
             }
@@ -2222,6 +2296,24 @@
             .footer-content {
                 grid-template-columns: 1fr;
                 text-align: center;
+            }
+
+            /* Mobile CTA Buttons */
+            .cta-buttons-section {
+                padding: 30px 0;
+            }
+
+            .cta-buttons-wrapper {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .cta-button {
+                width: 100%;
+                max-width: 280px;
+                margin: 0 auto;
+                padding: 18px 20px;
+                font-size: 1.1rem;
             }
         }
         
@@ -3551,10 +3643,25 @@
             <button class="dot" data-slide="9" aria-label="Go to slide 10"></button>
         </div>
 
-        <!-- Call to Action -->
-        <div class="hero-cta">
-            <a href="#calculator" class="cta-button-primary">Get Free Solar Quote</a>
-            <a href="tel:4045516532" class="cta-button-secondary">Emergency: (404) 551-6532</a>
+    </section>
+
+    <!-- Call-to-Action Buttons Section -->
+    <section class="cta-buttons-section">
+        <div class="container">
+            <div class="cta-buttons-wrapper">
+                <a href="#contact" class="cta-button cta-primary">
+                    <span class="cta-icon">⚡</span>
+                    Get Free Solar Quote
+                </a>
+                <a href="tel:+1-404-364-5456" class="cta-button cta-secondary">
+                    <span class="cta-icon">📞</span>
+                    Call 404-364-5456
+                </a>
+                <a href="#services" class="cta-button cta-tertiary">
+                    <span class="cta-icon">🔧</span>
+                    Emergency Repair
+                </a>
+            </div>
         </div>
     </section>
 
