@@ -574,12 +574,11 @@
         /* ===== HERO SLIDESHOW SECTION ===== */
         .hero-slideshow {
             position: relative;
-            height: 100vh;
-            min-height: 600px;
+            height: calc(100vh - 80px);
+            min-height: 520px;
             overflow: hidden;
-            top: 0;
-            left: 0;
             width: 100%;
+            margin-top: 80px;
         }
         
         .slideshow-container {
@@ -636,7 +635,7 @@
             position: relative;
             z-index: 3;
             max-width: 800px;
-            padding: 120px 20px 0 20px;
+            padding: 40px 20px 20px 20px;
             animation: slideInUp 1.2s ease;
             transform: translateY(30px);
             opacity: 0;
@@ -652,7 +651,8 @@
             font-size: clamp(2.5rem, 5vw, 4rem);
             font-weight: var(--font-weight-bold);
             margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
         }
         
         .hero-subtitle {
@@ -662,7 +662,8 @@
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
         }
         
         .hero-stats {
@@ -706,13 +707,16 @@
             font-size: 2.2rem;
             font-weight: var(--font-weight-bold);
             display: block;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
         }
         
         .stat-label {
             font-size: 0.85rem;
             opacity: 0.9;
             margin-top: 5px;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
         }
         
         /* Slideshow Navigation */
@@ -2023,7 +2027,7 @@
             .grid-layer-3,
             .animated-grid-line,
             .grid-intersection {
-                animation: none !important;
+                display: none !important;
             }
         }
 
@@ -2134,13 +2138,13 @@
             
             /* Hero Slideshow Mobile Styles */
             .hero-slideshow {
-                height: 100vh;
-                min-height: 100vh;
-                padding-top: 0;
+                height: calc(100vh - 80px);
+                min-height: calc(100vh - 80px);
+                margin-top: 80px;
             }
             
             .slide-content {
-                padding: 100px 20px 0 20px;
+                padding: 40px 20px 20px 20px;
                 max-width: 100%;
             }
             
@@ -2441,14 +2445,7 @@
         
         /* Global grid container */
         .global-grid-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            pointer-events: none;
-            z-index: -1;
-            overflow: hidden;
+            display: none;
         }
         
         /* Base grid layers */
@@ -4555,12 +4552,29 @@
         
         // ===== SOLAR CALCULATOR FUNCTIONALITY =====
         function initializeCalculator() {
+            console.log('🔧 Initializing Solar Calculator...');
+            
             const electricBillInput = document.getElementById('electricBill');
             const homeSizeInput = document.getElementById('homeSize');
             const sunExposureSlider = document.getElementById('sunExposure');
             const energyUsageSlider = document.getElementById('energyUsage');
             const sunExposureValue = document.getElementById('sunExposureValue');
             const energyUsageValue = document.getElementById('energyUsageValue');
+            
+            // Debug: Check if all elements exist
+            console.log('Calculator elements found:', {
+                electricBill: !!electricBillInput,
+                homeSize: !!homeSizeInput,
+                sunExposure: !!sunExposureSlider,
+                energyUsage: !!energyUsageSlider,
+                sunExposureValue: !!sunExposureValue,
+                energyUsageValue: !!energyUsageValue
+            });
+            
+            if (!electricBillInput || !homeSizeInput || !sunExposureSlider || !energyUsageSlider) {
+                console.error('❌ Calculator initialization failed: Missing form elements');
+                return;
+            }
             
             // Update slider display values
             sunExposureSlider.addEventListener('input', function() {
@@ -4584,10 +4598,14 @@
         }
         
         function calculateSolarSavings() {
+            console.log('💡 Calculating solar savings...');
+            
             const electricBill = parseFloat(document.getElementById('electricBill').value) || 0;
             const homeSize = parseFloat(document.getElementById('homeSize').value) || 0;
             const sunExposure = parseInt(document.getElementById('sunExposure').value);
             const energyUsage = parseInt(document.getElementById('energyUsage').value);
+            
+            console.log('Input values:', { electricBill, homeSize, sunExposure, energyUsage });
             
             if (electricBill === 0 || homeSize === 0) {
                 // Show placeholder values
