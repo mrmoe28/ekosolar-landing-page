@@ -4434,7 +4434,7 @@
             
             // Initialize animations and counters
             initializeAnimations();
-            initializeCalculator();
+            initializeNewCalculator();
             initializeCalculatorSlideshow();
             initializeTestimonials();
             initializeContactForm();
@@ -4548,225 +4548,70 @@
             setInterval(showNextSlide, 5000);
         }
         
-        // ===== UTILITY FUNCTIONS (needed by calculator) =====
-        function debounce(func, wait) {
-            let timeout;
-            return function executedFunction(...args) {
-                const later = () => {
-                    clearTimeout(timeout);
-                    func(...args);
-                };
-                clearTimeout(timeout);
-                timeout = setTimeout(later, wait);
-            };
-        }
+        // ===== NEW SOLAR CALCULATOR (Clean Implementation) =====
         
-        // ===== SOLAR CALCULATOR FUNCTIONALITY =====
-        function initializeCalculator() {
-            try {
-                console.log('🔧 Initializing Solar Calculator...');
-                
-                const electricBillInput = document.getElementById('electricBill');
-                const homeSizeInput = document.getElementById('homeSize');
-                const sunExposureSlider = document.getElementById('sunExposure');
-                const energyUsageSlider = document.getElementById('energyUsage');
-                const sunExposureValue = document.getElementById('sunExposureValue');
-                const energyUsageValue = document.getElementById('energyUsageValue');
-                const calculateButton = document.getElementById('calculateButton');
-                
-                // Debug: Check if all elements exist
-                console.log('Calculator elements found:', {
-                    electricBill: !!electricBillInput,
-                    homeSize: !!homeSizeInput,
-                    sunExposure: !!sunExposureSlider,
-                    energyUsage: !!energyUsageSlider,
-                    sunExposureValue: !!sunExposureValue,
-                    energyUsageValue: !!energyUsageValue,
-                    calculateButton: !!calculateButton
+        function newCalculateSolarSavings() {
+            // Get input values directly
+            var bill = parseFloat(document.getElementById('electricBill').value) || 0;
+            var size = parseFloat(document.getElementById('homeSize').value) || 0;
+            var sun = parseInt(document.getElementById('sunExposure').value) || 2;
+            var usage = parseInt(document.getElementById('energyUsage').value) || 2;
+            
+            // Validate inputs
+            if (bill <= 0 || size <= 0) {
+                displayResults(0, 0, 0, 0);
+                return;
+            }
+            
+            // Simple calculations
+            var sunMultiplier = [0.7, 0.9, 1.2][sun - 1];
+            var usageMultiplier = [0.8, 1.0, 1.3][usage - 1];
+            var systemSize = (size / 1000) * 8 * usageMultiplier;
+            var monthlyGeneration = systemSize * 130 * sunMultiplier;
+            var monthlySavings = Math.min(monthlyGeneration * 0.22, bill * 0.95);
+            var annualSavings = monthlySavings * 12;
+            var systemCost = systemSize * 3200;
+            var paybackPeriod = annualSavings > 0 ? systemCost / annualSavings : 0;
+            
+            // Display results
+            displayResults(monthlySavings, annualSavings, systemCost, paybackPeriod);
+        }
+
+        function displayResults(monthly, annual, cost, payback) {
+            document.getElementById('monthlySavings').textContent = '$' + Math.round(monthly).toLocaleString();
+            document.getElementById('annualSavings').textContent = '$' + Math.round(annual).toLocaleString();
+            document.getElementById('systemCost').textContent = '$' + Math.round(cost).toLocaleString();
+            document.getElementById('paybackPeriod').textContent = Math.round(payback * 10) / 10 + ' yrs';
+        }
+
+        // Simple initialization for new calculator
+        function initializeNewCalculator() {
+            // Button click event
+            var calculateButton = document.getElementById('calculateButton');
+            if (calculateButton) {
+                calculateButton.addEventListener('click', newCalculateSolarSavings);
+            }
+            
+            // Slider text updates
+            var sunSlider = document.getElementById('sunExposure');
+            var sunValue = document.getElementById('sunExposureValue');
+            if (sunSlider && sunValue) {
+                sunSlider.addEventListener('input', function() {
+                    var texts = ['Poor', 'Good', 'Excellent'];
+                    sunValue.textContent = texts[this.value - 1] || 'Good';
                 });
-                
-                // Check core elements first
-                if (!electricBillInput || !homeSizeInput || !sunExposureSlider || !energyUsageSlider) {
-                    console.error('❌ Calculator initialization failed: Missing core form elements', {
-                        electricBill: !!electricBillInput,
-                        homeSize: !!homeSizeInput,
-                        sunExposure: !!sunExposureSlider,
-                        energyUsage: !!energyUsageSlider
-                    });
-                    return;
-                }
-                
-                // Check button separately
-                if (!calculateButton) {
-                    console.error('❌ Calculate button not found, but continuing with core functionality');
-                }
-                
-                // Update slider display values
-                if (sunExposureSlider && sunExposureValue) {
-                    sunExposureSlider.addEventListener('input', function() {
-                        const exposureTexts = ['Poor', 'Good', 'Excellent'];
-                        const index = Math.min(Math.max(parseInt(this.value) - 1, 0), 2);
-                        sunExposureValue.textContent = exposureTexts[index];
-                        calculateSolarSavings();
-                    });
-                }
-                
-                if (energyUsageSlider && energyUsageValue) {
-                    energyUsageSlider.addEventListener('input', function() {
-                        const usageTexts = ['Low', 'Average', 'High'];
-                        const index = Math.min(Math.max(parseInt(this.value) - 1, 0), 2);
-                        energyUsageValue.textContent = usageTexts[index];
-                        calculateSolarSavings();
-                    });
-                }
-                
-                // Add button click event listener with proper event isolation
-                if (calculateButton) {
-                    calculateButton.addEventListener('click', function(e) {
-                    console.log('🖱️ Calculate button clicked!');
-                    e.preventDefault();
-                    e.stopPropagation();
-                    e.stopImmediatePropagation();
-                    
-                    // Prevent multiple clicks
-                    if (calculateButton.disabled) {
-                        console.log('Button already processing, ignoring click');
-                        return;
-                    }
-                    
-                    // Add loading state
-                    calculateButton.classList.add('loading');
-                    calculateButton.disabled = true;
-                    console.log('Loading state added, button disabled');
-                    
-                    // Calculate after short delay for loading animation
-                    setTimeout(() => {
-                        console.log('🧮 Triggering calculation from button click');
-                        calculateSolarSavings();
-                        
-                        // Remove loading state
-                        setTimeout(() => {
-                            calculateButton.classList.remove('loading');
-                            calculateButton.disabled = false;
-                            console.log('Loading state removed, button re-enabled');
-                        }, 200);
-                    }, 300);
-                }, true); // Use capture phase
-                } else {
-                    console.error('❌ Cannot attach click event - button not found!');
-                }
-                
-                // Optional: Still calculate on input change for better UX
-                const debouncedCalculate = debounce(() => {
-                    if (electricBillInput.value && homeSizeInput.value) {
-                        calculateSolarSavings();
-                    }
-                }, 1000);
-                
-                electricBillInput.addEventListener('input', debouncedCalculate);
-                homeSizeInput.addEventListener('input', debouncedCalculate);
-                
-                console.log('✅ Calculator initialized successfully');
-            } catch (error) {
-                console.error('❌ Calculator initialization error:', error);
+            }
+            
+            var energySlider = document.getElementById('energyUsage');
+            var energyValue = document.getElementById('energyUsageValue');
+            if (energySlider && energyValue) {
+                energySlider.addEventListener('input', function() {
+                    var texts = ['Low', 'Average', 'High'];
+                    energyValue.textContent = texts[this.value - 1] || 'Average';
+                });
             }
         }
         
-        function calculateSolarSavings() {
-            try {
-                console.log('💡 Calculating solar savings...');
-                
-                // Get input elements
-                const electricBillElement = document.getElementById('electricBill');
-                const homeSizeElement = document.getElementById('homeSize');
-                const sunExposureElement = document.getElementById('sunExposure');
-                const energyUsageElement = document.getElementById('energyUsage');
-                
-                // Log raw values for debugging
-                console.log('Raw input values:', {
-                    electricBill: electricBillElement?.value,
-                    homeSize: homeSizeElement?.value,
-                    sunExposure: sunExposureElement?.value,
-                    energyUsage: energyUsageElement?.value
-                });
-                
-                const electricBill = parseFloat(electricBillElement?.value) || 0;
-                const homeSize = parseFloat(homeSizeElement?.value) || 0;
-                const sunExposure = parseInt(sunExposureElement?.value) || 2;
-                const energyUsage = parseInt(energyUsageElement?.value) || 2;
-                
-                console.log('Parsed values:', { electricBill, homeSize, sunExposure, energyUsage });
-                
-                if (electricBill === 0 || homeSize === 0) {
-                    console.log('⚠️ Cannot calculate: Missing electric bill or home size values');
-                    // Show placeholder values
-                    document.getElementById('monthlySavings').textContent = '$0';
-                    document.getElementById('annualSavings').textContent = '$0';
-                    document.getElementById('systemCost').textContent = '$0';
-                    document.getElementById('paybackPeriod').textContent = '0 yrs';
-                    return;
-                }
-                
-                // Calculation factors with validation
-                const sunMultiplier = [0.7, 0.9, 1.2][Math.min(Math.max(sunExposure - 1, 0), 2)];
-                const usageMultiplier = [0.8, 1.0, 1.3][Math.min(Math.max(energyUsage - 1, 0), 2)];
-                
-                // Basic calculations
-                const systemSizeKW = (homeSize / 1000) * 8 * usageMultiplier; // Rough estimate
-                const monthlyGeneration = systemSizeKW * 130 * sunMultiplier; // kWh per month
-                const monthlySavings = Math.min(monthlyGeneration * 0.22, electricBill * 0.95); // Max 95% savings
-                const annualSavings = monthlySavings * 12;
-                const systemCost = systemSizeKW * 3200; // $3.20 per watt average
-                const paybackPeriod = annualSavings > 0 ? systemCost / annualSavings : 0;
-                
-                console.log('Calculation results:', {
-                    systemSizeKW,
-                    monthlyGeneration,
-                    monthlySavings,
-                    annualSavings,
-                    systemCost,
-                    paybackPeriod
-                });
-                
-                // Validate results before displaying
-                if (isNaN(monthlySavings) || isNaN(annualSavings) || isNaN(systemCost)) {
-                    console.error('Invalid calculation results');
-                    return;
-                }
-                
-                // Update display with animation
-                animateValue('monthlySavings', monthlySavings, '$');
-                animateValue('annualSavings', annualSavings, '$');
-                animateValue('systemCost', systemCost, '$');
-                document.getElementById('paybackPeriod').textContent = `${Math.round(paybackPeriod * 10) / 10} yrs`;
-            } catch (error) {
-                console.error('Calculator error:', error);
-                // Show error state
-                document.getElementById('monthlySavings').textContent = '$--';
-                document.getElementById('annualSavings').textContent = '$--';
-                document.getElementById('systemCost').textContent = '$--';
-                document.getElementById('paybackPeriod').textContent = '-- yrs';
-            }
-        }
-        
-        function animateValue(elementId, targetValue, prefix = '') {
-            const element = document.getElementById(elementId);
-            const currentValue = parseFloat(element.textContent.replace(/[^0-9.]/g, '')) || 0;
-            const increment = (targetValue - currentValue) / 20;
-            let current = currentValue;
-            
-            const updateValue = () => {
-                current += increment;
-                if ((increment > 0 && current < targetValue) || (increment < 0 && current > targetValue)) {
-                    element.textContent = prefix + Math.round(current).toLocaleString();
-                    requestAnimationFrame(updateValue);
-                } else {
-                    element.textContent = prefix + Math.round(targetValue).toLocaleString();
-                }
-            };
-            
-            updateValue();
-        }
         
         // ===== TESTIMONIALS CAROUSEL =====
         function initializeTestimonials() {
