@@ -4583,8 +4583,14 @@
                     calculateButton: !!calculateButton
                 });
                 
-                if (!electricBillInput || !homeSizeInput || !sunExposureSlider || !energyUsageSlider) {
-                    console.error('❌ Calculator initialization failed: Missing form elements');
+                if (!electricBillInput || !homeSizeInput || !sunExposureSlider || !energyUsageSlider || !calculateButton) {
+                    console.error('❌ Calculator initialization failed: Missing form elements', {
+                        electricBill: !!electricBillInput,
+                        homeSize: !!homeSizeInput,
+                        sunExposure: !!sunExposureSlider,
+                        energyUsage: !!energyUsageSlider,
+                        calculateButton: !!calculateButton
+                    });
                     return;
                 }
                 
@@ -4608,22 +4614,26 @@
                 }
                 
                 // Add button click event listener
-                if (calculateButton) {
-                    calculateButton.addEventListener('click', function() {
-                        // Add loading state
-                        calculateButton.classList.add('loading');
-                        calculateButton.disabled = true;
+                calculateButton.addEventListener('click', function(e) {
+                    console.log('🖱️ Calculate button clicked!');
+                    e.preventDefault();
+                    
+                    // Add loading state
+                    calculateButton.classList.add('loading');
+                    calculateButton.disabled = true;
+                    
+                    // Calculate after short delay for loading animation
+                    setTimeout(() => {
+                        console.log('🧮 Triggering calculation from button click');
+                        calculateSolarSavings();
                         
-                        // Calculate after short delay for loading animation
+                        // Remove loading state
                         setTimeout(() => {
-                            calculateSolarSavings();
-                            
-                            // Remove loading state
                             calculateButton.classList.remove('loading');
                             calculateButton.disabled = false;
-                        }, 300);
-                    });
-                }
+                        }, 200);
+                    }, 300);
+                });
                 
                 // Optional: Still calculate on input change for better UX
                 const debouncedCalculate = debounce(() => {
@@ -4667,6 +4677,7 @@
                 console.log('Parsed values:', { electricBill, homeSize, sunExposure, energyUsage });
                 
                 if (electricBill === 0 || homeSize === 0) {
+                    console.log('⚠️ Cannot calculate: Missing electric bill or home size values');
                     // Show placeholder values
                     document.getElementById('monthlySavings').textContent = '$0';
                     document.getElementById('annualSavings').textContent = '$0';
