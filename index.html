@@ -1388,51 +1388,6 @@
             box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
         }
         
-        /* ===== SOLAR CALCULATOR ===== */
-        .calculator {
-            padding: var(--section-padding);
-            background: var(--muted);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        /* Calculator Background Slideshow */
-        .calculator-slideshow {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-        }
-        
-        .calculator-slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            opacity: 0;
-            transition: opacity 2s ease-in-out;
-        }
-        
-        .calculator-slide.active {
-            opacity: 1;
-        }
-        
-        .calculator-slide::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.75);
-            z-index: 1;
-        }
         
         /* Energy flow line animations for calculator */
         .calculator::before {
@@ -3736,102 +3691,16 @@
         </div>
     </section>
 
-    <!-- Solar Calculator Section -->
-    <section id="calculator" class="calculator">
-        <!-- Background Slideshow -->
-        <div class="calculator-slideshow">
-            <div class="calculator-slide active" style="background-image: url('images/slideshow/solar-panels-roof-2.jpg');"></div>
-            <div class="calculator-slide" style="background-image: url('images/slideshow/solar-commercial-4.jpg');"></div>
-            <div class="calculator-slide" style="background-image: url('images/slideshow/solar-diagnostics-7.jpg');"></div>
-            <div class="calculator-slide" style="background-image: url('images/slideshow/solar-installation-1.jpg');"></div>
-        </div>
-        
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Solar Savings Calculator</h2>
-                <p class="section-subtitle">Discover your potential energy savings and return on investment with our interactive solar calculator.</p>
-            </div>
-            
-            <div class="calculator-container">
-                <form class="calculator-form" id="solarCalculator">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label class="form-label">Monthly Electric Bill</label>
-                            <input type="number" class="form-input" id="electricBill" placeholder="Enter amount ($)" min="0" step="10">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Home Size (sq ft)</label>
-                            <input type="number" class="form-input" id="homeSize" placeholder="Enter square footage" min="500" step="100">
-                        </div>
-                    </div>
-                    
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label class="form-label">
-                                Roof Sun Exposure: <span class="range-value" id="sunExposureValue">Good</span>
-                            </label>
-                            <input type="range" class="range-slider" id="sunExposure" min="1" max="3" value="2">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">
-                                Energy Usage: <span class="range-value" id="energyUsageValue">Average</span>
-                            </label>
-                            <input type="range" class="range-slider" id="energyUsage" min="1" max="3" value="2">
-                        </div>
-                    </div>
-                    
-                    <!-- Calculate Button -->
-                    <div class="calculator-button-container" style="text-align: center; margin: 30px 0;">
-                        <button type="button" id="calculateButton" class="calculate-btn">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px;">
-                                <circle cx="12" cy="12" r="5"/>
-                                <line x1="12" y1="1" x2="12" y2="3"/>
-                                <line x1="12" y1="21" x2="12" y2="23"/>
-                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
-                                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-                                <line x1="1" y1="12" x2="3" y2="12"/>
-                                <line x1="21" y1="12" x2="23" y2="12"/>
-                                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
-                                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-                            </svg>
-                            Calculate Solar Savings
-                        </button>
-                    </div>
-                </form>
-                
-                <div class="calculator-results" id="calculatorResults">
-                    <div class="results-grid">
-                        <div class="result-item">
-                            <span class="result-value" id="monthlySavings">$0</span>
-                            <span class="result-label">Monthly Savings</span>
-                        </div>
-                        <div class="result-item">
-                            <span class="result-value" id="annualSavings">$0</span>
-                            <span class="result-label">Annual Savings</span>
-                        </div>
-                        <div class="result-item">
-                            <span class="result-value" id="systemCost">$0</span>
-                            <span class="result-label">Estimated System Cost</span>
-                        </div>
-                        <div class="result-item">
-                            <span class="result-value" id="paybackPeriod">0 yrs</span>
-                            <span class="result-label">Payback Period</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Georgia Solar Incentives Section -->
-    <section id="incentives" class="calculator" style="background: linear-gradient(135deg, var(--solar-green) 0%, var(--solar-blue) 100%);">
+    <section id="incentives" style="background: linear-gradient(135deg, var(--solar-green) 0%, var(--solar-blue) 100%); padding: var(--section-padding); position: relative; overflow: hidden;">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title" style="color: white;">Georgia Solar Incentives & Tax Credits 2025</h2>
                 <p class="section-subtitle" style="color: white; opacity: 0.9;">Maximize your solar savings with federal tax credits and Georgia incentives. Act now - federal credit expires December 2025!</p>
             </div>
             
-            <div class="calculator-container">
+            <div style="background: var(--card); border-radius: var(--border-radius); padding: 50px; max-width: 800px; margin: 0 auto; box-shadow: var(--shadow-lg); position: relative; z-index: 3;">
                 <div class="incentives-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px;">
                     
                     <!-- Federal Tax Credit -->
@@ -5196,7 +5065,26 @@
                     }
                 }
 
-                return `${gradient}, url('${imagePath}')`;
+                // Convert to WebP format with JPG fallback
+                const webpPath = imagePath.replace('.jpg', '.webp');
+                
+                // Check if browser supports WebP
+                if (this.supportsWebP) {
+                    return `${gradient}, url('${webpPath}')`;
+                } else {
+                    return `${gradient}, url('${imagePath}')`;
+                }
+            }
+            
+            // Check WebP support
+            checkWebPSupport() {
+                return new Promise((resolve) => {
+                    const webP = new Image();
+                    webP.onload = webP.onerror = function () {
+                        resolve(webP.height === 2);
+                    };
+                    webP.src = 'data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA';
+                });
             }
 
             // Animate statistics counters
