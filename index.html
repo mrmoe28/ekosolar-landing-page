@@ -1389,47 +1389,6 @@
         }
         
         
-        /* Energy flow line animations for calculator */
-        .calculator::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: 
-                linear-gradient(45deg, transparent 30%, var(--primary) 30%, var(--primary) 32%, transparent 32%),
-                linear-gradient(-45deg, transparent 30%, var(--primary) 30%, var(--primary) 32%, transparent 32%);
-            background-size: 100px 100px;
-            opacity: 0.1;
-            animation: energyFlow 20s linear infinite;
-            z-index: 2;
-        }
-        
-        @keyframes energyFlow {
-            0% {
-                transform: translateX(0) translateY(0);
-            }
-            100% {
-                transform: translateX(100px) translateY(-100px);
-            }
-        }
-        
-        .calculator-container {
-            background: var(--card);
-            border-radius: var(--border-radius);
-            padding: 50px;
-            max-width: 800px;
-            margin: 0 auto;
-            box-shadow: var(--shadow-lg);
-            position: relative;
-            z-index: 3;
-        }
-        
-        .calculator-form {
-            display: grid;
-            gap: 30px;
-        }
         
         .form-row {
             display: grid;
@@ -2282,13 +2241,6 @@
                 grid-template-columns: 1fr;
             }
             
-            .calculator-container {
-                padding: 30px 20px;
-            }
-            
-            .form-row {
-                grid-template-columns: 1fr;
-            }
             
             .contact-container {
                 grid-template-columns: 1fr;
@@ -3222,14 +3174,6 @@
         });
       }
       
-      // Track calculator usage
-      function trackCalculatorUsage() {
-        gtag('event', 'calculator_usage', {
-          event_category: 'Solar Calculator',
-          event_label: 'Savings Calculation',
-          custom_dimension_2: 'Calculator Tool'
-        });
-      }
     </script>
     
     <!-- Google Integration Scripts -->
@@ -3245,11 +3189,11 @@
     <!-- Mobile-First Indexing Audit -->
     <script src="mobile-first-indexing-audit.js" defer></script>
     
-    <!-- React dependencies for chatbot - load synchronously in order -->
-    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script src="https://unpkg.com/lucide-react@latest/dist/umd/lucide-react.js"></script>
+    <!-- React dependencies for chatbot - deferred for performance -->
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js" defer></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" defer></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js" defer></script>
+    <script src="https://unpkg.com/lucide-react@latest/dist/umd/lucide-react.js" defer></script>
     
     <!-- External scripts removed for better performance -->
 </head>
@@ -3293,7 +3237,6 @@
                     </ul>
                 </li>
                 <li><a href="blog/index.html" class="nav-link">Blog</a></li>
-                <li><a href="#calculator" class="nav-link">Calculator</a></li>
                 <li><a href="#testimonials" class="nav-link">Reviews</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
@@ -3585,7 +3528,7 @@
             <div class="cta-buttons-wrapper">
                 <a href="#contact" class="cta-button cta-primary">
                     <span class="cta-icon">⚡</span>
-                    Get Free Solar Quote
+                    Get Quote
                 </a>
                 <a href="tel:+1-404-364-5456" class="cta-button cta-secondary">
                     <span class="cta-icon">📞</span>
@@ -3922,7 +3865,6 @@
                     <h3>Installation Services</h3>
                     <p><a href="#services">Residential Solar Installation</a></p>
                     <p><a href="#services">Commercial Solar Systems</a></p>
-                    <p><a href="#calculator">Solar Calculator</a></p>
                     <p><a href="#services">Energy Consultation</a></p>
                 </div>
                 
@@ -4298,12 +4240,10 @@
             });
             
             // Update active nav link on scroll
-            window.addEventListener('scroll', updateActiveNavOnScroll);
+            window.addEventListener('scroll', updateActiveNavOnScroll, { passive: true });
             
             // Initialize animations and counters
             initializeAnimations();
-            initializeNewCalculator();
-            initializeCalculatorSlideshow();
             initializeTestimonials();
             initializeContactForm();
         });
@@ -4396,89 +4336,7 @@
             card.classList.toggle('expanded');
         }
         
-        // ===== CALCULATOR SLIDESHOW FUNCTIONALITY =====
-        function initializeCalculatorSlideshow() {
-            const slides = document.querySelectorAll('.calculator-slide');
-            let currentSlide = 0;
-            
-            function showNextSlide() {
-                // Remove active class from current slide
-                slides[currentSlide].classList.remove('active');
-                
-                // Move to next slide (loop back to 0 when reaching the end)
-                currentSlide = (currentSlide + 1) % slides.length;
-                
-                // Add active class to new slide
-                slides[currentSlide].classList.add('active');
-            }
-            
-            // Change slide every 5 seconds
-            setInterval(showNextSlide, 5000);
-        }
         
-        // ===== NEW SOLAR CALCULATOR (Clean Implementation) =====
-        
-        function newCalculateSolarSavings() {
-            // Get input values directly
-            var bill = parseFloat(document.getElementById('electricBill').value) || 0;
-            var size = parseFloat(document.getElementById('homeSize').value) || 0;
-            var sun = parseInt(document.getElementById('sunExposure').value) || 2;
-            var usage = parseInt(document.getElementById('energyUsage').value) || 2;
-            
-            // Validate inputs
-            if (bill <= 0 || size <= 0) {
-                displayResults(0, 0, 0, 0);
-                return;
-            }
-            
-            // Simple calculations
-            var sunMultiplier = [0.7, 0.9, 1.2][sun - 1];
-            var usageMultiplier = [0.8, 1.0, 1.3][usage - 1];
-            var systemSize = (size / 1000) * 8 * usageMultiplier;
-            var monthlyGeneration = systemSize * 130 * sunMultiplier;
-            var monthlySavings = Math.min(monthlyGeneration * 0.22, bill * 0.95);
-            var annualSavings = monthlySavings * 12;
-            var systemCost = systemSize * 3200;
-            var paybackPeriod = annualSavings > 0 ? systemCost / annualSavings : 0;
-            
-            // Display results
-            displayResults(monthlySavings, annualSavings, systemCost, paybackPeriod);
-        }
-
-        function displayResults(monthly, annual, cost, payback) {
-            document.getElementById('monthlySavings').textContent = '$' + Math.round(monthly).toLocaleString();
-            document.getElementById('annualSavings').textContent = '$' + Math.round(annual).toLocaleString();
-            document.getElementById('systemCost').textContent = '$' + Math.round(cost).toLocaleString();
-            document.getElementById('paybackPeriod').textContent = Math.round(payback * 10) / 10 + ' yrs';
-        }
-
-        // Simple initialization for new calculator
-        function initializeNewCalculator() {
-            // Button click event
-            var calculateButton = document.getElementById('calculateButton');
-            if (calculateButton) {
-                calculateButton.addEventListener('click', newCalculateSolarSavings);
-            }
-            
-            // Slider text updates
-            var sunSlider = document.getElementById('sunExposure');
-            var sunValue = document.getElementById('sunExposureValue');
-            if (sunSlider && sunValue) {
-                sunSlider.addEventListener('input', function() {
-                    var texts = ['Poor', 'Good', 'Excellent'];
-                    sunValue.textContent = texts[this.value - 1] || 'Good';
-                });
-            }
-            
-            var energySlider = document.getElementById('energyUsage');
-            var energyValue = document.getElementById('energyUsageValue');
-            if (energySlider && energyValue) {
-                energySlider.addEventListener('input', function() {
-                    var texts = ['Low', 'Average', 'High'];
-                    energyValue.textContent = texts[this.value - 1] || 'Average';
-                });
-            }
-        }
         
         
         // ===== TESTIMONIALS CAROUSEL =====
@@ -4851,10 +4709,6 @@
 
         // Preload next critical resources
         const preloadNextResources = () => {
-            const linkPrefetch = document.createElement('link');
-            linkPrefetch.rel = 'prefetch';
-            linkPrefetch.href = '#calculator';
-            document.head.appendChild(linkPrefetch);
         };
         setTimeout(preloadNextResources, 3000);
 
@@ -4896,9 +4750,9 @@
                 slideshow?.addEventListener('mouseleave', () => this.resumeSlideshow());
                 
                 // Touch/swipe support
-                slideshow?.addEventListener('touchstart', (e) => this.handleTouchStart(e));
-                slideshow?.addEventListener('touchmove', (e) => this.handleTouchMove(e));
-                slideshow?.addEventListener('touchend', (e) => this.handleTouchEnd(e));
+                slideshow?.addEventListener('touchstart', (e) => this.handleTouchStart(e), { passive: true });
+                slideshow?.addEventListener('touchmove', (e) => this.handleTouchMove(e), { passive: true });
+                slideshow?.addEventListener('touchend', (e) => this.handleTouchEnd(e), { passive: true });
                 
                 // Keyboard navigation
                 document.addEventListener('keydown', (e) => this.handleKeyPress(e));
@@ -5065,26 +4919,7 @@
                     }
                 }
 
-                // Convert to WebP format with JPG fallback
-                const webpPath = imagePath.replace('.jpg', '.webp');
-                
-                // Check if browser supports WebP
-                if (this.supportsWebP) {
-                    return `${gradient}, url('${webpPath}')`;
-                } else {
-                    return `${gradient}, url('${imagePath}')`;
-                }
-            }
-            
-            // Check WebP support
-            checkWebPSupport() {
-                return new Promise((resolve) => {
-                    const webP = new Image();
-                    webP.onload = webP.onerror = function () {
-                        resolve(webP.height === 2);
-                    };
-                    webP.src = 'data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA';
-                });
+                return `${gradient}, url('${imagePath}')`;
             }
 
             // Animate statistics counters
