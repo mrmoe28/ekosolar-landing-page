@@ -1560,6 +1560,8 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
             min-width: 220px;
+            position: relative;
+            z-index: 10;
         }
         
         .calculate-btn:hover {
@@ -3778,25 +3780,25 @@
                             <input type="range" class="range-slider" id="energyUsage" min="1" max="3" value="2">
                         </div>
                     </div>
+                    
+                    <!-- Calculate Button -->
+                    <div class="calculator-button-container" style="text-align: center; margin: 30px 0;">
+                        <button type="button" id="calculateButton" class="calculate-btn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px;">
+                                <circle cx="12" cy="12" r="5"/>
+                                <line x1="12" y1="1" x2="12" y2="3"/>
+                                <line x1="12" y1="21" x2="12" y2="23"/>
+                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                                <line x1="1" y1="12" x2="3" y2="12"/>
+                                <line x1="21" y1="12" x2="23" y2="12"/>
+                                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                            </svg>
+                            Calculate Solar Savings
+                        </button>
+                    </div>
                 </form>
-                
-                <!-- Calculate Button -->
-                <div class="calculator-button-container" style="text-align: center; margin: 30px 0;">
-                    <button type="button" id="calculateButton" class="calculate-btn">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px;">
-                            <circle cx="12" cy="12" r="5"/>
-                            <line x1="12" y1="1" x2="12" y2="3"/>
-                            <line x1="12" y1="21" x2="12" y2="23"/>
-                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
-                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-                            <line x1="1" y1="12" x2="3" y2="12"/>
-                            <line x1="21" y1="12" x2="23" y2="12"/>
-                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
-                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-                        </svg>
-                        Calculate Solar Savings
-                    </button>
-                </div>
                 
                 <div class="calculator-results" id="calculatorResults">
                     <div class="results-grid">
@@ -4583,15 +4585,20 @@
                     calculateButton: !!calculateButton
                 });
                 
-                if (!electricBillInput || !homeSizeInput || !sunExposureSlider || !energyUsageSlider || !calculateButton) {
-                    console.error('❌ Calculator initialization failed: Missing form elements', {
+                // Check core elements first
+                if (!electricBillInput || !homeSizeInput || !sunExposureSlider || !energyUsageSlider) {
+                    console.error('❌ Calculator initialization failed: Missing core form elements', {
                         electricBill: !!electricBillInput,
                         homeSize: !!homeSizeInput,
                         sunExposure: !!sunExposureSlider,
-                        energyUsage: !!energyUsageSlider,
-                        calculateButton: !!calculateButton
+                        energyUsage: !!energyUsageSlider
                     });
                     return;
+                }
+                
+                // Check button separately
+                if (!calculateButton) {
+                    console.error('❌ Calculate button not found, but continuing with core functionality');
                 }
                 
                 // Update slider display values
@@ -4613,14 +4620,24 @@
                     });
                 }
                 
-                // Add button click event listener
-                calculateButton.addEventListener('click', function(e) {
+                // Add button click event listener with proper event isolation
+                if (calculateButton) {
+                    calculateButton.addEventListener('click', function(e) {
                     console.log('🖱️ Calculate button clicked!');
                     e.preventDefault();
+                    e.stopPropagation();
+                    e.stopImmediatePropagation();
+                    
+                    // Prevent multiple clicks
+                    if (calculateButton.disabled) {
+                        console.log('Button already processing, ignoring click');
+                        return;
+                    }
                     
                     // Add loading state
                     calculateButton.classList.add('loading');
                     calculateButton.disabled = true;
+                    console.log('Loading state added, button disabled');
                     
                     // Calculate after short delay for loading animation
                     setTimeout(() => {
@@ -4631,9 +4648,13 @@
                         setTimeout(() => {
                             calculateButton.classList.remove('loading');
                             calculateButton.disabled = false;
+                            console.log('Loading state removed, button re-enabled');
                         }, 200);
                     }, 300);
-                });
+                }, true); // Use capture phase
+                } else {
+                    console.error('❌ Cannot attach click event - button not found!');
+                }
                 
                 // Optional: Still calculate on input change for better UX
                 const debouncedCalculate = debounce(() => {
