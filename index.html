@@ -1542,6 +1542,51 @@
             font-weight: var(--font-weight-semibold);
         }
         
+        /* Calculate Button Styles */
+        .calculate-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--solar-orange) 0%, #e65100 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: var(--font-weight-semibold);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(234, 88, 12, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            min-width: 220px;
+        }
+        
+        .calculate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(234, 88, 12, 0.4);
+            background: linear-gradient(135deg, #e65100 0%, var(--solar-orange) 100%);
+        }
+        
+        .calculate-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 10px rgba(234, 88, 12, 0.3);
+        }
+        
+        .calculate-btn.loading {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+        
+        .calculate-btn.loading svg {
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
         .calculator-results {
             background: var(--muted);
             border: 1px solid var(--border);
@@ -3735,6 +3780,24 @@
                     </div>
                 </form>
                 
+                <!-- Calculate Button -->
+                <div class="calculator-button-container" style="text-align: center; margin: 30px 0;">
+                    <button type="button" id="calculateButton" class="calculate-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px;">
+                            <circle cx="12" cy="12" r="5"/>
+                            <line x1="12" y1="1" x2="12" y2="3"/>
+                            <line x1="12" y1="21" x2="12" y2="23"/>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                            <line x1="1" y1="12" x2="3" y2="12"/>
+                            <line x1="21" y1="12" x2="23" y2="12"/>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                        </svg>
+                        Calculate Solar Savings
+                    </button>
+                </div>
+                
                 <div class="calculator-results" id="calculatorResults">
                     <div class="results-grid">
                         <div class="result-item">
@@ -4507,6 +4570,7 @@
                 const energyUsageSlider = document.getElementById('energyUsage');
                 const sunExposureValue = document.getElementById('sunExposureValue');
                 const energyUsageValue = document.getElementById('energyUsageValue');
+                const calculateButton = document.getElementById('calculateButton');
                 
                 // Debug: Check if all elements exist
                 console.log('Calculator elements found:', {
@@ -4515,7 +4579,8 @@
                     sunExposure: !!sunExposureSlider,
                     energyUsage: !!energyUsageSlider,
                     sunExposureValue: !!sunExposureValue,
-                    energyUsageValue: !!energyUsageValue
+                    energyUsageValue: !!energyUsageValue,
+                    calculateButton: !!calculateButton
                 });
                 
                 if (!electricBillInput || !homeSizeInput || !sunExposureSlider || !energyUsageSlider) {
@@ -4542,17 +4607,33 @@
                     });
                 }
                 
-                // Create debounced version of calculate function
-                const debouncedCalculate = debounce(calculateSolarSavings, 500);
+                // Add button click event listener
+                if (calculateButton) {
+                    calculateButton.addEventListener('click', function() {
+                        // Add loading state
+                        calculateButton.classList.add('loading');
+                        calculateButton.disabled = true;
+                        
+                        // Calculate after short delay for loading animation
+                        setTimeout(() => {
+                            calculateSolarSavings();
+                            
+                            // Remove loading state
+                            calculateButton.classList.remove('loading');
+                            calculateButton.disabled = false;
+                        }, 300);
+                    });
+                }
                 
-                // Calculate on input change
+                // Optional: Still calculate on input change for better UX
+                const debouncedCalculate = debounce(() => {
+                    if (electricBillInput.value && homeSizeInput.value) {
+                        calculateSolarSavings();
+                    }
+                }, 1000);
+                
                 electricBillInput.addEventListener('input', debouncedCalculate);
                 homeSizeInput.addEventListener('input', debouncedCalculate);
-                
-                // Initial calculation with small delay to ensure DOM is ready
-                setTimeout(() => {
-                    calculateSolarSavings();
-                }, 100);
                 
                 console.log('✅ Calculator initialized successfully');
             } catch (error) {
