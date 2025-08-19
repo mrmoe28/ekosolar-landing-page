@@ -378,11 +378,6 @@ const EkoSolarSchema = {
             "seller": {
                 "@id": "https://ekosolarpros.com/#business"
             }
-        },
-        "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.9",
-            "reviewCount": "287"
         }
     }
 };
