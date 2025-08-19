@@ -4542,12 +4542,17 @@
                     });
                 }
                 
-                // Calculate on input change
-                electricBillInput.addEventListener('input', debounce(calculateSolarSavings, 500));
-                homeSizeInput.addEventListener('input', debounce(calculateSolarSavings, 500));
+                // Create debounced version of calculate function
+                const debouncedCalculate = debounce(calculateSolarSavings, 500);
                 
-                // Initial calculation
-                calculateSolarSavings();
+                // Calculate on input change
+                electricBillInput.addEventListener('input', debouncedCalculate);
+                homeSizeInput.addEventListener('input', debouncedCalculate);
+                
+                // Initial calculation with small delay to ensure DOM is ready
+                setTimeout(() => {
+                    calculateSolarSavings();
+                }, 100);
                 
                 console.log('✅ Calculator initialized successfully');
             } catch (error) {
@@ -4559,12 +4564,26 @@
             try {
                 console.log('💡 Calculating solar savings...');
                 
-                const electricBill = parseFloat(document.getElementById('electricBill').value) || 0;
-                const homeSize = parseFloat(document.getElementById('homeSize').value) || 0;
-                const sunExposure = parseInt(document.getElementById('sunExposure').value) || 2;
-                const energyUsage = parseInt(document.getElementById('energyUsage').value) || 2;
+                // Get input elements
+                const electricBillElement = document.getElementById('electricBill');
+                const homeSizeElement = document.getElementById('homeSize');
+                const sunExposureElement = document.getElementById('sunExposure');
+                const energyUsageElement = document.getElementById('energyUsage');
                 
-                console.log('Input values:', { electricBill, homeSize, sunExposure, energyUsage });
+                // Log raw values for debugging
+                console.log('Raw input values:', {
+                    electricBill: electricBillElement?.value,
+                    homeSize: homeSizeElement?.value,
+                    sunExposure: sunExposureElement?.value,
+                    energyUsage: energyUsageElement?.value
+                });
+                
+                const electricBill = parseFloat(electricBillElement?.value) || 0;
+                const homeSize = parseFloat(homeSizeElement?.value) || 0;
+                const sunExposure = parseInt(sunExposureElement?.value) || 2;
+                const energyUsage = parseInt(energyUsageElement?.value) || 2;
+                
+                console.log('Parsed values:', { electricBill, homeSize, sunExposure, energyUsage });
                 
                 if (electricBill === 0 || homeSize === 0) {
                     // Show placeholder values
@@ -4586,6 +4605,21 @@
                 const annualSavings = monthlySavings * 12;
                 const systemCost = systemSizeKW * 3200; // $3.20 per watt average
                 const paybackPeriod = annualSavings > 0 ? systemCost / annualSavings : 0;
+                
+                console.log('Calculation results:', {
+                    systemSizeKW,
+                    monthlyGeneration,
+                    monthlySavings,
+                    annualSavings,
+                    systemCost,
+                    paybackPeriod
+                });
+                
+                // Validate results before displaying
+                if (isNaN(monthlySavings) || isNaN(annualSavings) || isNaN(systemCost)) {
+                    console.error('Invalid calculation results');
+                    return;
+                }
                 
                 // Update display with animation
                 animateValue('monthlySavings', monthlySavings, '$');
