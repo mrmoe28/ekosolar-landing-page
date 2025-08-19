@@ -777,17 +777,30 @@ function initializeChatbot() {
   }
 }
 
-// Initialize when DOM is ready and dependencies are loaded
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initializeChatbot);
-} else {
-  // DOM already loaded, try immediately or wait a bit for dependencies
+// Track initialization attempts to prevent infinite loops
+let chatbotInitAttempts = 0;
+const MAX_INIT_ATTEMPTS = 50; // Max 5 seconds of retrying (50 * 100ms)
+
+// Try to initialize chatbot with retry limit
+function tryInitializeChatbot() {
   if (typeof React !== 'undefined' && typeof ReactDOM !== 'undefined') {
     initializeChatbot();
+  } else if (chatbotInitAttempts < MAX_INIT_ATTEMPTS) {
+    chatbotInitAttempts++;
+    console.log(`⏳ Waiting for React dependencies... (attempt ${chatbotInitAttempts}/${MAX_INIT_ATTEMPTS})`);
+    setTimeout(tryInitializeChatbot, 100);
   } else {
-    // Wait for dependencies to load
-    setTimeout(initializeChatbot, 100);
+    console.error('❌ Failed to initialize chatbot: React dependencies not loaded after 5 seconds');
+    console.error('Please ensure React, ReactDOM, and LucideReact are properly loaded in the page');
   }
+}
+
+// Initialize when DOM is ready and dependencies are loaded
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', tryInitializeChatbot);
+} else {
+  // DOM already loaded, try to initialize
+  tryInitializeChatbot();
 }
 
 // Add required CSS animations
