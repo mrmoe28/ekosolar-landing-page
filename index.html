@@ -39,8 +39,32 @@
     <!-- Performance and Resource Hints -->
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Optimized Google Fonts - only essential weights -->
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Optimized Font Loading - Eliminates Render Blocking -->
+    <style>
+        /* System font fallback for instant text rendering */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, system-ui, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* Outfit font with swap for when it loads */
+        @font-face {
+            font-family: 'Outfit';
+            font-display: swap;
+            src: local('Outfit');
+        }
+        
+        /* Apply Outfit when loaded */
+        .font-loaded body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, system-ui, sans-serif;
+        }
+    </style>
+    
+    <!-- Async font loading -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet';document.documentElement.classList.add('font-loaded')">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap"></noscript>
     
     <!-- Critical CSS preload -->
     <link rel="preload" as="style" href="data:text/css,*{margin:0;padding:0;box-sizing:border-box}body{font-family:Outfit,sans-serif;line-height:1.6;color:var(--foreground);background:var(--background)}.container{max-width:var(--container-max-width);margin:0 auto;padding:0 20px}">

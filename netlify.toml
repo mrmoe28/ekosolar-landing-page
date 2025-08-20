@@ -3,6 +3,22 @@
   
 # Simple static site - no functions needed
 # Forms handled by Netlify's built-in form processing
+
+# Basic performance headers (safe)
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Link = '''<https://fonts.googleapis.com>; rel=preconnect; crossorigin, <https://fonts.gstatic.com>; rel=preconnect; crossorigin'''
+    
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
   
 # Environment variables for production
 [context.production.environment]
