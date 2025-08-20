@@ -321,9 +321,10 @@ class CoreWebVitalsOptimizer {
     }
     
     reserveSpaceForSlideshow() {
-        const slideshows = document.querySelectorAll('.slideshow, .hero-slideshow');
+        const slideshows = document.querySelectorAll('.slideshow');
+        // Skip .hero-slideshow to preserve full-viewport design
         slideshows.forEach(slideshow => {
-            if (!slideshow.style.height) {
+            if (!slideshow.classList.contains('hero-slideshow') && !slideshow.style.height) {
                 slideshow.style.height = '400px';
                 slideshow.style.minHeight = '400px';
             }

@@ -349,8 +349,10 @@
         
         html {
             scroll-behavior: smooth;
-            margin: 0;
-            padding: 0;
+            margin: 0 !important;
+            padding: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
         }
         
         body {
@@ -360,8 +362,10 @@
             background: var(--background);
             overflow-x: hidden;
             letter-spacing: var(--tracking-normal);
-            margin: 0;
-            padding: 0;
+            margin: 0 !important;
+            padding: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
         }
         
         .container {
@@ -375,12 +379,12 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.1); /* More transparent */
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             z-index: 1000;
             transition: var(--transition-normal);
-            box-shadow: var(--shadow-sm);
+            box-shadow: none; /* Remove shadow for cleaner overlay */
         }
         
         .nav {
@@ -574,29 +578,31 @@
         /* ===== HERO SLIDESHOW SECTION ===== */
         .hero-slideshow {
             position: relative;
-            height: 100vh;
+            width: 100vw;
+            height: 100vh; /* True full viewport */
             overflow: hidden;
-            width: 100%;
             margin: 0;
             padding: 0;
-            top: 0;
-            left: 0;
+            margin-left: calc(-50vw + 50%); /* Break out of container constraints */
         }
         
         .slideshow-container {
             position: relative;
             width: 100%;
             height: 100%;
+            overflow: hidden;
         }
         
         .slide {
             position: absolute;
             top: 0;
             left: 0;
+            right: 0;
+            bottom: 0;
             width: 100%;
             height: 100%;
             background-size: cover;
-            background-position: center;
+            background-position: center center;
             background-repeat: no-repeat;
             opacity: 0;
             transform: scale(1.1);
@@ -637,7 +643,8 @@
             position: relative;
             z-index: 3;
             width: 100%;
-            padding: 0;
+            max-width: none; /* No width restrictions */
+            padding: 0; /* No padding restrictions */
             animation: slideInUp 1.2s ease;
             transform: translateY(30px);
             opacity: 0;
@@ -937,39 +944,75 @@
         }
         
         /* Dynamic Background Images - Professional Solar Photography */
-        .slide[data-bg*="installation"] {
+        /* CSS Background Images for Slides - Using Local Images */
+        .slide[data-bg*="solar-installation-1"] {
             background-image: linear-gradient(
                 rgba(234, 88, 12, 0.6), 
                 rgba(251, 146, 60, 0.4)
-            ), url('https://images.unsplash.com/photo-1559302504-64aae6ca6b6d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            ), url('images/slideshow/solar-installation-1.jpg');
         }
         
-        .slide[data-bg*="repair"] {
-            background-image: linear-gradient(
-                rgba(220, 38, 38, 0.7), 
-                rgba(239, 68, 68, 0.5)
-            ), url('https://images.unsplash.com/photo-1613665813446-82a78c468a1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
-        }
-        
-        .slide[data-bg*="maintenance"] {
-            background-image: linear-gradient(
-                rgba(16, 185, 129, 0.6), 
-                rgba(52, 211, 153, 0.4)
-            ), url('https://images.unsplash.com/photo-1624397640148-949b1732bb0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
-        }
-        
-        .slide[data-bg*="commercial"] {
+        .slide[data-bg*="solar-panels-roof-2"] {
             background-image: linear-gradient(
                 rgba(59, 130, 246, 0.6), 
                 rgba(147, 197, 253, 0.4)
-            ), url('https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            ), url('images/slideshow/solar-panels-roof-2.jpg');
         }
         
-        .slide[data-bg*="diagnostics"] {
+        .slide[data-bg*="solar-maintenance-3"] {
+            background-image: linear-gradient(
+                rgba(16, 185, 129, 0.6), 
+                rgba(52, 211, 153, 0.4)
+            ), url('images/slideshow/solar-maintenance-3.jpg');
+        }
+        
+        .slide[data-bg*="solar-commercial-4"] {
+            background-image: linear-gradient(
+                rgba(59, 130, 246, 0.6), 
+                rgba(147, 197, 253, 0.4)
+            ), url('images/slideshow/solar-commercial-4.jpg');
+        }
+        
+        .slide[data-bg*="solar-repair-5"] {
+            background-image: linear-gradient(
+                rgba(220, 38, 38, 0.7), 
+                rgba(239, 68, 68, 0.5)
+            ), url('images/slideshow/solar-repair-5.jpg');
+        }
+        
+        .slide[data-bg*="renewable-energy-6"] {
+            background-image: linear-gradient(
+                rgba(234, 88, 12, 0.6), 
+                rgba(251, 146, 60, 0.4)
+            ), url('images/slideshow/renewable-energy-6.jpg');
+        }
+        
+        .slide[data-bg*="solar-diagnostics-7"] {
             background-image: linear-gradient(
                 rgba(168, 85, 247, 0.6), 
                 rgba(196, 181, 253, 0.4)
-            ), url('https://images.unsplash.com/photo-1603030070898-b67bb3ef6d7d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            ), url('images/slideshow/solar-diagnostics-7.jpg');
+        }
+        
+        .slide[data-bg*="solar-emergency-8"] {
+            background-image: linear-gradient(
+                rgba(220, 38, 38, 0.7), 
+                rgba(239, 68, 68, 0.5)
+            ), url('images/slideshow/solar-emergency-8.jpg');
+        }
+        
+        .slide[data-bg*="solar-technician-9"] {
+            background-image: linear-gradient(
+                rgba(16, 185, 129, 0.6), 
+                rgba(52, 211, 153, 0.4)
+            ), url('images/slideshow/solar-technician-9.jpg');
+        }
+        
+        .slide[data-bg*="solar-optimization-10"] {
+            background-image: linear-gradient(
+                rgba(59, 130, 246, 0.6), 
+                rgba(147, 197, 253, 0.4)
+            ), url('images/slideshow/solar-optimization-10.jpg');
         }
         
         /* Enhanced Slideshow Animations */
@@ -2099,15 +2142,18 @@
                 min-width: auto;
             }
             
-            /* Hero Slideshow Mobile Styles */
+            /* Hero Slideshow Tablet Styles */
             .hero-slideshow {
-                height: 100vh;
+                height: 100vh; /* True full viewport */
                 min-height: 100vh;
+                margin-left: calc(-50vw + 50%); /* Break out of container */
+                width: 100vw;
             }
             
             .slide-content {
-                padding: 0;
+                padding: 0; /* No padding restrictions */
                 width: 100%;
+                max-width: none;
             }
             
             .hero-title {
@@ -2306,8 +2352,16 @@
             }
             
             .hero-slideshow {
-                height: 100vh;
+                height: 100vh; /* True full viewport */
                 min-height: 100vh;
+                margin-left: calc(-50vw + 50%); /* Break out of container */
+                width: 100vw;
+            }
+            
+            .slide-content {
+                padding: 0; /* No padding restrictions */
+                width: 100%;
+                max-width: none;
             }
             
             .hero-title {
@@ -4155,8 +4209,8 @@
         
         // ===== NAVIGATION FUNCTIONALITY =====
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialize Global Grid System
-            globalGridSystem = new GlobalGridSystem();
+            // Initialize Global Grid System - DISABLED (was causing slideshow to revert after 4 seconds)
+            // globalGridSystem = new GlobalGridSystem();
             
             // Mobile menu toggle
             const mobileToggle = document.getElementById('mobileToggle');
@@ -4558,8 +4612,6 @@
             });
         }
         
-        // Initialize performance optimizations
-        document.addEventListener('DOMContentLoaded', preloadCriticalResources);
         
         // ===== ERROR HANDLING =====
         window.addEventListener('error', function(e) {
@@ -4614,59 +4666,6 @@
             form.setAttribute('aria-label', 'Solar consultation request form');
         });
 
-        // Fast CSS-only animations - no external dependencies
-        function initializeAnimations() {
-            // Respect reduced motion preferences
-            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-            if (prefersReducedMotion) {
-                return; // Skip animations for users who prefer reduced motion
-            }
-            
-            // Add CSS animation classes to elements
-            const elements = document.querySelectorAll('.service-card, .testimonial-card, .feature-card');
-            elements.forEach((el, index) => {
-                el.style.opacity = '0';
-                el.style.transform = 'translateY(30px)';
-                setTimeout(() => {
-                    el.classList.add('animate-fade-in-up');
-                }, index * 100);
-            });
-            
-            // Simple CSS animations for service cards
-            const systemServiceCards = document.querySelectorAll('.service-card-advanced');
-            systemServiceCards.forEach((card, index) => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(30px)';
-                setTimeout(() => {
-                    card.classList.add('animate-fade-in-up', `stagger-${Math.min(index + 1, 6)}`);
-                }, 200 + (index * 100));
-            });
-
-            // Simple CSS-based animations for service elements
-            const serviceElements = document.querySelectorAll('.service-title-advanced, .service-description-advanced, .service-cta-advanced');
-            serviceElements.forEach((el, index) => {
-                el.style.opacity = '0';
-                setTimeout(() => {
-                    el.classList.add('animate-fade-in');
-                }, 300 + (index * 50));
-            });
-
-            // Simple CSS hover effects - no external dependencies
-            const serviceCards = document.querySelectorAll('.service-card-advanced');
-            serviceCards.forEach(card => {
-                card.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-5px)';
-                    this.style.transition = 'transform 0.3s ease';
-                });
-                card.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateY(0)';
-                });
-            });
-
-        }
-        
-        // Initialize animations when DOM is ready
-        document.addEventListener('DOMContentLoaded', initializeAnimations);
 
         // Lazy load images for better performance
         const lazyImages = document.querySelectorAll('img[loading="lazy"]');
@@ -4758,12 +4757,6 @@
                 // Add active class to current slide and dot
                 if (this.slides[index]) {
                     this.slides[index].classList.add('active');
-                    
-                    // Update background image
-                    const bgImage = this.slides[index].getAttribute('data-bg');
-                    if (bgImage) {
-                        this.slides[index].style.backgroundImage = this.getBackgroundImage(bgImage);
-                    }
                 }
                 
                 if (this.dots[index]) {
@@ -4880,27 +4873,6 @@
                 }
             }
 
-            // Get background image with gradient overlay
-            getBackgroundImage(imagePath) {
-                const gradients = {
-                    'installation': 'linear-gradient(rgba(234, 88, 12, 0.6), rgba(251, 146, 60, 0.4))',
-                    'repair': 'linear-gradient(rgba(220, 38, 38, 0.7), rgba(239, 68, 68, 0.5))',
-                    'maintenance': 'linear-gradient(rgba(16, 185, 129, 0.6), rgba(52, 211, 153, 0.4))',
-                    'commercial': 'linear-gradient(rgba(59, 130, 246, 0.6), rgba(147, 197, 253, 0.4))',
-                    'diagnostics': 'linear-gradient(rgba(168, 85, 247, 0.6), rgba(196, 181, 253, 0.4))'
-                };
-
-                // Determine gradient based on image name
-                let gradient = gradients.installation; // default
-                for (const [key, value] of Object.entries(gradients)) {
-                    if (imagePath.includes(key)) {
-                        gradient = value;
-                        break;
-                    }
-                }
-
-                return `${gradient}, url('${imagePath}')`;
-            }
 
             // Animate statistics counters
             animateStats() {
@@ -4928,11 +4900,16 @@
             // Preload background images for better performance
             preloadImages() {
                 const imageUrls = [
-                    'https://images.unsplash.com/photo-1559302504-64aae6ca6b6d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80',
-                    'https://images.unsplash.com/photo-1613665813446-82a78c468a1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80',
-                    'https://images.unsplash.com/photo-1624397640148-949b1732bb0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80',
-                    'https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80',
-                    'https://images.unsplash.com/photo-1603030070898-b67bb3ef6d7d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'
+                    'images/slideshow/solar-installation-1.jpg',
+                    'images/slideshow/solar-panels-roof-2.jpg',
+                    'images/slideshow/solar-maintenance-3.jpg',
+                    'images/slideshow/solar-commercial-4.jpg',
+                    'images/slideshow/solar-repair-5.jpg',
+                    'images/slideshow/renewable-energy-6.jpg',
+                    'images/slideshow/solar-diagnostics-7.jpg',
+                    'images/slideshow/solar-emergency-8.jpg',
+                    'images/slideshow/solar-technician-9.jpg',
+                    'images/slideshow/solar-optimization-10.jpg'
                 ];
 
                 imageUrls.forEach(url => {
@@ -4942,12 +4919,7 @@
             }
         }
 
-        // Initialize slideshow when DOM is loaded
-        document.addEventListener('DOMContentLoaded', () => {
-            new HeroSlideshow();
-        });
-
-        // If DOM is already loaded
+        // Initialize slideshow when DOM is ready
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', () => new HeroSlideshow());
         } else {
