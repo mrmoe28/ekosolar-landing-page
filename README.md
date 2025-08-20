@@ -35,7 +35,7 @@ A modern, responsive one-page website for EkoSolar - a solar energy company serv
 ## 🏢 Company Information
 
 - **Service Area**: Entire state of Georgia
-- **Phone**: (404) 551-6532
+- **Phone**: (404) 364-5456
 - **Email**: info@ekosolar.com
 - **Hours**: Monday-Friday, 8AM-5PM
 
@@ -127,7 +127,7 @@ This project is proprietary to EkoSolar. All rights reserved.
 
 For technical support or questions about the website:
 - Email: info@ekosolar.com
-- Phone: (404) 551-6532
+- Phone: (404) 364-5456
 
 ---
 
