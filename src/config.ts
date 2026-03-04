@@ -453,7 +453,7 @@ export const contactConfig: ContactConfig = {
   ],
   messageLabel: "Describe Your Issue (Optional)",
   submitButtonText: "Schedule Service",
-  image: "./contact.jpg",
+  image: "./solar-house-1.jpg",
 };
 
 // ============================================================================

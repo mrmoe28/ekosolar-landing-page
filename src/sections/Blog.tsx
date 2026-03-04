@@ -1,8 +1,8 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowUpRight, Clock, Calendar } from 'lucide-react';
-import { blogConfig } from '../config';
+import { blogConfig, type BlogPost } from '../config';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -14,9 +14,30 @@ export function Blog() {
   const buttonRef = useRef<HTMLButtonElement>(null);
   const triggersRef = useRef<ScrollTrigger[]>([]);
 
-  if (!blogConfig.title || blogConfig.posts.length === 0) return null;
+  const [posts, setPosts] = useState<BlogPost[]>(blogConfig.posts);
+  const [loading, setLoading] = useState(true);
 
+  // Fetch posts from Netlify function, fall back to config
   useEffect(() => {
+    fetch('/.netlify/functions/blog-posts')
+      .then((res) => {
+        if (!res.ok) throw new Error('fetch failed');
+        return res.json();
+      })
+      .then((data: BlogPost[]) => {
+        if (data.length > 0) setPosts(data);
+      })
+      .catch(() => {
+        // Keep blogConfig.posts as fallback — already set as default
+      })
+      .finally(() => setLoading(false));
+  }, []);
+
+  if (!blogConfig.title || posts.length === 0) return null;
+
+  // GSAP animations — re-run when posts change
+  useEffect(() => {
+    if (loading) return;
     const section = sectionRef.current;
     if (!section) return;
 
@@ -93,7 +114,7 @@ export function Blog() {
       triggersRef.current.forEach((t) => t.kill());
       triggersRef.current = [];
     };
-  }, []);
+  }, [loading, posts]);
 
   return (
     <section
@@ -130,7 +151,7 @@ export function Blog() {
 
         {/* Blog posts grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-          {blogConfig.posts.map((post, index) => (
+          {posts.map((post, index) => (
             <div
               key={post.id}
               ref={(el) => {
