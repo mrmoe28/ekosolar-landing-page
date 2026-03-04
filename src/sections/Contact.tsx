@@ -182,10 +182,10 @@ export function Contact() {
     <section
       ref={sectionRef}
       id="contact"
-      className="relative py-32 px-8 lg:px-16 bg-black overflow-hidden"
+      className="relative py-16 lg:py-32 px-8 lg:px-16 bg-black overflow-hidden"
     >
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-8 relative">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 relative">
           {/* Diagonal divider */}
           <div
             ref={dividerRef}
@@ -206,7 +206,7 @@ export function Contact() {
             {/* Title */}
             <h2
               ref={titleRef}
-              className="text-h2 lg:text-h1 text-white font-medium mb-4"
+              className="text-h4 sm:text-h3 md:text-h2 lg:text-h1 text-white font-medium mb-4"
             >
               {titleChars.map((char, i) => (
                 <span key={i} className="char inline-block">
@@ -388,7 +388,7 @@ export function Contact() {
           {/* Image side */}
           <div
             ref={imageRef}
-            className="relative aspect-[2/3] lg:aspect-auto overflow-hidden"
+            className="relative aspect-[4/3] sm:aspect-[3/2] lg:aspect-auto overflow-hidden"
             style={{ willChange: 'transform, clip-path' }}
           >
             <img

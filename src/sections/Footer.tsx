@@ -103,12 +103,12 @@ export function Footer() {
         className="relative mb-20 overflow-hidden"
       >
         {/* Gradient masks */}
-        <div className="absolute left-0 top-0 bottom-0 w-40 bg-gradient-to-r from-black to-transparent z-10" />
-        <div className="absolute right-0 top-0 bottom-0 w-40 bg-gradient-to-l from-black to-transparent z-10" />
+        <div className="absolute left-0 top-0 bottom-0 w-8 sm:w-20 lg:w-40 bg-gradient-to-r from-black to-transparent z-10" />
+        <div className="absolute right-0 top-0 bottom-0 w-8 sm:w-20 lg:w-40 bg-gradient-to-l from-black to-transparent z-10" />
 
         {/* Marquee content */}
         <div className="marquee-container">
-          <div className="marquee-content flex items-center gap-8 text-[56px] lg:text-[112px] font-medium whitespace-nowrap">
+          <div className="marquee-content flex items-center gap-8 text-[28px] sm:text-[40px] lg:text-[112px] font-medium whitespace-nowrap">
             {[...Array(4)].map((_, i) => (
               <span key={i} className="flex items-center gap-8">
                 {marqueeText.split('').map((char, j) => (
@@ -144,7 +144,7 @@ export function Footer() {
 
       {/* Footer content */}
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {/* Column 1 - Nav links */}
           <div className="space-y-4">
             {footerConfig.navLinks1.map((link, i) => (

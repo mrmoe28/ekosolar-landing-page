@@ -135,14 +135,14 @@ export function Works() {
     <section
       ref={sectionRef}
       id="works"
-      className="relative py-32 px-8 lg:px-16 bg-white overflow-hidden"
+      className="relative py-16 lg:py-32 px-8 lg:px-16 bg-white overflow-hidden"
       style={{ perspective: '1200px' }}
     >
       {/* Header */}
       <div className="max-w-7xl mx-auto mb-16">
         <h2
           ref={titleRef}
-          className="text-h1 lg:text-display-xl text-black font-medium mb-6"
+          className="text-h4 sm:text-h3 md:text-h1 lg:text-display-xl text-black font-medium mb-6"
         >
           {titleChars.map((char, i) => (
             <span key={i} className="char inline-block">

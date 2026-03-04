@@ -99,7 +99,7 @@ export function Blog() {
     <section
       ref={sectionRef}
       id="blog"
-      className="relative py-32 px-8 lg:px-16 bg-black overflow-hidden"
+      className="relative py-16 lg:py-32 px-8 lg:px-16 bg-black overflow-hidden"
     >
       <div className="max-w-7xl mx-auto">
         {/* Header */}
@@ -107,7 +107,7 @@ export function Blog() {
           <div>
             <h2
               ref={titleRef}
-              className="text-h1 lg:text-display-xl text-white font-medium mb-4 opacity-0"
+              className="text-h4 sm:text-h3 md:text-h1 lg:text-display-xl text-white font-medium mb-4 opacity-0"
             >
               {blogConfig.title}
             </h2>

@@ -128,13 +128,13 @@ export function Services() {
     <section
       ref={sectionRef}
       id="services"
-      className="relative py-32 px-8 lg:px-16 bg-black overflow-hidden"
+      className="relative py-16 lg:py-32 px-8 lg:px-16 bg-black overflow-hidden"
       onMouseMove={handleMouseMove}
     >
       {/* Floating image preview */}
       <div
         ref={imageRef}
-        className="fixed pointer-events-none z-50 w-[300px] h-[400px] opacity-0"
+        className="hidden lg:block fixed pointer-events-none z-50 w-[300px] h-[400px] opacity-0"
         style={{
           willChange: 'transform, opacity',
         }}
@@ -153,7 +153,7 @@ export function Services() {
         <div className="mb-20">
           <h2
             ref={titleRef}
-            className="text-h1 lg:text-display-xl text-white font-medium mb-6"
+            className="text-h4 sm:text-h3 md:text-h1 lg:text-display-xl text-white font-medium mb-6"
           >
             {servicesConfig.title}
           </h2>
@@ -185,10 +185,10 @@ export function Services() {
 
               {/* Content */}
               <div className="py-8 lg:py-12 flex items-center justify-between cursor-pointer">
-                <div className="flex items-center gap-8 lg:gap-16">
+                <div className="flex items-center gap-3 sm:gap-6 lg:gap-16">
                   {/* Number */}
                   <span
-                    className="service-number text-h5 lg:text-h4 text-white/30 font-light group-hover:text-highlight group-hover:scale-110 transition-all duration-300"
+                    className="service-number text-h6 lg:text-h4 text-white/30 font-light flex-shrink-0 group-hover:text-highlight group-hover:scale-110 transition-all duration-300"
                     style={{ willChange: 'transform, color' }}
                   >
                     [{service.id}]
@@ -196,7 +196,7 @@ export function Services() {
 
                   {/* Title */}
                   <h3
-                    className={`text-h3 lg:text-h2 text-white font-normal transition-all duration-400 ${
+                    className={`text-h5 sm:text-h4 lg:text-h2 text-white font-normal transition-all duration-400 ${
                       activeIndex !== null && activeIndex !== index
                         ? 'opacity-30'
                         : 'opacity-100'

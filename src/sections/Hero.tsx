@@ -190,7 +190,7 @@ export function Hero() {
         {/* Main title */}
         <h1
           ref={titleRef}
-          className="text-[120px] md:text-[168px] font-medium text-white tracking-tight mb-4 preserve-3d"
+          className="text-[28px] sm:text-[48px] md:text-[120px] lg:text-[168px] font-medium text-white tracking-tight mb-4 preserve-3d"
           style={{
             textShadow: '0 0 80px rgba(234, 0, 0, 0.3)',
             willChange: 'transform',
@@ -212,7 +212,7 @@ export function Hero() {
         {/* Subtitle */}
         <p
           ref={subtitleRef}
-          className="text-h3 font-extralight text-white/80 tracking-widest"
+          className="text-body sm:text-h6 md:text-h3 font-extralight text-white/80 tracking-widest"
           style={{ willChange: 'filter, opacity' }}
         >
           {heroConfig.subtitle}

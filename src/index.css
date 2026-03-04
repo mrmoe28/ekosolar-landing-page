@@ -291,11 +291,6 @@
 
 /* Mobile optimizations */
 @media (max-width: 768px) {
-  :root {
-    --display-xxl: 64px;
-    --display-xl: 48px;
-  }
-  
   .custom-cursor {
     display: none;
   }

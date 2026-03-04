@@ -63,13 +63,13 @@ export function FAQ() {
     <section
       ref={sectionRef}
       id="faq"
-      className="relative py-32 px-8 lg:px-16 bg-black overflow-hidden"
+      className="relative py-16 lg:py-32 px-8 lg:px-16 bg-black overflow-hidden"
     >
       <div className="max-w-4xl mx-auto">
         {/* Section title */}
         <h2
           ref={titleRef}
-          className="text-h1 lg:text-display-xl text-white font-medium text-center mb-20"
+          className="text-h4 sm:text-h3 md:text-h1 lg:text-display-xl text-white font-medium text-center mb-20"
         >
           {faqConfig.title}
         </h2>

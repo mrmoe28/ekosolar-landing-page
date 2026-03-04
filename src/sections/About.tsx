@@ -160,7 +160,7 @@ export function About() {
     <section
       ref={sectionRef}
       id="about"
-      className="relative py-32 px-8 lg:px-16 overflow-hidden"
+      className="relative py-16 lg:py-32 px-8 lg:px-16 overflow-hidden"
       style={{ transform: 'rotate(0deg)' }}
     >
       {/* Background gradient */}
@@ -188,7 +188,7 @@ export function About() {
             {/* Image 2 - overlapping */}
             <div
               ref={image2Ref}
-              className="relative w-3/4 aspect-[2/3] -mt-32 ml-auto mr-4 overflow-hidden group cursor-pointer z-10"
+              className="relative w-3/4 aspect-[2/3] mt-4 lg:-mt-32 ml-auto mr-4 overflow-hidden group cursor-pointer z-10"
               style={{ willChange: 'clip-path, transform' }}
             >
               <img
