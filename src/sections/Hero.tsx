@@ -165,7 +165,7 @@ export function Hero() {
       >
         <img
           src={heroConfig.backgroundImage}
-          alt="Hero"
+          alt="EKO Solar Pros - Atlanta solar panel repair and troubleshooting specialists"
           className="w-full h-full object-cover"
           style={{ filter: 'brightness(0.9)' }}
         />

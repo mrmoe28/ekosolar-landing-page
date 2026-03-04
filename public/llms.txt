@@ -1,0 +1,38 @@
+# EKO SOLAR PROS
+
+> Atlanta's Solar Troubleshooting & Repair Specialist
+
+## About
+
+EKO SOLAR PROS is Atlanta, Georgia's trusted solar repair company, founded in 2015. We specialize in fixing solar systems installed by any company — not just our own. We've repaired over 1,500 solar systems across Georgia.
+
+## Services
+
+- System Diagnostics ($400): Complete inspection of inverters, panels, wiring, and monitoring systems with written diagnosis report
+- Inverter Repair & Replacement ($499+): Same-day repairs for SolarEdge, Enphase, SMA, Fronius, Tesla, and all major brands
+- Panel Replacement & Repair ($499+): Individual or full array replacement matching specifications
+- Monitoring & Electrical Fixes ($499+): App connections, wiring, grounding, and disconnect repairs
+- RMA Warranty Claims (included): We handle all manufacturer warranty paperwork at no additional cost
+
+## Pricing
+
+- Diagnostic Service: $400 (site visit + full system diagnostic)
+- Standard Repair: Starting at $499 (includes diagnostic, 90-day warranty)
+- Major System Restore: Starting at $1,299 (full rework, 1-year warranty)
+
+## Service Area
+
+Atlanta, Sandy Springs, Buckhead, Marietta, Decatur, Alpharetta, Midtown, and all of Georgia.
+
+## Brands We Repair
+
+SolarEdge, Enphase, SMA, Fronius, Tesla, SunPower, LG, Panasonic, Canadian Solar, Q Cells, and more.
+
+## Contact
+
+Website: https://YOURDOMAIN.com
+Location: Atlanta, GA
+
+## Further Reading
+
+- [Full details](https://YOURDOMAIN.com/llms-full.txt)

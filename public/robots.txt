@@ -1,0 +1,29 @@
+# EKO SOLAR PROS — Crawler Directives
+
+User-agent: *
+Allow: /
+
+# AI Crawlers — explicitly allowed
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# LLM-readable content
+# See /llms.txt for AI-friendly site summary
+# See /llms-full.txt for comprehensive site reference
+
+Sitemap: https://YOURDOMAIN.com/sitemap.xml
