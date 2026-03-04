@@ -33,11 +33,10 @@ export function Blog() {
       .finally(() => setLoading(false));
   }, []);
 
-  if (!blogConfig.title || posts.length === 0) return null;
-
   // GSAP animations — re-run when posts change
   useEffect(() => {
     if (loading) return;
+    if (!blogConfig.title || posts.length === 0) return;
     const section = sectionRef.current;
     if (!section) return;
 
@@ -115,6 +114,8 @@ export function Blog() {
       triggersRef.current = [];
     };
   }, [loading, posts]);
+
+  if (!blogConfig.title || posts.length === 0) return null;
 
   return (
     <section
