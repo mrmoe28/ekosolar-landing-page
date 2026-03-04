@@ -31,17 +31,17 @@ function formatDate(iso: string): string {
 
 const handler: Handler = async () => {
   const notionKey = process.env.NOTION_API_KEY;
-  const dbId = process.env.NOTION_BLOG_DB_ID;
+  const dsId = process.env.NOTION_BLOG_DB_ID;
 
-  if (!notionKey || !dbId) {
+  if (!notionKey || !dsId) {
     return { statusCode: 500, body: JSON.stringify({ error: "Missing Notion configuration" }) };
   }
 
   const notion = new Client({ auth: notionKey });
 
   try {
-    const response = await notion.databases.query({
-      database_id: dbId,
+    const response = await notion.dataSources.query({
+      data_source_id: dsId,
       filter: { property: "Status", select: { equals: "Published" } },
       sorts: [{ property: "Published Date", direction: "descending" }],
     });
