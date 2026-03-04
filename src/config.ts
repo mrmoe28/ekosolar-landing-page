@@ -455,7 +455,7 @@ export const contactConfig: ContactConfig = {
   ],
   messageLabel: "Describe Your Issue (Optional)",
   submitButtonText: "Schedule Service",
-  image: "./solar-house-1.jpg",
+  image: "./contact.jpg",
 };
 
 // ============================================================================
