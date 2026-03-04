@@ -205,7 +205,7 @@ export function About() {
             {/* Section title */}
             <h2
               ref={titleRef}
-              className="text-h3 lg:text-h2 text-white font-normal leading-tight mb-8"
+              className="text-h3 lg:text-h2 text-white font-normal leading-tight mb-8 text-center lg:text-left"
             >
               <span className="title-line block">
                 {aboutConfig.titleLine1}
