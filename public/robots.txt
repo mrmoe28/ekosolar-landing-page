@@ -26,4 +26,4 @@ Allow: /
 # See /llms.txt for AI-friendly site summary
 # See /llms-full.txt for comprehensive site reference
 
-Sitemap: https://YOURDOMAIN.com/sitemap.xml
+Sitemap: https://troubleshoot.ekosolarpros.com/sitemap.xml

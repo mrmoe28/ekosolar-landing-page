@@ -30,9 +30,9 @@ SolarEdge, Enphase, SMA, Fronius, Tesla, SunPower, LG, Panasonic, Canadian Solar
 
 ## Contact
 
-Website: https://YOURDOMAIN.com
+Website: https://troubleshoot.ekosolarpros.com
 Location: Atlanta, GA
 
 ## Further Reading
 
-- [Full details](https://YOURDOMAIN.com/llms-full.txt)
+- [Full details](https://troubleshoot.ekosolarpros.com/llms-full.txt)
