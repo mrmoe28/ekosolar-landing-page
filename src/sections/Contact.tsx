@@ -24,6 +24,7 @@ export function Contact() {
     message: '',
   });
   const [focusedField, setFocusedField] = useState<string | null>(null);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
 
   if (!contactConfig.title) return null;
 
@@ -139,9 +140,32 @@ export function Contact() {
     };
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
+    setSubmitStatus('sending');
+    try {
+      const res = await fetch('https://wlvksgzqcowoafyzsmya.supabase.co/functions/v1/funnel-webhook', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-api-key': 'vxwh_SpQylt9HYgZI1yIua8iS6hfJuY1ogc12',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          service: formData.projectType,
+          message: formData.message,
+          source: 'ekosolarpros.com',
+        }),
+      });
+      if (!res.ok) throw new Error('Failed');
+      setSubmitStatus('sent');
+      setFormData({ name: '', email: '', projectType: '', message: '' });
+      setTimeout(() => setSubmitStatus('idle'), 3000);
+    } catch {
+      setSubmitStatus('error');
+      setTimeout(() => setSubmitStatus('idle'), 3000);
+    }
   };
 
   const handleInputChange = (
@@ -344,12 +368,21 @@ export function Contact() {
             <button
               ref={buttonRef}
               type="submit"
-              className="mt-12 px-10 py-4 bg-white text-black text-body font-medium flex items-center gap-3 hover:bg-highlight hover:text-white transition-colors duration-300 relative overflow-hidden group"
+              disabled={submitStatus === 'sending' || submitStatus === 'sent'}
+              className="mt-12 px-10 py-4 bg-white text-black text-body font-medium flex items-center gap-3 hover:bg-highlight hover:text-white transition-colors duration-300 relative overflow-hidden group disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              <span className="relative z-10">{contactConfig.submitButtonText}</span>
+              <span className="relative z-10">
+                {submitStatus === 'sending' ? 'Sending...' : submitStatus === 'sent' ? 'Sent!' : contactConfig.submitButtonText}
+              </span>
               <Send className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
               <div className="absolute inset-0 bg-highlight transform -translate-x-full group-hover:translate-x-0 transition-transform duration-400 ease-[cubic-bezier(0.16,1,0.3,1)]" />
             </button>
+            {submitStatus === 'sent' && (
+              <p className="mt-4 text-green-400 text-body-sm">We'll be in touch shortly!</p>
+            )}
+            {submitStatus === 'error' && (
+              <p className="mt-4 text-red-400 text-body-sm">Something went wrong. Please try again or call us directly.</p>
+            )}
           </form>
 
           {/* Image side */}
@@ -360,7 +393,7 @@ export function Contact() {
           >
             <img
               src={contactConfig.image}
-              alt="Contact"
+              alt="Solar panel technician installing panels on residential roof"
               className="w-full h-full object-cover"
             />
 
