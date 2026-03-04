@@ -51,9 +51,13 @@ export function Navigation() {
           <a
             href="#hero"
             onClick={(e) => handleNavClick(e, '#hero')}
-            className="text-h6 font-medium text-white hover:text-highlight transition-colors duration-300"
+            className="flex items-center hover:opacity-80 transition-opacity duration-300"
           >
-            {navigationConfig.logo}
+            <img
+              src="./logo.png"
+              alt={navigationConfig.logo}
+              className="h-10 sm:h-12 w-auto"
+            />
           </a>
 
           {/* Desktop nav */}
