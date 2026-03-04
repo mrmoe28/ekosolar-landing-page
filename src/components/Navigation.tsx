@@ -46,7 +46,7 @@ export function Navigation() {
             : 'bg-transparent py-6'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-8 lg:px-16 flex items-center justify-between">
+        <div className="px-4 sm:px-8 lg:px-16 flex items-center justify-between">
           {/* Logo */}
           <a
             href="#hero"
