@@ -55,7 +55,7 @@ export interface HeroConfig {
 export const heroConfig: HeroConfig = {
   title: "EKO SOLAR PROS",
   subtitle: "Solar Not Working? We'll Fix It.",
-  backgroundImage: "/hero-main.jpg",
+  backgroundImage: "./hero-main.jpg",
   servicesLabel: "Repair | Troubleshoot | Restore",
   copyright: "© 2026 EKO SOLAR PROS Atlanta",
 };
@@ -81,9 +81,9 @@ export const aboutConfig: AboutConfig = {
   titleLine1: "We specialize in fixing solar systems that others can't,",
   titleLine2: "bringing dead panels back to life and restoring your energy savings.",
   description: "Founded in 2015, EKO SOLAR PROS has become Atlanta's trusted name in solar repair and troubleshooting. While other companies only install new systems, we focus on what happens after the installation - keeping your investment working. We've repaired over 1,500 solar systems across Georgia, many installed by other companies who refused to help. Our certified technicians diagnose and fix inverter failures, panel issues, wiring problems, and monitoring glitches. We also process RMA warranty equipment replacement claims, handling all the paperwork to get your faulty equipment replaced at no cost. No matter who installed your solar, we'll get it producing again.",
-  image1: "/about-1.jpg",
+  image1: "./about-1.jpg",
   image1Alt: "EKO SOLAR PROS technician diagnosing solar system issues",
-  image2: "/about-2.jpg",
+  image2: "./about-2.jpg",
   image2Alt: "Close-up of solar panel inspection",
   authorImage: "",
   authorName: "",
@@ -115,25 +115,25 @@ export const worksConfig: WorksConfig = {
       id: 1, 
       title: "Inverter Replacement - Buckhead", 
       category: "Inverter Repair", 
-      image: "/work-1.jpg" 
+      image: "./work-1.jpg" 
     },
     { 
       id: 2, 
       title: "Commercial System Restore - Midtown", 
       category: "Commercial Repair", 
-      image: "/work-2.jpg" 
+      image: "./work-2.jpg" 
     },
     { 
       id: 3, 
       title: "Battery Integration Fix - Alpharetta", 
       category: "Battery Repair", 
-      image: "/work-3.jpg" 
+      image: "./work-3.jpg" 
     },
     { 
       id: 4, 
       title: "Panel Replacement - Decatur", 
       category: "Panel Repair", 
-      image: "/work-4.jpg" 
+      image: "./work-4.jpg" 
     },
   ],
 };
@@ -163,31 +163,31 @@ export const servicesConfig: ServicesConfig = {
       id: "01", 
       title: "System Diagnostics", 
       description: "Comprehensive analysis of your entire solar system. We identify why your panels aren't producing, using professional testing equipment to check inverters, panels, wiring, and monitoring systems. You'll get a clear diagnosis and repair plan.", 
-      image: "/service-1.jpg" 
+      image: "./service-1.jpg" 
     },
     { 
       id: "02", 
       title: "Inverter Repair & Replacement", 
       description: "Inverters are the most common failure point. We repair or replace all major brands including SolarEdge, Enphase, SMA, and Fronius. Our technicians carry common parts for same-day repairs when possible.", 
-      image: "/service-2.jpg" 
+      image: "./service-2.jpg" 
     },
     { 
       id: "03", 
       title: "Panel Replacement & Repair", 
       description: "Cracked, damaged, or underperforming panels? We replace individual panels or entire arrays, matching specifications to maintain system warranty and performance. We work with all panel manufacturers.", 
-      image: "/service-3.jpg" 
+      image: "./service-3.jpg" 
     },
     { 
       id: "04", 
       title: "Monitoring & Electrical Fixes", 
       description: "Can't see your production data? We fix monitoring systems, app connections, and electrical issues including faulty wiring, grounding problems, and disconnects. Get your system visibility back.", 
-      image: "/service-4.jpg" 
+      image: "./service-4.jpg" 
     },
     { 
       id: "05", 
       title: "RMA Warranty Claims", 
       description: "We handle all paperwork and processing for manufacturer warranty claims. If your inverter or panels are under warranty, we'll get them replaced at no equipment cost to you. We work directly with SolarEdge, Enphase, Tesla, and all major manufacturers.", 
-      image: "/service-1.jpg" 
+      image: "./service-1.jpg" 
     },
   ],
 };
@@ -217,21 +217,21 @@ export const testimonialsConfig: TestimonialsConfig = {
       name: "Jennifer Williams", 
       title: "Homeowner, Sandy Springs", 
       quote: "My solar stopped working 3 years after installation. The original installer went out of business. EKO SOLAR PROS diagnosed a failed inverter within an hour and had it replaced the same week. My panels are producing again and I'm saving $250/month!", 
-      image: "/testimonial-1.jpg" 
+      image: "./testimonial-1.jpg" 
     },
     { 
       id: 2, 
       name: "Robert Chen", 
       title: "Business Owner, Atlanta", 
       quote: "Our commercial solar system was underperforming by 40%. The installer said everything was fine. EKO SOLAR PROS found faulty wiring and replaced 12 panels. Production is now higher than when it was new. These guys know their stuff.", 
-      image: "/testimonial-2.jpg" 
+      image: "./testimonial-2.jpg" 
     },
     { 
       id: 3, 
       name: "Amanda Davis", 
       title: "Homeowner, Marietta", 
       quote: "My monitoring app stopped working and I had no idea if my panels were producing. EKO SOLAR PROS fixed the communication issue and discovered my inverter was failing. They saved me months of lost production. Highly recommend!", 
-      image: "/testimonial-3.jpg" 
+      image: "./testimonial-3.jpg" 
     },
   ],
 };
@@ -399,7 +399,7 @@ export const blogConfig: BlogConfig = {
       excerpt: "Learn the warning signs that your solar panels aren't working properly. From rising electric bills to error codes, we cover what to watch for and when to call a professional.", 
       readTime: "5 min", 
       date: "Feb 28, 2026", 
-      image: "/blog-1.jpg", 
+      image: "./blog-1.jpg", 
       category: "Troubleshooting" 
     },
     { 
@@ -408,7 +408,7 @@ export const blogConfig: BlogConfig = {
       excerpt: "Inverters are the heart of your solar system and the most common failure point. Understand why they fail, how to prevent issues, and what replacement options are available.", 
       readTime: "6 min", 
       date: "Feb 15, 2026", 
-      image: "/blog-2.jpg", 
+      image: "./blog-2.jpg", 
       category: "Repairs" 
     },
   ],
@@ -453,7 +453,7 @@ export const contactConfig: ContactConfig = {
   ],
   messageLabel: "Describe Your Issue (Optional)",
   submitButtonText: "Schedule Service",
-  image: "/contact.jpg",
+  image: "./contact.jpg",
 };
 
 // ============================================================================
