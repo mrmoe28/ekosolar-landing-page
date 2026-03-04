@@ -224,7 +224,7 @@ export function Blog() {
                 {/* Image */}
                 <div className="post-image relative aspect-[16/9] overflow-hidden mb-6">
                   <img
-                    src={post.image}
+                    src={post.image || '/blog-1.jpg'}
                     alt={post.title}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />

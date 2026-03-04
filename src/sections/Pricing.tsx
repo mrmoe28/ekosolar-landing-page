@@ -248,15 +248,18 @@ export function Pricing() {
               </ul>
 
               {/* CTA Button */}
-              <button
-                className={`w-full py-4 text-body font-medium transition-all duration-200 ${
+              <a
+                href="https://voxlylaunchpad.com?template=36f97778-86d0-4924-9659-173212643323"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`block w-full py-4 text-body font-medium text-center transition-all duration-200 ${
                   plan.featured
                     ? 'bg-black text-white hover:bg-highlight'
                     : 'border border-white/30 text-white hover:bg-white hover:text-black'
                 }`}
               >
                 {pricingConfig.ctaButtonText}
-              </button>
+              </a>
             </div>
           ))}
         </div>
