@@ -370,7 +370,9 @@ export const faqConfig: FAQConfig = {
 export interface BlogPost {
   id: number;
   title: string;
+  slug?: string;
   excerpt: string;
+  body?: string;
   readTime: string;
   date: string;
   image: string;
